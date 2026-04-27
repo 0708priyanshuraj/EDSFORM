@@ -65,7 +65,7 @@ function startOtpTimer(globals) {
   const resendBtn = form.validate_otp.resend_otp;
   const validateBtn = form.validate_otp.validate_otp;
 
-  let seconds = 5;
+  let seconds = 45;
 
   if (!timerField) return;
 
