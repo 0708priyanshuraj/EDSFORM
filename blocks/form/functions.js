@@ -19,10 +19,10 @@ function submitFormArrayToString(globals) {
   const data = globals.functions.exportData();
   Object.keys(data).forEach((key) => {
     if (Array.isArray(data[key])) {
-      data[key] = data[key].join(',');
+      data[key] = data[key].join(",");
     }
   });
-  globals.functions.submitForm(data, true, 'application/json');
+  globals.functions.submitForm(data, true, "application/json");
 }
 
 /**
@@ -32,8 +32,8 @@ function submitFormArrayToString(globals) {
  * @returns {number} returns the number of days between two dates
  */
 function days(endDate, startDate) {
-  const start = typeof startDate === 'string' ? new Date(startDate) : startDate;
-  const end = typeof endDate === 'string' ? new Date(endDate) : endDate;
+  const start = typeof startDate === "string" ? new Date(startDate) : startDate;
+  const end = typeof endDate === "string" ? new Date(endDate) : endDate;
 
   // return zero if dates are valid
   if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
@@ -45,80 +45,77 @@ function days(endDate, startDate) {
 }
 
 /**
-* Masks the first 5 digits of the mobile number with *
-* @param {*} mobileNumber
-* @returns {string} returns the mobile number with first 5 digits masked
-*/
+ * Masks the first 5 digits of the mobile number with *
+ * @param {*} mobileNumber
+ * @returns {string} returns the mobile number with first 5 digits masked
+ */
 function maskMobileNumber(mobileNumber) {
   if (!mobileNumber) {
-    return '';
+    return "";
   }
   const value = mobileNumber.toString();
   // Mask first 5 digits and keep the rest
-  return ` ${'*'.repeat(5)}${value.substring(5)}`;
+  return ` ${"*".repeat(5)}${value.substring(5)}`;
 }
 
 /*---------------------------------------------------------------------*/
 function startOtpTimer(globals) {
-  const { form } = globals;
-  const timerField = form.validate_otp.timer;
-  const resendBtn = form.validate_otp.resend_otp;
-  const validateBtn = form.validate_otp.validate_otp;
+  setTimeout(() => {
+    const { form } = globals;
 
-  let seconds = 45;
+    const timerField = form.validate_otp.timer;
+    const resendBtn = form.validate_otp.resend_otp;
+    const validateBtn = form.validate_otp.validate_otp;
 
-  if (!timerField) return;
+    let seconds = 45;
 
-  globals.functions.setProperty(resendBtn, { enabled: false });
-  globals.functions.setProperty(validateBtn, { enabled: true });
-
-  if (window.otpTimerInterval) {
-    clearInterval(window.otpTimerInterval);
-  }
-
-  // ✅ Initial value
-  globals.functions.setProperty(timerField, {
-    value: `${seconds} secs`,
-  });
-
-  window.otpTimerInterval = setInterval(() => {
-    seconds--;
-
-    if (seconds > 0) {
-      globals.functions.setProperty(timerField, {
-        value: `${seconds} secs`,
-      });
+    if (!timerField) {
+      console.log("Timer field not found ❌");
+      return;
     }
 
-    if (seconds === 0) {
-      globals.functions.setProperty(timerField, {
-        value: '1 sec', // singular case
-      });
-    }
+    globals.functions.setProperty(resendBtn, { enabled: false });
+    globals.functions.setProperty(validateBtn, { enabled: true });
 
-    if (seconds < 0) {
+    if (window.otpTimerInterval) {
       clearInterval(window.otpTimerInterval);
+    }
 
-      globals.functions.setProperty(timerField, {
-        value: 'Time expired',
-      });
+    globals.functions.setProperty(timerField, {
+      value: `Resend OTP in: ${seconds}s`,
+    });
 
-      globals.functions.setProperty(validateBtn, {
-        enabled: false,
-      });
+    window.otpTimerInterval = setInterval(() => {
+      seconds--;
 
-      const attempts = window.otpAttempts || 0;
+      if (seconds > 0) {
+        globals.functions.setProperty(timerField, {
+          value: `Resend OTP in: ${seconds}s`,
+        });
+      } else {
+        clearInterval(window.otpTimerInterval);
 
-      if (attempts < 3) {
+        globals.functions.setProperty(timerField, {
+          value: "Resend OTP",
+        });
+
         globals.functions.setProperty(resendBtn, {
           enabled: true,
         });
+
+        globals.functions.setProperty(validateBtn, {
+          enabled: false,
+        });
       }
-    }
-  }, 1000);
+    }, 1000);
+  }, 300);
 }
 
 // eslint-disable-next-line import/prefer-default-export
 export {
-  getFullName, days, submitFormArrayToString, maskMobileNumber, startOtpTimer,
+  getFullName,
+  days,
+  submitFormArrayToString,
+  maskMobileNumber,
+  startOtpTimer,
 };
