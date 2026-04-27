@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-unused-vars */
 /**
  * Get Full Name
  * @name getFullName Concats first name and last name
@@ -56,7 +58,67 @@ function maskMobileNumber(mobileNumber) {
   return ` ${'*'.repeat(5)}${value.substring(5)}`;
 }
 
+/*---------------------------------------------------------------------*/
+function startOtpTimer(globals) {
+  const { form } = globals;
+  const timerField = form.validate_otp.timer;
+  const resendBtn = form.validate_otp.resend_otp;
+  const validateBtn = form.validate_otp.validate_otp;
+
+  let seconds = 5;
+
+  if (!timerField) return;
+
+  globals.functions.setProperty(resendBtn, { enabled: false });
+  globals.functions.setProperty(validateBtn, { enabled: true });
+
+  if (window.otpTimerInterval) {
+    clearInterval(window.otpTimerInterval);
+  }
+
+  // ✅ Initial value
+  globals.functions.setProperty(timerField, {
+    value: `${seconds} secs`,
+  });
+
+  window.otpTimerInterval = setInterval(() => {
+    seconds--;
+
+    if (seconds > 0) {
+      globals.functions.setProperty(timerField, {
+        value: `${seconds} secs`,
+      });
+    }
+
+    if (seconds === 0) {
+      globals.functions.setProperty(timerField, {
+        value: '1 sec', // singular case
+      });
+    }
+
+    if (seconds < 0) {
+      clearInterval(window.otpTimerInterval);
+
+      globals.functions.setProperty(timerField, {
+        value: 'Time expired',
+      });
+
+      globals.functions.setProperty(validateBtn, {
+        enabled: false,
+      });
+
+      const attempts = window.otpAttempts || 0;
+
+      if (attempts < 3) {
+        globals.functions.setProperty(resendBtn, {
+          enabled: true,
+        });
+      }
+    }
+  }, 1000);
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export {
-  getFullName, days, submitFormArrayToString, maskMobileNumber,
+  getFullName, days, submitFormArrayToString, maskMobileNumber, startOtpTimer,
 };
