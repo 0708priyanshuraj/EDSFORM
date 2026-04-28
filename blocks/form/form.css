@@ -814,7 +814,7 @@ main .form form fieldset.panel-wrapper {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 16px;
-    align-items: start; /* IMPORTANT */
+    align-items: start;
 }
 
 /* ================= MOBILE + DOB ================= */
@@ -823,6 +823,7 @@ main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
     grid-column: span 6;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 /* ================= REMOVE AEM EXTRA SPACING ================= */
@@ -850,6 +851,23 @@ main .form input {
     transition: none;
 }
 
+/* ================= MOBILE PREFIX (+91) ================= */
+main .form .text-wrapper.field-mobile-number::before {
+    content: "+91";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #333;
+    pointer-events: none;
+}
+
+/* ================= ADJUST INPUT FOR PREFIX ================= */
+main .form .text-wrapper.field-mobile-number input {
+    padding-left: 55px;
+}
+
 /* ================= FOCUS ================= */
 main .form input:focus {
     border-color: #0070f3;
@@ -873,6 +891,10 @@ main .form input::placeholder {
         padding: 10px 14px;
         font-size: 13px;
     }
+
+    main .form .text-wrapper.field-mobile-number input {
+        padding-left: 50px;
+    }
 }
 
 /* ================= MOBILE ================= */
@@ -887,5 +909,9 @@ main .form input::placeholder {
         height: 42px;
         padding: 10px 12px;
         font-size: 12px;
+    }
+
+    main .form .text-wrapper.field-mobile-number input {
+        padding-left: 45px;
     }
 }
