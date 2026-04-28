@@ -792,3 +792,81 @@ main div.form-wrapper {
 main .form form select[multiple] {
     height: calc(42px + 50px);
 }
+
+/* ================= DATE OF BIRTH WRAPPER =================================================== */
+main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
+  position: relative;
+}
+
+/* ================= DATE INPUT ================= */
+main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"] {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  background-color: #ffffff;
+  outline: none;
+  font-size: 14px;
+  transition: none;
+}
+
+/* ================= FOCUS ================= */
+main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"]:focus {
+  border-color: #0070f3;
+  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.15);
+}
+
+/* ================= PLACEHOLDER ================= */
+main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"]::placeholder {
+  color: #9ca3af;
+}
+
+/* ================= ICON ================= */
+main .form .date-wrapper.field-date-of-birth::after {
+  content: "📅";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #666;
+  pointer-events: none;
+}
+
+
+/* ================= MEDIA QUERIES (ADD BELOW) ================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+  main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
+    width: 100%;
+  }
+
+  main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"] {
+    padding: 10px 36px 10px 14px;
+    font-size: 13px;
+  }
+
+  main .form .date-wrapper.field-date-of-birth::after {
+    right: 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"] {
+    padding: 10px 34px 10px 12px;
+    font-size: 12px;
+  }
+
+  main .form .date-wrapper.field-date-of-birth::after {
+    right: 8px;
+    font-size: 14px;
+  }
+}
+/* ================= DATE OF BIRTH WRAPPER =================================================== */
