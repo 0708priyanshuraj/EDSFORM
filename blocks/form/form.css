@@ -823,7 +823,6 @@ main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"]::placeh
 
 /* ================= ICON ================= */
 main .form .date-wrapper.field-date-of-birth::after {
-  content: "📅";
   position: absolute;
   right: 12px;
   top: 50%;
