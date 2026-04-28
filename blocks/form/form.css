@@ -860,7 +860,6 @@ main .form .text-wrapper.field-mobile-number::before {
     transform: translateY(-50%);
     width: 18px;
     height: 12px;
-    background-image: url("https://flagcdn.com/w20/in.png");
     background-size: cover;
     background-repeat: no-repeat;
     pointer-events: none;
@@ -868,7 +867,6 @@ main .form .text-wrapper.field-mobile-number::before {
 
 /* ================= +91 AFTER FLAG ================= */
 main .form .text-wrapper.field-mobile-number::after {
-    content: "+91";
     position: absolute;
     left: 40px;
     top: 50%;
