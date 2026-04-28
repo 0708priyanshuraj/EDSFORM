@@ -810,123 +810,68 @@ main .form form select[multiple] {
     height: calc(42px + 50px);
 }
 
-/* ================= COMMON WRAPPER ================= */
+//* ================= COMMON WRAPPER ================= */
 main .form .field-wrapper.col-6 {
-    position: relative;
+  position: relative;
 }
 
 /* ================= DATE OF BIRTH ================= */
 main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"] {
-    width: 100%;
-    padding: 12px 40px 12px 16px;
-    border-radius: 10px;
-    border: 1px solid #dcdcdc;
-    background-color: #ffffff;
-    outline: none;
-    font-size: 14px;
-    transition: none;
-}
-
-/* DOB ICON */
-main .form .date-wrapper.field-date-of-birth::after {
-    content: "📅";
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: #666;
-    pointer-events: none;
+  width: 100%;
+  padding: 12px 16px; /* normal padding (no icon space) */
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  background-color: #ffffff;
+  outline: none;
+  font-size: 14px;
+  transition: none;
 }
 
 /* ================= MOBILE NUMBER ================= */
 main .form .text-wrapper.field-mobile-number input[name="mobileNo"] {
-    width: 100%;
-    padding: 12px 16px 12px 70px; 
-    border-radius: 10px;
-    border: 1px solid #dcdcdc;
-    background-color: #ffffff;
-    outline: none;
-    font-size: 14px;
-    transition: none;
-}
-
-/* FLAG */
-main .form .text-wrapper.field-mobile-number::before {
-    content: "";
-    position: absolute;
-    left: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 18px;
-    height: 12px;
-    background-image: url("https://flagcdn.com/w20/in.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    pointer-events: none;
+  width: 100%;
+  padding: 12px 16px; /* same as DOB */
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  background-color: #ffffff;
+  outline: none;
+  font-size: 14px;
+  transition: none;
 }
 
 /* ================= COMMON STATES ================= */
 main .form input:focus {
-    border-color: #0070f3;
-    box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.15);
+  border-color: #0070f3;
+  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.15);
 }
 
 main .form input::placeholder {
-    color: #9ca3af;
+  color: #9ca3af;
 }
 
 /* ================= TABLET ================= */
 @media (max-width: 768px) {
-    main .form .field-wrapper.col-6 {
-        width: 100%;
-    }
+  main .form .field-wrapper.col-6 {
+    width: 100%;
+  }
 
-    main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"],
-    main .form .text-wrapper.field-mobile-number input[name="mobileNo"] {
-        padding: 10px 36px 10px 14px;
-        font-size: 13px;
-    }
-
-    /* adjust mobile flag spacing */
-    main .form .text-wrapper.field-mobile-number input[name="mobileNo"] {
-        padding-left: 45px;
-    }
-
-    main .form .text-wrapper.field-mobile-number::before {
-        left: 10px;
-    }
-
-    main .form .date-wrapper.field-date-of-birth::after {
-        right: 10px;
-    }
+  main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"],
+  main .form .text-wrapper.field-mobile-number input[name="mobileNo"] {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
 }
 
 /* ================= MOBILE ================= */
 @media (max-width: 480px) {
-    main .form .field-wrapper.col-6 {
-        width: 100%;
-        margin-top: 10px;
-    }
+  main .form .field-wrapper.col-6 {
+    width: 100%;
+    margin-top: 10px;
+  }
 
-    main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"],
-    main .form .text-wrapper.field-mobile-number input[name="mobileNo"] {
-        padding: 10px 34px 10px 12px;
-        font-size: 12px;
-    }
-
-    main .form .text-wrapper.field-mobile-number input[name="mobileNo"] {
-        padding-left: 40px;
-    }
-
-    main .form .text-wrapper.field-mobile-number::before {
-        left: 8px;
-        width: 16px;
-        height: 10px;
-    }
-
-    main .form .date-wrapper.field-date-of-birth::after {
-        right: 8px;
-        font-size: 14px;
-    }
+  main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"],
+  main .form .text-wrapper.field-mobile-number input[name="mobileNo"] {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
 }
