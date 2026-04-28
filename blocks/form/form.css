@@ -810,15 +810,23 @@ main .form form select[multiple] {
     height: calc(42px + 50px);
 }
 
-//* ================= COMMON WRAPPER ================= */
-main .form .field-wrapper.col-6 {
-  position: relative;
+/* ================= FORM GRID LAYOUT ================= */
+main .form form fieldset.panel-wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+/* ================= MOBILE + DOB SIDE BY SIDE ================= */
+main .form .text-wrapper.field-mobile-number.field-wrapper.col-6,
+main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
+  grid-column: span 6;
 }
 
 /* ================= DATE OF BIRTH ================= */
 main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"] {
   width: 100%;
-  padding: 12px 16px; /* normal padding (no icon space) */
+  padding: 12px 16px;
   border-radius: 10px;
   border: 1px solid #dcdcdc;
   background-color: #ffffff;
@@ -830,7 +838,7 @@ main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"] {
 /* ================= MOBILE NUMBER ================= */
 main .form .text-wrapper.field-mobile-number input[name="mobileNo"] {
   width: 100%;
-  padding: 12px 16px; /* same as DOB */
+  padding: 12px 16px;
   border-radius: 10px;
   border: 1px solid #dcdcdc;
   background-color: #ffffff;
@@ -851,8 +859,9 @@ main .form input::placeholder {
 
 /* ================= TABLET ================= */
 @media (max-width: 768px) {
-  main .form .field-wrapper.col-6 {
-    width: 100%;
+  main .form .text-wrapper.field-mobile-number.field-wrapper.col-6,
+  main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
+    grid-column: span 12;
   }
 
   main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"],
@@ -864,8 +873,9 @@ main .form input::placeholder {
 
 /* ================= MOBILE ================= */
 @media (max-width: 480px) {
-  main .form .field-wrapper.col-6 {
-    width: 100%;
+  main .form .text-wrapper.field-mobile-number.field-wrapper.col-6,
+  main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
+    grid-column: span 12;
     margin-top: 10px;
   }
 
