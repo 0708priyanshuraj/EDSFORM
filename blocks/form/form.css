@@ -851,23 +851,11 @@ main .form input {
     transition: none;
 }
 
-/* ================= MOBILE PREFIX (+91) ================= */
+/* ================= FLAG FIRST ================= */
 main .form .text-wrapper.field-mobile-number::before {
-    content: "+91";
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 14px;
-    color: #333;
-    pointer-events: none;
-}
-
-/* ================= FLAG ================= */
-main .form .text-wrapper.field-mobile-number::after {
     content: "";
     position: absolute;
-    left: 45px;
+    left: 16px;
     top: 50%;
     transform: translateY(-50%);
     width: 18px;
@@ -878,7 +866,19 @@ main .form .text-wrapper.field-mobile-number::after {
     pointer-events: none;
 }
 
-/* ================= ADJUST INPUT FOR PREFIX + FLAG ================= */
+/* ================= +91 AFTER FLAG ================= */
+main .form .text-wrapper.field-mobile-number::after {
+    content: "+91";
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #333;
+    pointer-events: none;
+}
+
+/* ================= INPUT SPACING ================= */
 main .form .text-wrapper.field-mobile-number input {
     padding-left: 75px;
 }
@@ -911,8 +911,12 @@ main .form input::placeholder {
         padding-left: 65px;
     }
 
+    main .form .text-wrapper.field-mobile-number::before {
+        left: 14px;
+    }
+
     main .form .text-wrapper.field-mobile-number::after {
-        left: 40px;
+        left: 36px;
     }
 }
 
@@ -936,12 +940,12 @@ main .form input::placeholder {
 
     main .form .text-wrapper.field-mobile-number::before {
         left: 12px;
-        font-size: 12px;
+        width: 16px;
+        height: 10px;
     }
 
     main .form .text-wrapper.field-mobile-number::after {
-        left: 35px;
-        width: 16px;
-        height: 10px;
+        left: 32px;
+        font-size: 12px;
     }
 }
