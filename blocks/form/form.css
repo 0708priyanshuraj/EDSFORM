@@ -809,79 +809,83 @@ main div.form-wrapper {
 main .form form select[multiple] {
     height: calc(42px + 50px);
 }
-
 /* ================= FORM GRID LAYOUT ================= */
 main .form form fieldset.panel-wrapper {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    align-items: start; /* IMPORTANT */
 }
 
-/* ================= MOBILE + DOB SIDE BY SIDE ================= */
+/* ================= MOBILE + DOB ================= */
 main .form .text-wrapper.field-mobile-number.field-wrapper.col-6,
 main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
-  grid-column: span 6;
+    grid-column: span 6;
+    display: flex;
+    flex-direction: column;
 }
 
-/* ================= DATE OF BIRTH ================= */
-main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"] {
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 10px;
-  border: 1px solid #dcdcdc;
-  background-color: #ffffff;
-  outline: none;
-  font-size: 14px;
-  transition: none;
+/* ================= REMOVE AEM EXTRA SPACING ================= */
+main .form .field-wrapper {
+    margin: 0;
 }
 
-/* ================= MOBILE NUMBER ================= */
-main .form .text-wrapper.field-mobile-number input[name="mobileNo"] {
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 10px;
-  border: 1px solid #dcdcdc;
-  background-color: #ffffff;
-  outline: none;
-  font-size: 14px;
-  transition: none;
+/* ================= LABEL ================= */
+main .form .field-label {
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-/* ================= COMMON STATES ================= */
+/* ================= INPUT COMMON ================= */
+main .form input {
+    width: 100%;
+    height: 48px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    background-color: #ffffff;
+    outline: none;
+    font-size: 14px;
+    transition: none;
+}
+
+/* ================= FOCUS ================= */
 main .form input:focus {
-  border-color: #0070f3;
-  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.15);
+    border-color: #0070f3;
+    box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.15);
 }
 
+/* ================= PLACEHOLDER ================= */
 main .form input::placeholder {
-  color: #9ca3af;
+    color: #9ca3af;
 }
 
 /* ================= TABLET ================= */
 @media (max-width: 768px) {
-  main .form .text-wrapper.field-mobile-number.field-wrapper.col-6,
-  main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
-    grid-column: span 12;
-  }
+    main .form .text-wrapper.field-mobile-number.field-wrapper.col-6,
+    main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
+        grid-column: span 12;
+    }
 
-  main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"],
-  main .form .text-wrapper.field-mobile-number input[name="mobileNo"] {
-    padding: 10px 14px;
-    font-size: 13px;
-  }
+    main .form input {
+        height: 44px;
+        padding: 10px 14px;
+        font-size: 13px;
+    }
 }
 
 /* ================= MOBILE ================= */
 @media (max-width: 480px) {
-  main .form .text-wrapper.field-mobile-number.field-wrapper.col-6,
-  main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
-    grid-column: span 12;
-    margin-top: 10px;
-  }
+    main .form .text-wrapper.field-mobile-number.field-wrapper.col-6,
+    main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
+        grid-column: span 12;
+        margin-top: 10px;
+    }
 
-  main .form .date-wrapper.field-date-of-birth input[name="date_of_birth"],
-  main .form .text-wrapper.field-mobile-number input[name="mobileNo"] {
-    padding: 10px 12px;
-    font-size: 12px;
-  }
+    main .form input {
+        height: 42px;
+        padding: 10px 12px;
+        font-size: 12px;
+    }
 }
