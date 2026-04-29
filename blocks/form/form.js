@@ -5,6 +5,7 @@ import GoogleReCaptcha from './integrations/recaptcha.js';
 import componentDecorator from './mappings.js';
 import { handleSubmit } from './submit.js';
 import DocBasedFormToAF from './transform.js';
+import { initEMICalculator } from './functions.js';
 import {
   checkValidation,
   createButton,
@@ -579,5 +580,9 @@ export default async function decorate(block) {
       form.dataset.formpath = formDef.properties['fd:path'];
     }
     container.replaceWith(form);
+
+    setTimeout(() => {
+      initEMICalculator();
+    }, 100);
   }
 }

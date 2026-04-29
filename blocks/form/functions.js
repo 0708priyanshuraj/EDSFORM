@@ -114,6 +114,104 @@ function startOtpTimer(globals) {
 
   return '';
 }
+
+/**
+ * Format number to Indian currency format
+ */
+function formatIndianCurrency(amount) {
+  return `₹${amount.toLocaleString('en-IN', { maximumFractionDigits: 0 })}`;
+}
+
+/**
+ * EMI Calculation
+ */
+function calculateEMI(principal, annualRate, tenureMonths) {
+  const monthlyRate = annualRate / (12 * 100);
+
+  if (monthlyRate === 0) {
+    return Math.round(principal / tenureMonths);
+  }
+
+  const onePlusR = 1 + monthlyRate;
+  const onePlusRPowerN = Math.pow(onePlusR, tenureMonths);
+
+  const emi =
+    (principal * monthlyRate * onePlusRPowerN) /
+    (onePlusRPowerN - 1);
+
+  return Math.round(emi);
+}
+
+/**
+ * INIT EMI CALCULATOR
+ */
+function initEMICalculator() {
+  // ✅ CORRECT SELECTORS (based on your HTML)
+
+  const loanAmountInput = document.querySelector("#numberinput-b5966ec03e");
+  const loanTenureInput = document.querySelector("#numberinput-0340fd7e24");
+
+  const xpressField = document.querySelector("#textinput-378a51dc47");
+  const emiAmountField = document.querySelector("#textinput-b5b7374de8");
+  const roiField = document.querySelector("#textinput-1c459dc1b4");
+  const taxField = document.querySelector("#textinput-ec3ebad510");
+
+  const loanAmountBubble = loanAmountInput
+    ?.closest(".range-widget-wrapper")
+    ?.querySelector(".range-bubble");
+
+  const tenureBubble = loanTenureInput
+    ?.closest(".range-widget-wrapper")
+    ?.querySelector(".range-bubble");
+
+  if (!loanAmountInput || !loanTenureInput || !xpressField || !emiAmountField) {
+    console.log("Required elements missing ❌");
+    return;
+  }
+
+  const annualRate = 10.97;
+  const taxPercent = 18; // GST example
+
+  function updateEMICalculation() {
+    const loanAmount = parseFloat(loanAmountInput.value) || 50000;
+    const tenure = parseFloat(loanTenureInput.value) || 12;
+
+    // ✅ Loan display
+    xpressField.value = formatIndianCurrency(loanAmount);
+
+    // ✅ EMI calculation
+    const emi = calculateEMI(loanAmount, annualRate, tenure);
+    emiAmountField.value = formatIndianCurrency(emi);
+
+    // ✅ ROI display
+    if (roiField) {
+      roiField.value = `${annualRate}% p.a.`;
+    }
+
+    // ✅ TAX calculation (optional logic)
+    if (taxField) {
+      const tax = Math.round((emi * taxPercent) / 100);
+      taxField.value = formatIndianCurrency(tax);
+    }
+
+    // ✅ Update bubbles
+    if (loanAmountBubble) {
+      loanAmountBubble.textContent = formatIndianCurrency(loanAmount);
+    }
+
+    if (tenureBubble) {
+      tenureBubble.textContent = `${Math.round(tenure)} months`;
+    }
+  }
+
+  // ✅ EVENTS
+  loanAmountInput.addEventListener("input", updateEMICalculation);
+  loanTenureInput.addEventListener("input", updateEMICalculation);
+
+  // ✅ INITIAL RUN
+  updateEMICalculation();
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName,
@@ -121,4 +219,7 @@ export {
   submitFormArrayToString,
   maskMobileNumber,
   startOtpTimer,
+  calculateEMI,
+  formatIndianCurrency,
+  initEMICalculator,
 };
