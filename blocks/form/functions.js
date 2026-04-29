@@ -19,10 +19,10 @@ function submitFormArrayToString(globals) {
   const data = globals.functions.exportData();
   Object.keys(data).forEach((key) => {
     if (Array.isArray(data[key])) {
-      data[key] = data[key].join(",");
+      data[key] = data[key].join(',');
     }
   });
-  globals.functions.submitForm(data, true, "application/json");
+  globals.functions.submitForm(data, true, 'application/json');
 }
 
 /**
@@ -32,8 +32,8 @@ function submitFormArrayToString(globals) {
  * @returns {number} returns the number of days between two dates
  */
 function days(endDate, startDate) {
-  const start = typeof startDate === "string" ? new Date(startDate) : startDate;
-  const end = typeof endDate === "string" ? new Date(endDate) : endDate;
+  const start = typeof startDate === 'string' ? new Date(startDate) : startDate;
+  const end = typeof endDate === 'string' ? new Date(endDate) : endDate;
 
   // return zero if dates are valid
   if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
@@ -51,11 +51,11 @@ function days(endDate, startDate) {
  */
 function maskMobileNumber(mobileNumber) {
   if (!mobileNumber) {
-    return "";
+    return '';
   }
   const value = mobileNumber.toString();
   // Mask first 5 digits and keep the rest
-  return ` ${"*".repeat(5)}${value.substring(5)}`;
+  return ` ${'*'.repeat(5)}${value.substring(5)}`;
 }
 
 /*---------------------------------------------------------------------*/
@@ -70,7 +70,7 @@ function startOtpTimer(globals) {
     let seconds = 45;
 
     if (!timerField) {
-      console.log("Timer field not found ❌");
+      console.log('Timer field not found ❌');
       return;
     }
 
@@ -96,7 +96,7 @@ function startOtpTimer(globals) {
         clearInterval(window.otpTimerInterval);
 
         globals.functions.setProperty(timerField, {
-          value: "Resend OTP",
+          value: 'Resend OTP',
         });
 
         globals.functions.setProperty(resendBtn, {

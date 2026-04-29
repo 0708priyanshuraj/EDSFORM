@@ -985,3 +985,14 @@ main .form input::placeholder {
         font-size: 12px;
     }
 }
+/* ================= DISABLED BUTTON STYLE ================= */
+main .form .button-wrapper button:disabled {
+    background-color: #cbd5f5;
+    color: #ffffff;
+    border: none;
+    cursor: not-allowed;
+}
+
+main .form .button-wrapper button:disabled:hover {
+    background-color: #cbd5f5;
+}
