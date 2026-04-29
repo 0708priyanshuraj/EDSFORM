@@ -69,14 +69,24 @@ function maskMobileNumber(mobileNumber) {
  */
 function startOtpTimer(globals) {
   console.log(globals.form);
-  const timerField = globals?.form?.otp_input?.timer;
-  const resendBtn = globals?.form?.otp_input?.resend_button;
+
+  let timerField = null;
+  let resendBtn = null;
+
+  Object.values(globals.form).forEach((field) => {
+    if (field?.name === 'timer') {
+      timerField = field;
+    }
+    if (field?.name === 'resend_button') {
+      resendBtn = field;
+    }
+  });
 
   let seconds = 45;
 
   if (!timerField || !resendBtn) {
-    console.log("Timer elements missing ❌");
-    return "";
+    console.log('Timer elements missing ❌');
+    return '';
   }
 
   globals.functions.setProperty(resendBtn, { enabled: false });
@@ -88,21 +98,21 @@ function startOtpTimer(globals) {
   function updateTimer() {
     if (seconds > 0) {
       globals.functions.setProperty(timerField, {
-        value: `${seconds}s`,
+        value: seconds + 's',
       });
       seconds--;
       globals.otpTimerInterval = setTimeout(updateTimer, 1000);
     } else {
       globals.functions.setProperty(resendBtn, { enabled: true });
       globals.functions.setProperty(timerField, {
-        value: "Resend OTP",
+        value: 'Resend OTP',
       });
     }
   }
 
   updateTimer();
 
-  return "";
+  return '';
 }
 // eslint-disable-next-line import/prefer-default-export
 export {
