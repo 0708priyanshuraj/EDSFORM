@@ -57,7 +57,6 @@ function maskMobileNumber(mobileNumber) {
   // Mask first 5 digits and keep the rest
   return ` ${"*".repeat(5)}${value.substring(5)}`;
 }
-
 function startOtpTimer(globals) {
   const timerField = globals?.form?.validate_otp?.timer;
   const resendBtn = globals?.form?.validate_otp?.resend_button;
@@ -66,7 +65,7 @@ function startOtpTimer(globals) {
 
   if (!timerField || !resendBtn) {
     console.log('Timer elements missing ❌');
-    return;
+    return ''; // ✅ IMPORTANT
   }
 
   // Disable resend button
@@ -103,7 +102,8 @@ function startOtpTimer(globals) {
       });
     }
   }, 1000);
-}
+
+  return ''; 
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName,
