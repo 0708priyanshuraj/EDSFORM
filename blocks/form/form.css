@@ -1024,3 +1024,116 @@ main .form form [data-id="text-d5bd6536c8"] p {
     line-height: 1.5;
     margin: 0;
 }
+
+/* Target ONLY this panel */
+#panelcontainer-a19c2c7fa9 {
+    background-color: #FFFBF0;
+    border: 1px solid #F5E6D3;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* First field */
+#panelcontainer-a19c2c7fa9 .text-wrapper:first-of-type {
+    margin-bottom: 8px;
+}
+
+#panelcontainer-a19c2c7fa9 .text-wrapper:first-of-type label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+#panelcontainer-a19c2c7fa9 .text-wrapper:first-of-type input {
+    font-size: 32px;
+    font-weight: 700;
+    border: none;
+    background: transparent;
+    pointer-events: none;
+}
+
+/* Divider */
+#panelcontainer-a19c2c7fa9 .text-wrapper:first-of-type::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background: linear-gradient(to right, #E8D5B8, transparent);
+    margin-top: 16px;
+}
+
+/* Other fields */
+#panelcontainer-a19c2c7fa9 .text-wrapper:not(:first-of-type) {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 20px;
+}
+
+#panelcontainer-a19c2c7fa9 .text-wrapper:not(:first-of-type)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background-color: #F5A623;
+}
+
+/* Labels */
+#panelcontainer-a19c2c7fa9 .text-wrapper:not(:first-of-type) label {
+    font-size: 13px;
+    color: #999;
+}
+
+/* Values */
+#panelcontainer-a19c2c7fa9 .text-wrapper:not(:first-of-type) input {
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    background: transparent;
+    pointer-events: none;
+}
+
+/* Two column layout */
+#panelcontainer-a19c2c7fa9 .text-wrapper:nth-of-type(2),
+#panelcontainer-a19c2c7fa9 .text-wrapper:nth-of-type(3) {
+    display: inline-block;
+    width: calc(50% - 10px);
+}
+
+#panelcontainer-a19c2c7fa9 .text-wrapper:nth-of-type(2) {
+    margin-right: 20px;
+}
+
+/* Disclaimer */
+#panelcontainer-a19c2c7fa9 .plain-text-wrapper {
+    background-color: #F5A623;
+    color: #fff;
+    padding: 16px 20px 16px 50px;
+    border-radius: 8px;
+    margin-top: 20px;
+    position: relative;
+}
+
+#panelcontainer-a19c2c7fa9 .plain-text-wrapper::before {
+    content: "ⓘ";
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#panelcontainer-a19c2c7fa9 .plain-text-wrapper p {
+    margin: 0;
+    font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #panelcontainer-a19c2c7fa9 .text-wrapper:nth-of-type(2),
+    #panelcontainer-a19c2c7fa9 .text-wrapper:nth-of-type(3) {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
