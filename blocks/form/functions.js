@@ -68,6 +68,7 @@ function maskMobileNumber(mobileNumber) {
  * @param {scope} globals
  */
 function startOtpTimer(globals) {
+  console.log(globals.form);
   const timerField = globals?.form?.otp_input?.timer;
   const resendBtn = globals?.form?.otp_input?.resend_button;
 
