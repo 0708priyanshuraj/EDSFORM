@@ -996,3 +996,31 @@ main .form .button-wrapper button:disabled {
 main .form .button-wrapper button:disabled:hover {
     background-color: #cbd5f5;
 }
+
+
+main .form form [data-id="text-d5bd6536c8"] {
+    background-color: #FFF8E7;
+    border: 1px solid #F5C98F;
+    border-left: 4px solid #E69A3D;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: flex-start;
+}
+
+main .form form [data-id="text-d5bd6536c8"]::before {
+    content: "ⓘ";
+    color: #E69A3D;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+main .form form [data-id="text-d5bd6536c8"] p {
+    color: #8B6914;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
