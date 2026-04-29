@@ -68,57 +68,41 @@ function maskMobileNumber(mobileNumber) {
  * @param {scope} globals
  */
 function startOtpTimer(globals) {
-  const timerField = globals?.form?.validate_otp?.timer;
-  const resendBtn = globals?.form?.validate_otp?.resend_button;
+  const timerField = globals?.form?.otp_input?.timer;
+  const resendBtn = globals?.form?.otp_input?.resend_button;
 
   let seconds = 45;
 
-  // Safety check
   if (!timerField || !resendBtn) {
     console.log("Timer elements missing ❌");
     return "";
   }
 
-  // Disable resend button initially
   globals.functions.setProperty(resendBtn, { enabled: false });
 
-  // Clear any existing timer
   if (globals.otpTimerInterval) {
-    clearInterval(globals.otpTimerInterval);
+    clearTimeout(globals.otpTimerInterval);
   }
 
-  // Set initial timer value
-  globals.functions.setProperty(timerField, {
-    value: `${seconds}s`,
-  });
-
-  // Start countdown
-  globals.otpTimerInterval = setInterval(() => {
-    seconds--;
-
+  function updateTimer() {
     if (seconds > 0) {
       globals.functions.setProperty(timerField, {
         value: `${seconds}s`,
       });
+      seconds--;
+      globals.otpTimerInterval = setTimeout(updateTimer, 1000);
     } else {
-      clearInterval(globals.otpTimerInterval);
-
-      // Enable resend button after timer ends
-      globals.functions.setProperty(resendBtn, {
-        enabled: true,
-      });
-
-      // Show final text
+      globals.functions.setProperty(resendBtn, { enabled: true });
       globals.functions.setProperty(timerField, {
         value: "Resend OTP",
       });
     }
-  }, 1000);
+  }
 
-  // Return required for AEM rule engine
+  updateTimer();
+
   return "";
 }
-
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName,
