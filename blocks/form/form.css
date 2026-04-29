@@ -810,6 +810,7 @@ main .form form select[multiple] {
     height: calc(42px + 50px);
 }
 /* ================= FORM GRID LAYOUT ================= */
+/* ================= FORM GRID LAYOUT ================= */
 main .form form fieldset.panel-wrapper {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -817,13 +818,18 @@ main .form form fieldset.panel-wrapper {
     align-items: start;
 }
 
-/* ================= MOBILE + DOB ================= */
-main .form .text-wrapper.field-mobile-number.field-wrapper.col-6,
-main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
+/* ================= MOBILE + DOB (THIS PANEL ONLY) ================= */
+main
+    .form
+    .field-personal-loan-welcome-panel
+    .text-wrapper.field-mobile-number.field-wrapper.col-6,
+main
+    .form
+    .field-personal-loan-welcome-panel
+    .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
     grid-column: span 6;
     display: flex;
     flex-direction: column;
-    position: relative;
 }
 
 /* ================= REMOVE AEM EXTRA SPACING ================= */
@@ -851,8 +857,19 @@ main .form input {
     transition: none;
 }
 
-/* ================= FLAG FIRST ================= */
-main .form .text-wrapper.field-mobile-number::before {
+/* ================= MOBILE NUMBER (SCOPED) ================= */
+main
+    .form
+    .field-personal-loan-welcome-panel
+    .text-wrapper.field-mobile-number {
+    position: relative;
+}
+
+/* FLAG */
+main
+    .form
+    .field-personal-loan-welcome-panel
+    .text-wrapper.field-mobile-number::before {
     content: "";
     position: absolute;
     left: 16px;
@@ -860,13 +877,18 @@ main .form .text-wrapper.field-mobile-number::before {
     transform: translateY(-50%);
     width: 18px;
     height: 12px;
+    background-image: url("https://flagcdn.com/w20/in.png");
     background-size: cover;
     background-repeat: no-repeat;
     pointer-events: none;
 }
 
-/* ================= +91 AFTER FLAG ================= */
-main .form .text-wrapper.field-mobile-number::after {
+/* +91 */
+main
+    .form
+    .field-personal-loan-welcome-panel
+    .text-wrapper.field-mobile-number::after {
+    content: "+91";
     position: absolute;
     left: 40px;
     top: 50%;
@@ -876,9 +898,37 @@ main .form .text-wrapper.field-mobile-number::after {
     pointer-events: none;
 }
 
-/* ================= INPUT SPACING ================= */
-main .form .text-wrapper.field-mobile-number input {
+/* INPUT SPACING */
+main
+    .form
+    .field-personal-loan-welcome-panel
+    .text-wrapper.field-mobile-number
+    input {
     padding-left: 75px;
+}
+
+/* ================= DATE OF BIRTH ================= */
+main
+    .form
+    .field-personal-loan-welcome-panel
+    .date-wrapper.field-date-of-birth {
+    position: relative;
+}
+
+main
+    .form
+    .field-personal-loan-welcome-panel
+    .date-wrapper.field-date-of-birth
+    input {
+    width: 100%;
+    height: 48px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    background-color: #ffffff;
+    outline: none;
+    font-size: 14px;
+    transition: none;
 }
 
 /* ================= FOCUS ================= */
@@ -894,8 +944,14 @@ main .form input::placeholder {
 
 /* ================= TABLET ================= */
 @media (max-width: 768px) {
-    main .form .text-wrapper.field-mobile-number.field-wrapper.col-6,
-    main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
+    main
+        .form
+        .field-personal-loan-welcome-panel
+        .text-wrapper.field-mobile-number.field-wrapper.col-6,
+    main
+        .form
+        .field-personal-loan-welcome-panel
+        .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
         grid-column: span 12;
     }
 
@@ -905,23 +961,39 @@ main .form input::placeholder {
         font-size: 13px;
     }
 
-    main .form .text-wrapper.field-mobile-number input {
+    main
+        .form
+        .field-personal-loan-welcome-panel
+        .text-wrapper.field-mobile-number
+        input {
         padding-left: 65px;
     }
 
-    main .form .text-wrapper.field-mobile-number::before {
+    main
+        .form
+        .field-personal-loan-welcome-panel
+        .text-wrapper.field-mobile-number::before {
         left: 14px;
     }
 
-    main .form .text-wrapper.field-mobile-number::after {
+    main
+        .form
+        .field-personal-loan-welcome-panel
+        .text-wrapper.field-mobile-number::after {
         left: 36px;
     }
 }
 
 /* ================= MOBILE ================= */
 @media (max-width: 480px) {
-    main .form .text-wrapper.field-mobile-number.field-wrapper.col-6,
-    main .form .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
+    main
+        .form
+        .field-personal-loan-welcome-panel
+        .text-wrapper.field-mobile-number.field-wrapper.col-6,
+    main
+        .form
+        .field-personal-loan-welcome-panel
+        .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
         grid-column: span 12;
         margin-top: 10px;
     }
@@ -932,17 +1004,27 @@ main .form input::placeholder {
         font-size: 12px;
     }
 
-    main .form .text-wrapper.field-mobile-number input {
+    main
+        .form
+        .field-personal-loan-welcome-panel
+        .text-wrapper.field-mobile-number
+        input {
         padding-left: 60px;
     }
 
-    main .form .text-wrapper.field-mobile-number::before {
+    main
+        .form
+        .field-personal-loan-welcome-panel
+        .text-wrapper.field-mobile-number::before {
         left: 12px;
         width: 16px;
         height: 10px;
     }
 
-    main .form .text-wrapper.field-mobile-number::after {
+    main
+        .form
+        .field-personal-loan-welcome-panel
+        .text-wrapper.field-mobile-number::after {
         left: 32px;
         font-size: 12px;
     }
