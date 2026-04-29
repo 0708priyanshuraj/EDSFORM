@@ -58,25 +58,19 @@ function maskMobileNumber(mobileNumber) {
   return ` ${"*".repeat(5)}${value.substring(5)}`;
 }
 
-/*---------------------------------------------------------------------*/
-/*---------------------------------------------------------------------*/
 function startOtpTimer(globals) {
-  const { form } = globals;
-
-  const timerField = form?.validate_otp?.timer;
-  const resendBtn = form?.validate_otp?.resend_otp;
-  const validateBtn = form?.validate_otp?.validate_otp;
+  const timerField = globals?.form?.validate_otp?.timer;
+  const resendBtn = globals?.form?.validate_otp?.resend_button;
 
   let seconds = 45;
 
-  if (!timerField || !resendBtn || !validateBtn) {
-    console.log("Timer elements missing ❌");
+  if (!timerField || !resendBtn) {
+    console.log('Timer elements missing ❌');
     return;
   }
 
-  // Disable resend, enable validate
+  // Disable resend button
   globals.functions.setProperty(resendBtn, { enabled: false });
-  globals.functions.setProperty(validateBtn, { enabled: true });
 
   // Clear previous timer
   if (globals.otpTimerInterval) {
@@ -85,30 +79,27 @@ function startOtpTimer(globals) {
 
   // Initial value
   globals.functions.setProperty(timerField, {
-    value: `Resend OTP in: ${seconds}s`,
+    value: seconds + 's',
   });
 
-  // Start timer
   globals.otpTimerInterval = setInterval(() => {
     seconds--;
 
     if (seconds > 0) {
       globals.functions.setProperty(timerField, {
-        value: `Resend OTP in: ${seconds}s`,
+        value: seconds + 's',
       });
     } else {
       clearInterval(globals.otpTimerInterval);
 
-      globals.functions.setProperty(timerField, {
-        value: "Resend OTP",
-      });
-
+      // Enable resend
       globals.functions.setProperty(resendBtn, {
         enabled: true,
       });
 
-      globals.functions.setProperty(validateBtn, {
-        enabled: false,
+      // Final text
+      globals.functions.setProperty(timerField, {
+        value: 'Resend OTP',
       });
     }
   }, 1000);
