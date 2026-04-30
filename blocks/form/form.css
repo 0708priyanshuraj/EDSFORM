@@ -1034,7 +1034,7 @@ main .form form select[multiple] {
     border: none;
     display: flex;
     flex-wrap: wrap;
-    transform: scale(0.68);       
+    transform: scale(0.68)translateY(-40px); ;       
     transform-origin:center ;
 }
 
@@ -1216,11 +1216,7 @@ main .form form select[multiple] {
   content: "";
   width: 38px;
   height: 38px;
-  background-image: url("data:image/svg+xml;utf8,\
-  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>\
-    <circle cx='32' cy='32' r='30' fill='%2314c9b5'/>\
-    <text x='32' y='40' text-anchor='middle' font-size='28' fill='%23003366' font-family='Arial'>₹</text>\
-  </svg>");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2314c9b5'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='28' fill='%23003366' font-family='Arial'%3E%E2%82%B9%3C/text%3E%3C/svg%3E");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -1238,3 +1234,85 @@ main .form form select[multiple] {
   font-weight: 500;
   color: #1a1a1a;
 }
+
+/* ============================= */
+/* PANEL ALIGNMENT + SCALE */
+/* ============================= */
+#panelcontainer-b03719e5f3 {
+    padding: 18px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    transform-origin: top left;
+}
+
+/* ============================= */
+/* HEADING */
+/* ============================= */
+#panelcontainer-b03719e5f3 strong {
+    font-size: 14px;
+}
+
+/* ============================= */
+/* LABELS */
+/* ============================= */
+#panelcontainer-b03719e5f3 .field-label {
+    font-size: 12px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* ============================= */
+/* WRAPPER ALIGNMENT */
+/* ============================= */
+#panelcontainer-b03719e5f3 .number-wrapper {
+    width: 100% !important;
+    margin-bottom: 18px;
+}
+
+/* ============================= */
+/* RANGE CONTAINER */
+/* ============================= */
+#panelcontainer-b03719e5f3 .range-widget-wrapper {
+    width: 100%;
+    margin-top: 6px;
+}
+
+/* ============================= */
+/* SLIDER TRACK */
+/* ============================= */
+#panelcontainer-b03719e5f3 input[type="range"] {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+}
+
+/* ============================= */
+/* RANGE BUBBLE (VALUE) */
+/* ============================= */
+#panelcontainer-b03719e5f3 .range-bubble {
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+/* ============================= */
+/* SCALE MARKERS */
+/* ============================= */
+#panelcontainer-b03719e5f3 .range-scale {
+    margin-top: 6px;
+}
+
+#panelcontainer-b03719e5f3 .range-scale-marker {
+    font-size: 11px;
+}
+
+/* ============================= */
+/* FIX COL-9 WIDTH ISSUE */
+/* ============================= */
+#panelcontainer-b03719e5f3 .col-9 {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
