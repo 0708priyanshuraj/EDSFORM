@@ -809,180 +809,189 @@ main div.form-wrapper {
 main .form form select[multiple] {
     height: calc(42px + 50px);
 }
-/* ================= FORM GRID LAYOUT ================= */
-main .form form fieldset.panel-wrapper {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 16px;
-    align-items: start;
-}
+/* ===== PANEL WRAPPER ===== */
+#panelcontainer-b3696dc7df {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 
-/* ================= MOBILE + DOB (THIS PANEL ONLY) ================= */
-main .form .field-personal-loan-welcome-panel 
-.text-wrapper.field-mobile-number.field-wrapper.col-6,
-main .form .field-personal-loan-welcome-panel 
-.date-wrapper.field-date-of-birth.field-wrapper.col-6 {
-    grid-column: span 6;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
-/* ================= REMOVE AEM EXTRA SPACING ================= */
-main .form .field-wrapper {
-    margin: 0;
-}
-
-/* ================= LABEL ================= */
-main .form .field-label {
-    margin-bottom: 6px;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* ================= INPUT COMMON ================= */
-main .form input {
+/* Title */
+#panelcontainer-b3696dc7df > legend {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
     width: 100%;
-    height: 48px;
-    line-height: 48px; 
-    padding: 0 16px;  
-    border-radius: 10px;
-    border: 1px solid #dcdcdc;
-    background-color: #ffffff;
-    outline: none;
-    font-size: 14px;
-    transition: none;
 }
 
-/* ================= MOBILE NUMBER ================= */
-main .form .field-personal-loan-welcome-panel 
-.text-wrapper.field-mobile-number {
+/* ===== GRID FIX ===== */
+#panelcontainer-b3696dc7df .col-6 {
+    flex: 0 0 48%;
+    max-width: 48%;
+}
+
+#panelcontainer-b3696dc7df .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* ===== INPUT COMMON STYLE ===== */
+#panelcontainer-b3696dc7df input[type="text"] {
+    width: 100%;
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    padding: 0 14px;
+    font-size: 14px;
+    outline: none;
+    background: #fff;
+}
+
+/* Label */
+#panelcontainer-b3696dc7df .field-label {
+    font-size: 13px;
+    margin-bottom: 6px;
+    display: block;
+    color: #333;
+}
+
+/* ===== MOBILE INPUT (FLAG +91) ===== */
+#panelcontainer-b3696dc7df .field-mobile-number {
     position: relative;
 }
 
-/* FLAG */
-main .form .field-personal-loan-welcome-panel 
-.text-wrapper.field-mobile-number::before {
+/* Flag */
+#panelcontainer-b3696dc7df .field-mobile-number::before {
     content: "";
     position: absolute;
-    left: 16px;
-    top: 50%;
+    left: 12px;
+    top: 60%;
     transform: translateY(-50%);
-    width: 18px;
-    height: 12px;
-    background-image: url("https://flagcdn.com/w20/in.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    pointer-events: none;
+    width: 20px;
+    height: 14px;
+    background: url("https://flagcdn.com/w40/in.png") no-repeat center/cover;
 }
 
 /* +91 */
-main .form .field-personal-loan-welcome-panel 
-.text-wrapper.field-mobile-number::after {
+#panelcontainer-b3696dc7df .field-mobile-number::after {
     content: "+91";
     position: absolute;
-    left: 40px;
-    top: 50%;
+    left: 38px;
+    top:60%;
     transform: translateY(-50%);
     font-size: 14px;
     color: #333;
-    pointer-events: none;
 }
 
-/* INPUT SPACING */
-main .form .field-personal-loan-welcome-panel 
-.text-wrapper.field-mobile-number input {
-    padding-left: 70px; /* 🔥 adjusted for better alignment */
+/* Push input text */
+#panelcontainer-b3696dc7df .field-mobile-number input {
+    padding-left: 80px;
 }
 
-/* ================= DATE OF BIRTH ================= */
-main .form .field-personal-loan-welcome-panel 
-.date-wrapper.field-date-of-birth {
-    position: relative;
+/* ===== REMOVE CALENDAR ICON ===== */
+#panelcontainer-b3696dc7df .date-wrapper::after {
+    content: none !important;
+    display: none !important;
 }
 
-main .form .field-personal-loan-welcome-panel 
-.date-wrapper.field-date-of-birth input {
+/* Remove any default icon */
+#panelcontainer-b3696dc7df .date-wrapper input {
+    background-image: none !important;
+    padding-right: 14px;
+}
+
+/* ===== RADIO BUTTONS ===== */
+#panelcontainer-b3696dc7df .radio-group-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#panelcontainer-b3696dc7df .radio-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ===== INFO BOX ===== */
+#text-d5bd6536c8 {
+    background: #FFF8E7;
+    border: 1px solid #F5C98F;
+    border-left: 4px solid #E69A3D;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+}
+
+/* ===== CHECKBOX ===== */
+#panelcontainer-b3696dc7df .checkbox-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+#panelcontainer-b3696dc7df .checkbox-wrapper input {
+    margin-top: 4px;
+}
+
+/* ===== TERMS TEXT ===== */
+#text-b048759d2c {
+    font-size: 12px;
+    color: #555;
+}
+
+/* ===== BUTTON ===== */
+#submit-52b8213e98 {
     width: 100%;
+    height: 44px;
+    background: #a7b6e6;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    cursor: not-allowed;
 }
 
-/* ================= FOCUS ================= */
-main .form input:focus {
-    border-color: #0070f3;
-    box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.15);
+/* Enabled state */
+#submit-52b8213e98:not(:disabled) {
+    background: #4a6cf7;
+    cursor: pointer;
 }
 
-/* ================= PLACEHOLDER ================= */
-main .form input::placeholder {
-    color: #9ca3af;
-}
-
-/* ================= TABLET ================= */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
 
-    main .form .field-personal-loan-welcome-panel 
-    .text-wrapper.field-mobile-number.field-wrapper.col-6,
-    main .form .field-personal-loan-welcome-panel 
-    .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
-        grid-column: span 12;
+    /* Stack layout */
+    #panelcontainer-b3696dc7df .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 
-    main .form input {
-        height: 44px;
-        line-height: 44px;
-        padding: 0 14px;
+    /* Adjust spacing */
+    #panelcontainer-b3696dc7df {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    /* Adjust flag +91 alignment */
+    #panelcontainer-b3696dc7df .field-mobile-number::before {
+        left: 10px;
+        width: 18px;
+        height: 12px;
+    }
+
+    #panelcontainer-b3696dc7df .field-mobile-number::after {
+        left: 32px;
         font-size: 13px;
     }
 
-    main .form .field-personal-loan-welcome-panel 
-    .text-wrapper.field-mobile-number input {
-        padding-left: 60px;
-    }
-
-    main .form .field-personal-loan-welcome-panel 
-    .text-wrapper.field-mobile-number::before {
-        left: 14px;
-    }
-
-    main .form .field-personal-loan-welcome-panel 
-    .text-wrapper.field-mobile-number::after {
-        left: 34px;
-    }
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 480px) {
-
-    main .form .field-personal-loan-welcome-panel 
-    .text-wrapper.field-mobile-number.field-wrapper.col-6,
-    main .form .field-personal-loan-welcome-panel 
-    .date-wrapper.field-date-of-birth.field-wrapper.col-6 {
-        grid-column: span 12;
-        margin-top: 10px;
-    }
-
-    main .form input {
-        height: 42px;
-        line-height: 42px;
-        padding: 0 12px;
-        font-size: 12px;
-    }
-
-    main .form .field-personal-loan-welcome-panel 
-    .text-wrapper.field-mobile-number input {
-        padding-left: 55px;
-    }
-
-    main .form .field-personal-loan-welcome-panel 
-    .text-wrapper.field-mobile-number::before {
-        left: 12px;
-        width: 16px;
-        height: 10px;
-    }
-
-    main .form .field-personal-loan-welcome-panel 
-    .text-wrapper.field-mobile-number::after {
-        left: 30px;
-        font-size: 12px;
+    #panelcontainer-b3696dc7df .field-mobile-number input {
+        padding-left: 70px;
     }
 }
 /* ================= DISABLED BUTTON STYLE ================= */
