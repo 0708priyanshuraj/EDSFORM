@@ -994,20 +994,39 @@ main .form form select[multiple] {
         padding-left: 70px;
     }
 }
-/* ================= DISABLED BUTTON STYLE ================= */
-main .form .button-wrapper button:disabled {
-    background-color: #cbd5f5;
-    color: #ffffff;
+/* ===== BUTTON STYLE ===== */
+#submit-52b8213e98 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;               
+    min-width: 180px;
+    height: 44px;
+    padding: 0 20px;
+    border-radius: 10px;
     border: none;
+    background: #a7b6e6;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
     cursor: not-allowed;
 }
 
-main .form .button-wrapper button:disabled:hover {
-    background-color: #cbd5f5;
+/* Arrow icon */
+#submit-52b8213e98::after {
+    content: "›";
+    margin-left: 8px;
+    font-size: 20px;
+    margin-top:-4px
 }
 
+/* Enabled state */
+#submit-52b8213e98:not(:disabled) {
+    background: #4a6cf7;
+    cursor: pointer;
+}
 
-/* ===== PANEL CARD ===== */
+/* ===== Display PANEL CARD ===== */
 #panelcontainer-a19c2c7fa9 {
     background-color: #E6D8C3;
     border-radius: 20px;
