@@ -60,66 +60,72 @@ function maskMobileNumber(mobileNumber) {
   return ` ${"*".repeat(5)}${value.substring(5)}`;
 }
 
+let otpTimerInterval;
+
 /**
- * Starts OTP countdown timer
- * - Shows countdown in timer field
- * - Disables resend button during countdown
- * - Enables resend button after timer ends
- * @param {scope} globals
+ * Start OTP timer - counts down from 30 seconds
+ * Disables resend button during countdown
  */
-function startOtpTimer(globals) {
-  console.log(globals.form);
+function startOtpTimer() {
+  const timerInput = document.querySelector('input[name="timer"]');
+  const resendBtn = document.querySelector(".field-resend-button button");
 
-  let timerField = null;
-  let resendBtn = null;
+  let timeLeft = 30;
 
-  Object.values(globals.form).forEach((field) => {
-    if (field?.name === 'timer') {
-      timerField = field;
-    }
-    if (field?.name === 'resend_button') {
-      resendBtn = field;
-    }
-  });
-
-  let seconds = 45;
-
-  if (!timerField || !resendBtn) {
-    console.log('Timer elements missing ❌');
-    return '';
+  // Clear any existing timer
+  if (otpTimerInterval) {
+    clearInterval(otpTimerInterval);
   }
 
-  globals.functions.setProperty(resendBtn, { enabled: false });
-
-  if (globals.otpTimerInterval) {
-    clearTimeout(globals.otpTimerInterval);
+  // Disable resend button
+  if (resendBtn) {
+    resendBtn.disabled = true;
   }
 
-  function updateTimer() {
-    if (seconds > 0) {
-      globals.functions.setProperty(timerField, {
-        value: seconds + 's',
-      });
-      seconds--;
-      globals.otpTimerInterval = setTimeout(updateTimer, 1000);
-    } else {
-      globals.functions.setProperty(resendBtn, { enabled: true });
-      globals.functions.setProperty(timerField, {
-        value: 'Resend OTP',
-      });
+  // Set initial timer value
+  if (timerInput) {
+    timerInput.value = `${timeLeft}s`;
+  }
+
+  // Start countdown
+  otpTimerInterval = setInterval(() => {
+    timeLeft -= 1;
+
+    if (timerInput) {
+      timerInput.value = `${timeLeft}s`;
     }
+
+    // When timer reaches 0
+    if (timeLeft <= 0) {
+      clearInterval(otpTimerInterval);
+
+      // Enable resend button
+      if (resendBtn) {
+        resendBtn.disabled = false;
+      }
+
+      if (timerInput) {
+        timerInput.value = "0s";
+      }
+    }
+  }, 1000);
+}
+
+/**
+ * Stop OTP timer
+ */
+function stopOtpTimer() {
+  if (otpTimerInterval) {
+    clearInterval(otpTimerInterval);
+    otpTimerInterval = null;
   }
-
-  updateTimer();
-
-  return '';
 }
 
 /**
  * Format number to Indian currency format
  */
 function formatIndianCurrency(amount) {
-  return `₹${amount.toLocaleString('en-IN', { maximumFractionDigits: 0 })}`;
+  return `₹${amount.toLocaleString("en-IN", { maximumFractionDigits: 0 })}`;
 }
 
 /**
@@ -133,11 +139,9 @@ function calculateEMI(principal, annualRate, tenureMonths) {
   }
 
   const onePlusR = 1 + monthlyRate;
-  const onePlusRPowerN = Math.pow(onePlusR, tenureMonths);
+  const onePlusRPowerN = onePlusR ** tenureMonths;
 
-  const emi =
-    (principal * monthlyRate * onePlusRPowerN) /
-    (onePlusRPowerN - 1);
+  const emi = (principal * monthlyRate * onePlusRPowerN) / (onePlusRPowerN - 1);
 
   return Math.round(emi);
 }
@@ -219,6 +223,7 @@ export {
   submitFormArrayToString,
   maskMobileNumber,
   startOtpTimer,
+  stopOtpTimer,
   calculateEMI,
   formatIndianCurrency,
   initEMICalculator,
