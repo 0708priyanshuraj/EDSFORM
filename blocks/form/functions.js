@@ -60,65 +60,59 @@ function maskMobileNumber(mobileNumber) {
   return ` ${"*".repeat(5)}${value.substring(5)}`;
 }
 
-
-let otpTimerInterval;
 /**
- * Start OTP timer - counts down from 30 seconds
- * Disables resend button during countdown
+ * Starts OTP countdown timer
+ * - Shows countdown in timer field
+ * - Disables resend button during countdown
+ * - Enables resend button after timer ends
+ * @param {scope} globals
  */
-function startOtpTimer() {
-  const timerInput = document.querySelector('input[name="timer"]');
-  const resendBtn = document.querySelector('.field-resend-otp button');
+function startOtpTimer(globals) {
+  console.log(globals.form);
 
-  let timeLeft = 30;
+  let timerField = null;
+  let resendBtn = null;
 
-  // Clear any existing timer
-  if (otpTimerInterval) {
-    clearInterval(otpTimerInterval);
-  }
-
-  // Disable resend button
-  if (resendBtn) {
-    resendBtn.disabled = true;
-  }
-
-  // Set initial timer value
-  if (timerInput) {
-    timerInput.value = `${timeLeft}s`;
-  }
-
-  // Start countdown
-  otpTimerInterval = setInterval(() => {
-    timeLeft -= 1;
-
-    if (timerInput) {
-      timerInput.value = `${timeLeft}s`;
+  Object.values(globals.form).forEach((field) => {
+    if (field?.name === 'timer') {
+      timerField = field;
     }
-
-    // When timer reaches 0
-    if (timeLeft <= 0) {
-      clearInterval(otpTimerInterval);
-
-      // Enable resend button
-      if (resendBtn) {
-        resendBtn.disabled = false;
-      }
-
-      if (timerInput) {
-        timerInput.value = "0s";
-      }
+    if (field?.name === 'resend_button') {
+      resendBtn = field;
     }
-  }, 1000);
-}
+  });
 
-/**
- * Stop OTP timer
- */
-function stopOtpTimer() {
-  if (otpTimerInterval) {
-    clearInterval(otpTimerInterval);
-    otpTimerInterval = null;
+  let seconds = 45;
+
+  if (!timerField || !resendBtn) {
+    console.log('Timer elements missing ❌');
+    return '';
   }
+
+  globals.functions.setProperty(resendBtn, { enabled: false });
+
+  if (globals.otpTimerInterval) {
+    clearTimeout(globals.otpTimerInterval);
+  }
+
+  function updateTimer() {
+    if (seconds > 0) {
+      globals.functions.setProperty(timerField, {
+        value: seconds + 's',
+      });
+      seconds--;
+      globals.otpTimerInterval = setTimeout(updateTimer, 1000);
+    } else {
+      globals.functions.setProperty(resendBtn, { enabled: true });
+      globals.functions.setProperty(timerField, {
+        value: 'Resend OTP',
+      });
+    }
+  }
+
+  updateTimer();
+
+  return '';
 }
 
 /**
@@ -228,6 +222,4 @@ export {
   calculateEMI,
   formatIndianCurrency,
   initEMICalculator,
-  startOtpTimer,
-  stopOtpTimer,
 };
