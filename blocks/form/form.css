@@ -1034,6 +1034,8 @@ main .form form select[multiple] {
     border: none;
     display: flex;
     flex-wrap: wrap;
+    transform: scale(0.68);       
+    transform-origin:center ;
 }
 
 /* ===== RESET FORM GRID ISSUE ===== */
