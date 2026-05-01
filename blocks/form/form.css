@@ -1338,3 +1338,171 @@ main .form form select[multiple] {
     width: 100%;
     margin-bottom: 6px !important;
 }
+/***OTP PAN***************************************************************** */
+/* ===== OTP PANEL ROOT ===== */
+main .form form .field-otp-input-panel {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    row-gap: 12px;
+    column-gap: 16px;
+}
+
+/* ===== HEADING ===== */
+main .form form .field-otp-input-panel > legend {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* ===== HELP TEXT ===== */
+main .form form .field-otp-help-text p {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+}
+
+/* ===== OTP SENT TEXT ===== */
+main .form form .field-otp-sent-text p {
+    font-size: 0.88rem;
+    color: #333;
+    margin: 0;
+    line-height: 1.5;
+}
+
+main .form form .field-otp-sent-text u {
+    color: #4a62b6;
+    cursor: pointer;
+}
+
+/* ===== OTP INPUT ===== */
+main .form form .field-password {
+    position: relative;
+    grid-column: span 12;
+}
+
+/* hide label */
+main .form form .field-password label {
+    display: none;
+}
+
+/* input styling */
+main .form form .field-password input {
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #d0d5dd;
+    font-size: 1.1rem;
+    letter-spacing: 1.8em;
+    text-indent: 0.9em;
+    padding: 0 44px 0 0;
+    width: 100%;
+    color: #333;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+main .form form .field-password input:focus {
+    border-color: #4a62b6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(74 98 182 / 10%);
+}
+
+/* ===== EYE ICON ===== */
+main .form form .field-password #togglePassword {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+}
+
+/* ===== TIMER ===== */
+main .form form .field-timer {
+    grid-column: span 6;
+}
+
+main .form form .field-timer label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #222;
+}
+
+main .form form .field-timer input {
+    border: none;
+    background: transparent;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #222;
+}
+
+/* ===== ATTEMPTS ===== */
+main .form form .field-attempts-left {
+    grid-column: span 6;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+main .form form .field-attempts-left p {
+    font-size: 0.82rem;
+    color: #888;
+    margin: 0;
+}
+
+/* ===== VALIDATION MESSAGE ===== */
+main .form form .field-text-input-5632251111777445885686 input {
+    border: none;
+    background: transparent;
+    font-size: 0.8rem;
+    color: red;
+}
+
+/* ===== RESEND BUTTON ===== */
+main .form form .field-resend-button button {
+    background: transparent;
+    border: none;
+    color: #4a62b6;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+main .form form .field-submit-otp button {
+    background-color: rgb(165 180 252 / 30%);
+    color: #3730a3;
+    border: 1.5px solid #a5b4fc;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s;
+}
+
+main .form form .field-submit-otp button::after {
+    content: "›";
+    font-size: 1.1rem;
+}
+
+main .form form .field-submit-otp button:hover {
+    background-color: rgb(165 180 252 / 50%);
+}
+
+/* disabled state */
+main .form form .field-submit-otp button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
