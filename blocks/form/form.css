@@ -1474,34 +1474,35 @@ main .form form .field-text-input-5632251111777445885686 input {
     color: red;
 }
 /* ===== RESEND BUTTON FORCE STYLE ===== */
+/* ===== RESEND BUTTON BASE RESET ===== */
 #button-c8e85fa9d2 {
-    background-color: #dbeafe !important;   /* light blue */
-    border: 1px solid #bfdbfe !important;
-    color: #1e40af !important;
-
     border-radius: 6px !important;
     padding: 6px 12px !important;
     font-size: 0.8rem !important;
-
-    cursor: pointer !important;
+    transition: none !important;   /* no effects */
 }
 
-/* remove ALL hover effect */
-#button-c8e85fa9d2:hover {
+/* ===== TIMER RUNNING (DISABLED → LIGHT BLUE) ===== */
+#button-c8e85fa9d2:disabled {
+    background-color: #dbeafe !important;
+    border: 1px solid #bfdbfe !important;
+    color: #1e40af !important;
+    cursor: not-allowed !important;
+}
+#button-c8e85fa9d2:disabled:hover {
     background-color: #dbeafe !important;
     border-color: #bfdbfe !important;
     color: #1e40af !important;
 }
-
-/* ===== ACTIVE STATE ===== */
-#button-c8e85fa9d2.active {
-    background-color: #3b82f6 !important;   /* darker blue */
+/* ===== TIMER ENDED (ENABLED → DARK BLUE) ===== */
+#button-c8e85fa9d2:not(:disabled) {
+    background-color: #3b82f6 !important;
     border: 1px solid #2563eb !important;
     color: #ffffff !important;
+    cursor: pointer !important;
 }
-
-/* hover only when active */
-#button-c8e85fa9d2.active:hover {
+/* optional slight hover ONLY when enabled */
+#button-c8e85fa9d2:not(:disabled):hover {
     background-color: #2563eb !important;
 }
 /* ===== SUBMIT BUTTON ===== */
