@@ -920,12 +920,21 @@ main .form form select[multiple] {
 
 /* ===== INFO BOX ===== */
 #text-d5bd6536c8 {
+    display: inline-block;        
+    width: fit-content;
     background: #FFF8E7;
     border: 1px solid #F5C98F;
-    border-left: 4px solid #E69A3D;
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-size: 12px;
+    border-left: 3px solid #E69A3D;  
+    border-radius: 6px;
+    padding: 4px 6px;             
+    font-size: 10px;              
+    line-height: 1.2;             
+    margin: 0;
+}
+
+/* remove inner spacing */
+#text-d5bd6536c8 p {
+    margin: 0;
 }
 
 /* ===== CHECKBOX ===== */
