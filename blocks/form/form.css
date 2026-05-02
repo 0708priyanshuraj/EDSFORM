@@ -1347,7 +1347,7 @@ main .form form select[multiple] {
     width: 100%;
     margin-bottom: 6px !important;
 }
-/***OTP PAN***************************************************************** */
+/***OTP PANEL***************************************************************** */
 /* ===== OTP PANEL ROOT ===== */
 main .form form .field-otp-input-panel {
     background: transparent;
@@ -1473,37 +1473,37 @@ main .form form .field-text-input-5632251111777445885686 input {
     font-size: 0.8rem;
     color: red;
 }
+/* ===== RESEND BUTTON FORCE STYLE ===== */
+#button-c8e85fa9d2 {
+    background-color: #dbeafe !important;   /* light blue */
+    border: 1px solid #bfdbfe !important;
+    color: #1e40af !important;
 
-/* ===== RESEND BUTTON (DEFAULT - TIMER RUNNING) ===== */
-main .form form .field-resend-button button {
-    background-color: #dbeafe;   /* light blue */
-    border: 1px solid #bfdbfe;
-    color: #1e40af;
-    border-radius: 6px;
-    padding: 6px 12px;
-font-size: 0.8rem;
-    cursor: pointer;
+    border-radius: 6px !important;
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+
+    cursor: pointer !important;
 }
 
-/* ===== REMOVE HOVER EFFECT (while inactive) ===== */
-main .form form .field-resend-button button:hover {
+/* remove ALL hover effect */
+#button-c8e85fa9d2:hover {
     background-color: #dbeafe !important;
     border-color: #bfdbfe !important;
     color: #1e40af !important;
 }
 
-/* ===== ACTIVE STATE (after timer ends) ===== */
-main .form form .field-resend-button button.active {
-    background-color: #3b82f6;   /* darker blue */
-    border: 1px solid #2563eb;
-    color: #ffffff;
+/* ===== ACTIVE STATE ===== */
+#button-c8e85fa9d2.active {
+    background-color: #3b82f6 !important;   /* darker blue */
+    border: 1px solid #2563eb !important;
+    color: #ffffff !important;
 }
 
-/* ===== OPTIONAL: hover only when active ===== */
-main .form form .field-resend-button button.active:hover {
-    background-color: #2563eb;
+/* hover only when active */
+#button-c8e85fa9d2.active:hover {
+    background-color: #2563eb !important;
 }
-
 /* ===== SUBMIT BUTTON ===== */
 main .form form .field-submit-otp button {
     background-color: rgb(165 180 252 / 30%);
