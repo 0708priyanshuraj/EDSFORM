@@ -1474,14 +1474,34 @@ main .form form .field-text-input-5632251111777445885686 input {
     color: red;
 }
 
-/* ===== RESEND BUTTON ===== */
+/* ===== RESEND BUTTON (DEFAULT - TIMER RUNNING) ===== */
 main .form form .field-resend-button button {
-    background: transparent;
-    border: none;
-    color: #4a62b6;
-    font-size: 0.85rem;
+    background-color: #dbeafe;   /* light blue */
+    border: 1px solid #bfdbfe;
+    color: #1e40af;
+    border-radius: 6px;
+    padding: 6px 12px;
+font-size: 0.8rem;
     cursor: pointer;
-    padding: 0;
+}
+
+/* ===== REMOVE HOVER EFFECT (while inactive) ===== */
+main .form form .field-resend-button button:hover {
+    background-color: #dbeafe !important;
+    border-color: #bfdbfe !important;
+    color: #1e40af !important;
+}
+
+/* ===== ACTIVE STATE (after timer ends) ===== */
+main .form form .field-resend-button button.active {
+    background-color: #3b82f6;   /* darker blue */
+    border: 1px solid #2563eb;
+    color: #ffffff;
+}
+
+/* ===== OPTIONAL: hover only when active ===== */
+main .form form .field-resend-button button.active:hover {
+    background-color: #2563eb;
 }
 
 /* ===== SUBMIT BUTTON ===== */
