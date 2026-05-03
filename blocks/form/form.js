@@ -5,7 +5,7 @@ import GoogleReCaptcha from './integrations/recaptcha.js';
 import componentDecorator from './mappings.js';
 import { handleSubmit } from './submit.js';
 import DocBasedFormToAF from './transform.js';
-import { initEMICalculator, mapFormFieldsToReview } from './functions.js';
+import { initEMICalculator } from './functions.js';
 import {
   checkValidation,
   createButton,
@@ -583,7 +583,6 @@ export default async function decorate(block) {
 
     setTimeout(() => {
       initEMICalculator();
-      mapFormFieldsToReview();
-    }, 500);
+    }, 100);
   }
 }
