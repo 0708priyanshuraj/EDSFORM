@@ -2771,23 +2771,17 @@ main .form form .field-form-button1777803450216 button:active {
 /* ================= PROCEED BUTTON ================= */
 #button-2ef8583f14 {
     margin-top: 20px;
-
     background: #2563eb;
     color: #ffffff;
-
     border: none;
     border-radius: 10px;
-
     padding: 12px 20px;
     width: 180px;
-
     font-size: 14px;
     font-weight: 600;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     cursor: pointer;
     transition: 0.2s ease;
 }
@@ -2801,5 +2795,47 @@ main .form form .field-form-button1777803450216 button:active {
 
 /* ================= HOVER ================= */
 #button-2ef8583f14:hover {
+    background: #1d4ed8;
+}
+/* ================= HOVER ================= */
+#button-2ef8583f14:hover {
+    background: #1d4ed8;
+}
+/* ================= CONFIRM BUTTON ================= */
+#button-e2b738521e {
+    background-color: rgb(165 180 252 / 30%);
+    color: #3730a3;
+    border: 1.5px solid #a5b4fc;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    transition: 0.2s ease;
+}
+/* ================= PROCEED BUTTON ================= */
+#button-5e47e6952d {
+    margin-top: 20px;
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    width: 180px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+/* ================= HOVER ================= */
+#button-5e47e6952d:hover {
     background: #1d4ed8;
 }
