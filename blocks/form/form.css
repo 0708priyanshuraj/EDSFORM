@@ -2722,3 +2722,51 @@ main .form form .field-form-button1777803450216 button:active {
 .field-form-button1777876354188 button:hover {
     background: #1d4ed8;
 }
+
+/* ================= COMMON LOGO STYLE ================= */
+#radiobutton-a101e1c020 label::before {
+    content: "";
+    width: 50px;              
+    height: 50px;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* ================= BANK LOGOS ================= */
+
+/* HDFC */
+#salary-bank + label::before {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/28/HDFC_Bank_Logo.svg");
+}
+
+/* ICICI */
+#salary-bank-1 + label::before {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/12/ICICI_Bank_Logo.svg");
+}
+
+/* AXIS */
+#salary-bank-2 + label::before {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/1a/Axis_Bank_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original");
+}
+
+/* KOTAK */
+#salary-bank-3 + label::before {
+    background-image: url("https://upload.wikimedia.org/wikipedia/en/3/39/Kotak_Mahindra_Group_logo.svg");
+}
+
+/* SBI */
+#salary-bank-4 + label::before {
+    background-image: url("https://upload.wikimedia.org/wikipedia/en/5/58/State_Bank_of_India_logo.svg");
+}
+
+/* BANK OF BARODA */
+#salary-bank-5 + label::before {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/df/Bank_of_Baroda_Logo_since_Dec_19.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original");
+}
+
+/* IDFC */
+#salary-bank-6 + label::before {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_of_IDFC_First_Bank.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original");
+}
