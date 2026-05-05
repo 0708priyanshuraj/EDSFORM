@@ -1559,7 +1559,7 @@ main .form form .field-submit-otp button:disabled {
     gap: 8px;
     background: #dbeafe;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     padding: 14px 18px;
     border-radius: 10px;
 }
@@ -2078,7 +2078,7 @@ main .form form .field-submit-otp button:disabled {
     padding: 14px 18px;
     background:#dbeafe;
     color: #1e3a8a;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     border-radius:10px;
@@ -2130,6 +2130,76 @@ main .form form .field-submit-otp button:disabled {
 
 /* ================= HELP TEXT ================= */
 #panelcontainer-2dfbe8bc32 .plain-text-wrapper p {
+    font-size: 13px;
+    color: #1048b8;
+    margin: 6px 0 0;
+}
+/* ================= INCOME PANEL ================= */
+#panelcontainer-b7847b33b6 {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    margin-bottom: 16px;
+    font-family: system-ui, sans-serif;
+}
+
+/* ================= HEADER ================= */
+#panelcontainer-b7847b33b6 > .field-label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 14px 18px;
+    background: #dbeafe;
+    color: #1e3a8a;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+    gap: 6px;
+}
+
+/* ================= ICON ================= */
+#panelcontainer-b7847b33b6 > .field-label::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    display: inline-block;
+    flex-shrink: 0;
+
+    /* income/money icon */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%233b82f6' viewBox='0 0 24 24'><path d='M3 6a2 2 0 012-2h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6zm2 0v12h14V6H5zm7 2a3 3 0 110 6 3 3 0 010-6z'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* ================= ARROW ================= */
+#panelcontainer-b7847b33b6 > .field-label::after {
+    font-size: 14px;
+    color: #1d4ed8;
+    margin-left: auto;
+
+}
+
+/* ================= BODY ================= */
+#panelcontainer-b7847b33b6 .field-wrapper {
+    padding: 12px 16px;
+}
+
+/* ================= INPUTS ================= */
+#panelcontainer-b7847b33b6 input,
+#panelcontainer-b7847b33b6 select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #374151;
+}
+
+/* ================= HELP TEXT ================= */
+#panelcontainer-b7847b33b6 .plain-text-wrapper p {
     font-size: 13px;
     color: #1048b8;
     margin: 6px 0 0;
