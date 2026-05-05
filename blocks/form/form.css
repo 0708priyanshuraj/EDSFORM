@@ -2095,9 +2095,7 @@ main .form form .field-submit-otp button:disabled {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%233b82f6' viewBox='0 0 24 24'><path d='M6 2a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2V4a2 2 0 00-2-2H6zm2 4h8v2H8V6zm0 4h6v2H8v-2z'/></svg>");
     background-size: contain;
     background-repeat: no-repeat;
-    border-radius:
 }
-
 /* ================= TEXT ================= */
 #panelcontainer-2dfbe8bc32 > .field-label {
     gap: 6px;
@@ -2399,7 +2397,7 @@ main .form form .field-form-button1777803450216 button:active {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 15px;
+    font-size: 21px;
     font-weight: 600;
     color: #1e3a8a;
     margin-bottom: 14px;
