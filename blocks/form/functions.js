@@ -292,13 +292,12 @@ function mapFormFieldsToReview() {
 
   setValById('textinput-ca40938a70', loanAmountForDisplay); // loan_amount
   setValById('textinput-faa35cc00c', emiAmountDisplay); // emi_amount 
-  setValById('textinput-5f4d136d28', tenureForDisplay); // tenure
-  setValById('textinput-22b1e701b9', taxesDisplay); // processing_fee (Taxes)
-  setValById('textinput-721bf835c1', roiDisplay); // rate_of_interest
-  setValById('textinput-db68d340ff', resolvedEmployerName); // employer_name
+  setValById('textinput-5ac96d3c9f', tenureForDisplay);
+  setValById('textinput-2775dad98d', taxesDisplay); // processing_fee 
+  setValById('textinput-40ebd5a0e2', roiDisplay); // rate_of_interest ✅ FIXED
+  setValById('textinput-44ecd4a77b', resolvedEmployerName);// employer_name
   // schedule_of_charges (textinput-0295f6b473) — no direct source field; leave unchanged
-  setValById('textinput-41298e8cd6', selectLoanType); // type_of_loan
-
+  setValById('textinput-efee62d637', selectLoanType); // type_of_loan ✅ FIXED
   // ─── 2. Personal Details ────────────────────────────────────────────────────
   // Full name: concatenate first + middle + last from the PAN name panel
   const firstName = getVal('first_name');
@@ -347,10 +346,10 @@ function mapFormFieldsToReview() {
   const salaryBankOther = getVal('salary_bank_other');
   const salaryBankLabel = getRadioLabel('salary_bank');
   const bankName = salaryBankOther.trim() || salaryBankLabel;
-
-  setValById('textinput-c06ffc5b00', salaryAccountNumber); // salary_account_number
-  setValById('textinput-321a9f6344', ifscSource); // ifsc
-  setValById('textinput-e294a4225e', bankName); // bank_name
+ 
+  setValById('textinput-86936ede94', salaryAccountNumber); // salary_account_number
+  setValById('textinput-7c948823f5', ifscSource); // ifsc
+  setValById('textinput-99ee84213a', bankName); // bank_name
 
   // ─── 4. Office Address ──────────────────────────────────────────────────────
   // No explicit "office address" source field in the provided HTML.
