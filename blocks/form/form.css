@@ -1636,7 +1636,6 @@ main .form form .field-submit-otp button:disabled {
   border: 1px solid #e5e7eb;
   overflow: hidden;
   margin-bottom: 20px;
-  border-radius: 10px;
 }
 
 /* ================= HEADER BAR ================= */
@@ -1644,8 +1643,10 @@ main .form form .field-submit-otp button:disabled {
   display: flex;
   align-items: center;
   gap: 8px;
+
   background: #dbeafe;
   color: #1e3a8a;
+
   font-weight: 600;
   font-size: 16px;
   padding: 14px 18px;
@@ -1880,6 +1881,3 @@ main .form form .field-submit-otp button:disabled {
     margin-bottom: 8px;
   }
 }
-
-/************---Thank you panel************************************* */
-
