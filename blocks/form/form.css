@@ -2770,3 +2770,38 @@ main .form form .field-form-button1777803450216 button:active {
 #salary-bank-6 + label::before {
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_of_IDFC_First_Bank.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original");
 }
+/* ================= PROCEED BUTTON ================= */
+#button-2ef8583f14 {
+    margin-top: 20px;
+
+    background: #2563eb;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 12px 20px;
+    width: 180px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* ================= ARROW ================= */
+#button-2ef8583f14::after {
+    content: "›";
+    margin-left: 8px;
+    font-size: 18px;
+}
+
+/* ================= HOVER ================= */
+#button-2ef8583f14:hover {
+    background: #1d4ed8;
+}
