@@ -2902,8 +2902,6 @@ main .form form .field-form-button1777803450216 button:active {
     font-weight:500;
     margin-bottom: 6px;
 }
-
-
 /* ================= VALUE ================= */
 #panelcontainer-16e7f63046 input {
     border: none;
@@ -2920,4 +2918,10 @@ main .form form .field-form-button1777803450216 button:active {
 #textinput-92ee5a3a0c {
     color: #3362c8 !important;
     font-weight: 600;
+}
+#panelcontainer-16e7f63046 .field-label {
+    font-size: 18px;
+    color: #2b2e32;
+    font-weight: 500;
+    /* margin-bottom: 6px; */
 }
