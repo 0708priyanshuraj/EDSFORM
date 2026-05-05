@@ -2839,3 +2839,85 @@ main .form form .field-form-button1777803450216 button:active {
 #button-5e47e6952d:hover {
     background: #1d4ed8;
 }
+/* ================= LOAN DETAILS PANEL ================= */
+#panelcontainer-16e7f63046 {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    font-family: system-ui, sans-serif;
+}
+
+/* ================= HEADER ================= */
+#panelcontainer-16e7f63046 > .accordion-legend {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    background: #dbeafe;
+    color: #1e3a8a;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius:18px
+}
+
+/* ICON */
+#panelcontainer-16e7f63046 > .accordion-legend::before {
+    content: "";
+    width: 50px;
+    height: 40px;
+    margin-right: 8px;
+    background-image: url("https://cdn-icons-png.flaticon.com/128/1990/1990348.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+/* ================= FIELD BLOCK ================= */
+#panelcontainer-16e7f63046 .field-wrapper {
+    padding: 18px 16px 18px 24px;
+    position: relative;
+    border-bottom: 1px solid #fff;
+}
+
+/* REMOVE LAST BORDER */
+#panelcontainer-16e7f63046 .field-wrapper:last-child {
+    border-bottom: none;
+}
+
+/* ================= BLUE LEFT LINE ================= */
+#panelcontainer-16e7f63046 .field-wrapper::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60px;
+    background: #a5b4fc;
+    border-radius: 3px;
+}
+
+/* ================= LABEL ================= */
+#panelcontainer-16e7f63046 .field-label {
+    font-size: 18px;
+    color: #2b2e32;
+    font-weight:500;
+    margin-bottom: 6px;
+}
+
+
+/* ================= VALUE ================= */
+#panelcontainer-16e7f63046 input {
+    border: none;
+    background: #ffffff;   /* light highlight like your screenshot */
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    width: 100%;
+}
+
+/* ================= CLICK HERE ================= */
+#textinput-92ee5a3a0c {
+    color: #3362c8 !important;
+    font-weight: 600;
+}
