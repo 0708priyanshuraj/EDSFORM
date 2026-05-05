@@ -1686,7 +1686,6 @@ main .form form .field-submit-otp button:disabled {
 
 /* ================= LABEL ================= */
 #panelcontainer-e48b52eb75 .field-label {
-  font-size: 12px;
   color: #6b7280;
   margin-bottom: 6px;
 }
