@@ -68,7 +68,7 @@ let otpTimerInterval;
  */
 function startOtpTimer() {
   const timerInput = document.querySelector('input[name="timer"]');
-  const resendBtn = document.querySelector(".field-resend-button button");
+  const resendBtn = document.querySelector('.field-resend-button button');
 
   let timeLeft = 30;
 
@@ -81,20 +81,6 @@ function startOtpTimer() {
   if (resendBtn) {
     resendBtn.disabled = true;
   }
-
-  // ✅ ADD THIS BLOCK (for attempt message)
-  let attemptMsg = document.querySelector('#otp-attempt-msg');
-
-  if (!attemptMsg) {
-    attemptMsg = document.createElement('div');
-    attemptMsg.id = 'otp-attempt-msg';
-
-    if (timerInput && timerInput.parentNode) {
-      timerInput.parentNode.appendChild(attemptMsg);
-    }
-  }
-
-  attemptMsg.textContent = '3/3 attempts left';
 
   // Set initial timer value
   if (timerInput) {
@@ -109,19 +95,22 @@ function startOtpTimer() {
       timerInput.value = `${timeLeft}s`;
     }
 
+    // When timer reaches 0
     if (timeLeft <= 0) {
       clearInterval(otpTimerInterval);
 
+      // Enable resend button
       if (resendBtn) {
         resendBtn.disabled = false;
       }
 
       if (timerInput) {
-        timerInput.value = "0s";
+        timerInput.value = '0s';
       }
     }
   }, 1000);
 }
+
 /**
  * Stop OTP timer
  */

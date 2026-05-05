@@ -2349,7 +2349,7 @@ main .form form .field-form-button1777803450216 button {
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
-    width: 50%;
+    width: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2365,4 +2365,360 @@ main .form form .field-form-button1777803450216 button:hover {
 /* ================= ACTIVE ================= */
 main .form form .field-form-button1777803450216 button:active {
     transform: scale(0.98);
+}
+
+
+/* ================= MAIN CONTAINER ================= */
+#panelcontainer-046d0addfe {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px;
+    font-family: system-ui, sans-serif;
+}
+
+/* ================= SECTION HEADINGS ================= */
+#panelcontainer-046d0addfe > .field-label {
+    font-size: 25px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+/* ================= INNER PANELS ================= */
+#panelcontainer-c0a225e175,
+#panelcontainer-4ef2136463 {
+    background: #eef2ff;
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 16px;
+}
+
+/* ================= PANEL HEADERS ================= */
+#panelcontainer-c0a225e175 > .field-label,
+#panelcontainer-4ef2136463 > .field-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin-bottom: 14px;
+}
+
+/* icons */
+#panelcontainer-c0a225e175 > .field-label::before {
+    content: "🏦";
+}
+#panelcontainer-4ef2136463 > .field-label::before {
+    content: "⚙️";
+}
+
+/* ================= BANK GRID ================= */
+#radiobutton-a101e1c020 {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+#radiobutton-a101e1c020 .radio-wrapper {
+    width: 90px;
+    height: 70px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+#radiobutton-a101e1c020 input {
+    display: none;
+}
+
+#radiobutton-a101e1c020 label::before {
+    content: "🏦";
+    display: block;
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+#radiobutton-a101e1c020 label {
+    font-size: 11px;
+    text-align: center;
+}
+
+#radiobutton-a101e1c020 .radio-wrapper:has(input:checked) {
+    border: 2px solid #2563eb;
+    background: #eef4ff;
+}
+
+/* ================= METHOD SECTION ================= */
+#radiobutton-0d9951236f {
+    display: flex;
+    gap: 16px;
+}
+
+/* METHOD CARD */
+#radiobutton-0d9951236f .radio-wrapper {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 14px;
+    cursor: pointer;
+    position: relative;
+    display:flex;
+    align-items: center;
+   
+}
+
+/* SHOW REAL RADIO (NO HIDING) */
+#radiobutton-0d9951236f input {
+    width: 16px;
+    height: 16px;
+    accent-color: #2563eb; /* 🔥 KEY FIX */
+    cursor: pointer;
+}
+
+/* TEXT */
+#radiobutton-0d9951236f label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* SELECTED CARD */
+#radiobutton-0d9951236f .radio-wrapper:has(input:checked) {
+    border: 2px solid #2563eb;
+    background: #eef4ff;
+}
+
+/* ================= RECOMMENDED TAG ================= */
+#radiobutton-0d9951236f .radio-wrapper:first-child::after {
+    content: "Recommended";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    background: #059669;
+    color: white;
+    font-size: 11px;
+    text-align: center;
+    padding: 4px;
+    border-radius: 0 0 12px 12px;
+}
+
+/* ================= INPUT FIELDS ================= */
+#panelcontainer-046d0addfe input[type="text"] {
+    width: 100%;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    padding: 0 12px;
+}
+
+/* ================= BUTTON ================= */
+.field-form-button1777876354188 button {
+    margin-top: 20px;
+    background: #2563eb;
+    color: white;
+    border-radius: 10px;
+    padding: 12px 20px;
+    width: 180px;
+    font-weight: 600;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.field-form-button1777876354188 button::after {
+    content: "›";
+    margin-left: 8px;
+}
+
+.field-form-button1777876354188 button:hover {
+    background: #1d4ed8;
+}
+/* ================= MAIN CONTAINER ================= */
+#panelcontainer-046d0addfe {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px;
+    font-family: system-ui, sans-serif;
+}
+
+/* ================= SECTION HEADINGS ================= */
+#panelcontainer-046d0addfe > .field-label {
+    font-size: 25px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+/* ================= INNER PANELS ================= */
+#panelcontainer-c0a225e175,
+#panelcontainer-4ef2136463 {
+    background: #eef2ff;
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 16px;
+}
+
+/* ================= PANEL HEADERS ================= */
+#panelcontainer-c0a225e175 > .field-label,
+#panelcontainer-4ef2136463 > .field-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin-bottom: 14px;
+}
+
+/* icons */
+#panelcontainer-c0a225e175 > .field-label::before {
+    content: "🏦";
+}
+#panelcontainer-4ef2136463 > .field-label::before {
+    content: "⚙️";
+}
+
+/* ================= BANK GRID ================= */
+#radiobutton-a101e1c020 {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+#radiobutton-a101e1c020 .radio-wrapper {
+    width: 90px;
+    height: 70px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+#radiobutton-a101e1c020 input {
+    display: none;
+}
+
+#radiobutton-a101e1c020 label::before {
+    content: "🏦";
+    display: block;
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+#radiobutton-a101e1c020 label {
+    font-size: 11px;
+    text-align: center;
+}
+
+#radiobutton-a101e1c020 .radio-wrapper:has(input:checked) {
+    border: 2px solid #2563eb;
+    background: #eef4ff;
+}
+
+/* ================= METHOD SECTION ================= */
+#radiobutton-0d9951236f {
+    display: flex;
+    gap: 16px;
+}
+
+/* METHOD CARD */
+#radiobutton-0d9951236f .radio-wrapper {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 14px;
+    cursor: pointer;
+    position: relative;
+    display:flex;
+    align-items: center;
+   
+}
+
+/* SHOW REAL RADIO (NO HIDING) */
+#radiobutton-0d9951236f input {
+    width: 16px;
+    height: 16px;
+    accent-color: #2563eb; /* 🔥 KEY FIX */
+    cursor: pointer;
+}
+
+/* TEXT */
+#radiobutton-0d9951236f label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* SELECTED CARD */
+#radiobutton-0d9951236f .radio-wrapper:has(input:checked) {
+    border: 2px solid #2563eb;
+    background: #eef4ff;
+}
+
+/* ================= RECOMMENDED TAG ================= */
+#radiobutton-0d9951236f .radio-wrapper:first-child::after {
+    content: "Recommended";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    background: #059669;
+    color: white;
+    font-size: 11px;
+    text-align: center;
+    padding: 4px;
+    border-radius: 0 0 12px 12px;
+}
+
+/* ================= INPUT FIELDS ================= */
+#panelcontainer-046d0addfe input[type="text"] {
+    width: 100%;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    padding: 0 12px;
+}
+
+/* ================= BUTTON ================= */
+.field-form-button1777876354188 button {
+    margin-top: 20px;
+    background: #2563eb;
+    color: white;
+    border-radius: 10px;
+    padding: 12px 20px;
+    width: 180px;
+    font-weight: 600;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.field-form-button1777876354188 button::after {
+    content: "›";
+    margin-left: 8px;
+}
+
+.field-form-button1777876354188 button:hover {
+    background: #1d4ed8;
 }
