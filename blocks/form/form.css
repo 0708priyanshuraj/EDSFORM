@@ -2339,3 +2339,30 @@ main .form form .field-submit-otp button:disabled {
     font-size: 14px;
     color: #374151;
 }
+/* ================= CONFIRM BUTTON ================= */
+main .form form .field-form-button1777803450216 button {
+    background-color: rgb(165 180 252 / 30%);
+    color: #3730a3;
+    border: 1.5px solid #a5b4fc;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s ease;
+}
+
+/* ================= HOVER EFFECT ================= */
+main .form form .field-form-button1777803450216 button:hover {
+    background-color: #a5b4fc;
+    color: #1e1b4b;
+}
+
+/* ================= ACTIVE ================= */
+main .form form .field-form-button1777803450216 button:active {
+    transform: scale(0.98);
+}
