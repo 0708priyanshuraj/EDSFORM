@@ -1960,6 +1960,7 @@ main .form form .field-submit-otp button:disabled {
   height: 18px;
   background-size: contain;
   background-repeat: no-repeat;
+}
 .field-loan-amount::before {
   content: "";
   position: absolute;
@@ -2062,3 +2063,4 @@ main .form form .field-submit-otp button:disabled {
     flex: 1 1 100%;
   }
 }
+
