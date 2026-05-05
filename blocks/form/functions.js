@@ -20,10 +20,10 @@ function submitFormArrayToString(globals) {
   const data = globals.functions.exportData();
   Object.keys(data).forEach((key) => {
     if (Array.isArray(data[key])) {
-      data[key] = data[key].join(",");
+      data[key] = data[key].join(',');
     }
   });
-  globals.functions.submitForm(data, true, "application/json");
+  globals.functions.submitForm(data, true, 'application/json');
 }
 
 /**
@@ -33,8 +33,8 @@ function submitFormArrayToString(globals) {
  * @returns {number} returns the number of days between two dates
  */
 function days(endDate, startDate) {
-  const start = typeof startDate === "string" ? new Date(startDate) : startDate;
-  const end = typeof endDate === "string" ? new Date(endDate) : endDate;
+  const start = typeof startDate === 'string' ? new Date(startDate) : startDate;
+  const end = typeof endDate === 'string' ? new Date(endDate) : endDate;
 
   // return zero if dates are invalid
   if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
@@ -52,42 +52,57 @@ function days(endDate, startDate) {
  */
 function maskMobileNumber(mobileNumber) {
   if (!mobileNumber) {
-    return "";
+    return '';
   }
   const value = mobileNumber.toString();
 
   // Mask first 5 digits and keep the rest
-  return ` ${"*".repeat(5)}${value.substring(5)}`;
+  return ` ${'*'.repeat(5)}${value.substring(5)}`;
 }
 
-let otpTimerInterval;
+let otpTimerInterval = null;
+const MAX_ATTEMPTS = 3;
+let attemptsLeft = MAX_ATTEMPTS;
 
+function updateAttemptsUI() {
+  const attemptsEl = document.querySelector('.field-otp-attempts-info p');
+
+  if (!attemptsEl) return;
+
+  if (attemptsLeft > 0) {
+    attemptsEl.textContent = `${attemptsLeft}/${MAX_ATTEMPTS} attempts left`;
+    attemptsEl.style.color = '#6b7280';
+  } else {
+    attemptsEl.textContent = 'Try again after 24 hours';
+    attemptsEl.style.color = '#dc2626';
+    attemptsEl.style.fontWeight = '600';
+  }
+}
 /**
  * Start OTP timer - counts down from 30 seconds
  * Disables resend button during countdown
  */
 function startOtpTimer() {
   const timerInput = document.querySelector('input[name="timer"]');
-  const resendBtn = document.querySelector(".field-resend-button button");
+  const resendBtn = document.querySelector('.field-resend-button button');
 
   let timeLeft = 30;
 
-  // Clear any existing timer
   if (otpTimerInterval) {
     clearInterval(otpTimerInterval);
   }
 
-  // Disable resend button
   if (resendBtn) {
     resendBtn.disabled = true;
   }
 
-  // Set initial timer value
+  // ✅ ADD THIS LINE
+  updateAttemptsUI();
+
   if (timerInput) {
     timerInput.value = `${timeLeft}s`;
   }
 
-  // Start countdown
   otpTimerInterval = setInterval(() => {
     timeLeft -= 1;
 
@@ -95,22 +110,34 @@ function startOtpTimer() {
       timerInput.value = `${timeLeft}s`;
     }
 
-    // When timer reaches 0
     if (timeLeft <= 0) {
       clearInterval(otpTimerInterval);
 
-      // Enable resend button
-      if (resendBtn) {
+      if (resendBtn && attemptsLeft > 0) {
         resendBtn.disabled = false;
       }
 
       if (timerInput) {
-        timerInput.value = "0s";
+        timerInput.value = '0s';
       }
     }
   }, 1000);
 }
+function handleResendClick() {
+  const resendBtn = document.querySelector('.field-resend-button button');
 
+  if (attemptsLeft <= 0) return;
+
+  attemptsLeft--;
+
+  updateAttemptsUI();
+
+  if (attemptsLeft > 0) {
+    startOtpTimer();
+  } else if (resendBtn) {
+    resendBtn.disabled = true;
+  }
+}
 /**
  * Stop OTP timer
  */
@@ -125,7 +152,7 @@ function stopOtpTimer() {
  * Format number to Indian currency format
  */
 function formatIndianCurrency(amount) {
-  return `₹${amount.toLocaleString("en-IN", { maximumFractionDigits: 0 })}`;
+  return `₹${amount.toLocaleString('en-IN', { maximumFractionDigits: 0 })}`;
 }
 
 /**
@@ -152,24 +179,24 @@ function calculateEMI(principal, annualRate, tenureMonths) {
 function initEMICalculator() {
   // ✅ CORRECT SELECTORS (based on your HTML)
 
-  const loanAmountInput = document.querySelector("#numberinput-b5966ec03e");
-  const loanTenureInput = document.querySelector("#numberinput-0340fd7e24");
+  const loanAmountInput = document.querySelector('#numberinput-b5966ec03e');
+  const loanTenureInput = document.querySelector('#numberinput-0340fd7e24');
 
-  const xpressField = document.querySelector("#textinput-378a51dc47");
-  const emiAmountField = document.querySelector("#textinput-b5b7374de8");
-  const roiField = document.querySelector("#textinput-1c459dc1b4");
-  const taxField = document.querySelector("#textinput-ec3ebad510");
+  const xpressField = document.querySelector('#textinput-378a51dc47');
+  const emiAmountField = document.querySelector('#textinput-b5b7374de8');
+  const roiField = document.querySelector('#textinput-1c459dc1b4');
+  const taxField = document.querySelector('#textinput-ec3ebad510');
 
   const loanAmountBubble = loanAmountInput
-    ?.closest(".range-widget-wrapper")
-    ?.querySelector(".range-bubble");
+    ?.closest('.range-widget-wrapper')
+    ?.querySelector('.range-bubble');
 
   const tenureBubble = loanTenureInput
-    ?.closest(".range-widget-wrapper")
-    ?.querySelector(".range-bubble");
+    ?.closest('.range-widget-wrapper')
+    ?.querySelector('.range-bubble');
 
   if (!loanAmountInput || !loanTenureInput || !xpressField || !emiAmountField) {
-    console.log("Required elements missing ❌");
+    console.log('Required elements missing ❌');
     return;
   }
 
@@ -209,15 +236,15 @@ function initEMICalculator() {
   }
 
   // ✅ EVENTS
-  loanAmountInput.addEventListener("input", updateEMICalculation);
-  loanTenureInput.addEventListener("input", updateEMICalculation);
+  loanAmountInput.addEventListener('input', updateEMICalculation);
+  loanTenureInput.addEventListener('input', updateEMICalculation);
 
   // ✅ INITIAL RUN
   updateEMICalculation();
 }
 function mapFormFieldsToReview() {
   // ─── Helpers ────────────────────────────────────────────────────────────────
- 
+
   /**
    * Get value from the FIRST matching element with this name.
    * For radio groups returns the value of the checked option.
@@ -231,7 +258,7 @@ function mapFormFieldsToReview() {
     }
     return el.value || '';
   };
- 
+
   /**
    * Get value from a specific element by its unique id.
    */
@@ -239,7 +266,7 @@ function mapFormFieldsToReview() {
     const el = document.getElementById(id);
     return el ? (el.value || '') : '';
   };
- 
+
   /**
    * Set value on a specific element by its unique id.
    */
@@ -247,7 +274,7 @@ function mapFormFieldsToReview() {
     const el = document.getElementById(id);
     if (el) el.value = value;
   };
- 
+
   /**
    * Return the visible label text for the checked radio in a group.
    */
@@ -257,7 +284,7 @@ function mapFormFieldsToReview() {
     const label = document.querySelector(`label[for="${checked.id}"]`);
     return label ? label.textContent.trim() : checked.value;
   };
- 
+
   // ─── 1. Loan Details ────────────────────────────────────────────────────────
   // Loan amount comes from the range slider (numberinput-b5966ec03e)
   const rawLoanAmount = getValById('numberinput-b5966ec03e');
@@ -275,57 +302,57 @@ function mapFormFieldsToReview() {
   const resolvedEmployerName = enterEmployerName || (employerDropdownVal !== 'others' ? employerDropdownVal : '');
   // Loan type dropdown
   const selectLoanType = getVal('select_loan_type');
- 
+
   // Format loan amount for display if it is a raw number
   let loanAmountForDisplay = rawLoanAmount;
   if (rawLoanAmount && !rawLoanAmount.includes('₹')) {
     const num = parseFloat(rawLoanAmount);
     if (!Number.isNaN(num)) loanAmountForDisplay = formatIndianCurrency(num);
   }
- 
+
   // Format tenure for display if it is a raw number
   let tenureForDisplay = rawTenure;
   if (rawTenure && !/months/.test(rawTenure)) {
     const num = parseFloat(rawTenure);
     if (!Number.isNaN(num)) tenureForDisplay = `${Math.round(num)} months`;
   }
- 
-  setValById('textinput-9aabe41171', loanAmountForDisplay);   // loan_amount
-  setValById('textinput-bf78c6e7d2', emiAmountDisplay);       // emi_amount
-  setValById('textinput-5f4d136d28', tenureForDisplay);       // tenure
-  setValById('textinput-22b1e701b9', taxesDisplay);           // processing_fee (Taxes)
-  setValById('textinput-721bf835c1', roiDisplay);             // rate_of_interest
-  setValById('textinput-db68d340ff', resolvedEmployerName);   // employer_name
+
+  setValById('textinput-9aabe41171', loanAmountForDisplay); // loan_amount
+  setValById('textinput-bf78c6e7d2', emiAmountDisplay); // emi_amount
+  setValById('textinput-5f4d136d28', tenureForDisplay); // tenure
+  setValById('textinput-22b1e701b9', taxesDisplay); // processing_fee (Taxes)
+  setValById('textinput-721bf835c1', roiDisplay); // rate_of_interest
+  setValById('textinput-db68d340ff', resolvedEmployerName); // employer_name
   // schedule_of_charges (textinput-0295f6b473) — no direct source field; leave unchanged
-  setValById('textinput-41298e8cd6', selectLoanType);         // type_of_loan
- 
+  setValById('textinput-41298e8cd6', selectLoanType); // type_of_loan
+
   // ─── 2. Personal Details ────────────────────────────────────────────────────
   // Full name: concatenate first + middle + last from the PAN name panel
   const firstName = getVal('first_name');
   const middleName = getVal('middle_name');
   const lastName = getVal('last_name');
   const fullName = [firstName, middleName, lastName].filter(Boolean).join(' ').trim();
- 
+
   // Mobile number from the welcome panel (textinput-ab0417d81c)
   const mobileNumber = getValById('textinput-ab0417d81c');
- 
+
   // Date of birth from the welcome panel (datepicker-2e2ea3b883)
   const dobSource = document.getElementById('datepicker-2e2ea3b883');
   const dobDisplayValue = dobSource ? (dobSource.getAttribute('display-value') || dobSource.value || '') : '';
   const dobEditValue = dobSource ? (dobSource.getAttribute('edit-value') || dobSource.value || '') : '';
- 
+
   // PAN number
   const panNumber = getVal('pan_number');
- 
+
   // Address from Aadhaar records
   const aadhaarAddress = getVal('address_as_per_aadhaar_records');
- 
+
   // Residence type: label of the selected "is_customers_aadhaar_address" radio
   const residenceType = getRadioLabel('is_customers_aadhaar_address');
- 
-  setValById('textinput-338c537319', fullName);              // full_name
-  setValById('textinput-48f479429a', mobileNumber);          // mobile_number
- 
+
+  setValById('textinput-338c537319', fullName); // full_name
+  setValById('textinput-48f479429a', mobileNumber); // mobile_number
+
   // Date of birth target (datepicker-a8de48027a)
   const dobTarget = document.getElementById('datepicker-a8de48027a');
   if (dobTarget) {
@@ -333,11 +360,11 @@ function mapFormFieldsToReview() {
     dobTarget.setAttribute('display-value', dobDisplayValue);
     dobTarget.setAttribute('edit-value', dobEditValue);
   }
- 
-  setValById('textinput-f7cb1ba930', panNumber);             // pan
-  setValById('textinput-0f232dc804', aadhaarAddress);        // current_address
-  setValById('textinput-322734dd37', residenceType);         // residence_type
- 
+
+  setValById('textinput-f7cb1ba930', panNumber); // pan
+  setValById('textinput-0f232dc804', aadhaarAddress); // current_address
+  setValById('textinput-322734dd37', residenceType); // residence_type
+
   // ─── 3. Salary Account Details ──────────────────────────────────────────────
   // Salary account number (textinput-6cd7d23dbf → name="salary_account")
   const salaryAccountNumber = getVal('salary_account');
@@ -347,28 +374,28 @@ function mapFormFieldsToReview() {
   const salaryBankOther = getVal('salary_bank_other');
   const salaryBankLabel = getRadioLabel('salary_bank');
   const bankName = salaryBankOther.trim() || salaryBankLabel;
- 
-  setValById('textinput-c06ffc5b00', salaryAccountNumber);   // salary_account_number
-  setValById('textinput-321a9f6344', ifscSource);            // ifsc
-  setValById('textinput-e294a4225e', bankName);              // bank_name
- 
+
+  setValById('textinput-c06ffc5b00', salaryAccountNumber); // salary_account_number
+  setValById('textinput-321a9f6344', ifscSource); // ifsc
+  setValById('textinput-e294a4225e', bankName); // bank_name
+
   // ─── 4. Office Address ──────────────────────────────────────────────────────
   // No explicit "office address" source field in the provided HTML.
   // The employer name is already mapped above; industry type is available if needed.
   // current_employer_address (textinput-76f014ea9b) — leave unchanged unless a source
   // field is added later; map employer name as a fallback label.
   // (no-op — placeholder for future source field)
- 
+
   // ─── 5. Verify Email ID ─────────────────────────────────────────────────────
   // Personal email: emailinput-d61e9efa6c (name="enter_email_id" inside personal_details panel)
   const personalEmail = getValById('emailinput-d61e9efa6c');
   // Work email: emailinput-20d267620a (name="enter_email_id" inside work_email_id_panel)
   const workEmail = getValById('emailinput-20d267620a');
- 
-  setValById('emailinput-a406431806', personalEmail);        // personal_email_id
-  setValById('emailinput-eecc41b376', workEmail);            // work_email_id
+
+  setValById('emailinput-a406431806', personalEmail); // personal_email_id
+  setValById('emailinput-eecc41b376', workEmail); // work_email_id
 }
- 
+
 /**
  * Initialize form field mapping.
  * Attaches input/change listeners to all source fields so the review section
@@ -408,7 +435,7 @@ function initFormFieldMapping() {
     'ifsc',
     // EMI panel sliders & display fields are handled via their IDs below
   ];
- 
+
   // Named-field listeners
   fieldsToMonitor.forEach((fieldName) => {
     const fields = document.querySelectorAll(`[name="${fieldName}"]`);
@@ -419,18 +446,18 @@ function initFormFieldMapping() {
       });
     });
   });
- 
+
   // ID-based listeners for the EMI panel display fields and range sliders
   const idsToMonitor = [
-    'numberinput-b5966ec03e',   // Loan Amount range slider
-    'numberinput-0340fd7e24',   // Tenure range slider
-    'textinput-b5b7374de8',     // EMI Amount display
-    'textinput-1c459dc1b4',     // Rate of Interest display
-    'textinput-ec3ebad510',     // Taxes display
-    'emailinput-d61e9efa6c',    // Personal email
-    'emailinput-20d267620a',    // Work email
+    'numberinput-b5966ec03e', // Loan Amount range slider
+    'numberinput-0340fd7e24', // Tenure range slider
+    'textinput-b5b7374de8', // EMI Amount display
+    'textinput-1c459dc1b4', // Rate of Interest display
+    'textinput-ec3ebad510', // Taxes display
+    'emailinput-d61e9efa6c', // Personal email
+    'emailinput-20d267620a', // Work email
   ];
- 
+
   idsToMonitor.forEach((id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -439,13 +466,13 @@ function initFormFieldMapping() {
       });
     }
   });
- 
+
   // Wire the "Proceed >" button (button-5e47e6952d) to trigger a final sync
   const proceedButton = document.getElementById('button-5e47e6952d');
   if (proceedButton) {
     proceedButton.addEventListener('click', mapFormFieldsToReview);
   }
- 
+
   // Run an initial mapping pass in case fields are pre-populated
   mapFormFieldsToReview();
 }
@@ -457,6 +484,8 @@ export {
   maskMobileNumber,
   startOtpTimer,
   stopOtpTimer,
+  handleResendClick,
+  updateAttemptsUI,
   calculateEMI,
   formatIndianCurrency,
   initEMICalculator,
