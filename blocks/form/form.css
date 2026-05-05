@@ -2204,3 +2204,138 @@ main .form form .field-submit-otp button:disabled {
     color: #1048b8;
     margin: 6px 0 0;
 }
+/* ================= WORK EMAIL PANEL ================= */
+#panelcontainer-35d79aae10 {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    margin-bottom: 16px;
+    font-family: system-ui, sans-serif;
+}
+
+/* ================= HEADER ================= */
+#panelcontainer-35d79aae10 > .field-label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 14px 18px;
+
+    background: #dbeafe;
+    color: #1e3a8a;
+
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+    border-radius: 10px;
+    gap: 6px;
+}
+
+/* ================= ICON ================= */
+#panelcontainer-35d79aae10 > .field-label::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    display: inline-block;
+    flex-shrink: 0;
+
+    /* email icon */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%233b82f6' viewBox='0 0 24 24'><path d='M2 4a2 2 0 012-2h16a2 2 0 012 2v1l-10 6L2 5V4zm0 3.236l9.445 5.667a1 1 0 001.11 0L22 7.236V20a2 2 0 01-2 2H4a2 2 0 01-2-2V7.236z'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* ================= ARROW ================= */
+#panelcontainer-35d79aae10 > .field-label::after {
+    font-size: 14px;
+    color: #1d4ed8;
+    margin-left: auto;
+}
+
+/* ================= BODY ================= */
+#panelcontainer-35d79aae10 .field-wrapper {
+    padding: 12px 16px;
+}
+/* ================= INPUT ================= */
+#panelcontainer-35d79aae10 input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #374151;
+}
+
+/* ================= HELP TEXT ================= */
+#panelcontainer-35d79aae10 .plain-text-wrapper p {
+    font-size: 13px;
+    color: #1048b8;
+    margin: 6px 0 0;
+}
+
+/* ================= TYPE OF LOAN PANEL ================= */
+#panelcontainer-a7f686f28e {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    margin-bottom: 16px;
+    font-family: system-ui, sans-serif;
+}
+
+/* ================= HEADER ================= */
+#panelcontainer-a7f686f28e > .field-label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 14px 18px;
+
+    background: #dbeafe;
+    color: #1e3a8a;
+
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+    border-radius: 10px;
+    gap: 6px;
+}
+
+/* ================= ICON ================= */
+#panelcontainer-a7f686f28e > .field-label::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    display: inline-block;
+    flex-shrink: 0;
+
+    /* loan icon */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%233b82f6' viewBox='0 0 24 24'><path d='M12 1l9 4v6c0 5-3.8 9.7-9 11-5.2-1.3-9-6-9-11V5l9-4zm0 4L5 7v4c0 3.9 2.7 7.6 7 8.9 4.3-1.3 7-5 7-8.9V7l-7-2z'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* ================= ARROW ================= */
+#panelcontainer-a7f686f28e > .field-label::after {
+    font-size: 14px;
+    color: #1d4ed8;
+    margin-left: auto;
+}
+
+/* ================= BODY ================= */
+#panelcontainer-a7f686f28e .field-wrapper {
+    padding: 12px 16px;
+}
+
+/* ================= INPUT ================= */
+#panelcontainer-a7f686f28e select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #374151;
+}
