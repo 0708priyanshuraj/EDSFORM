@@ -1643,10 +1643,8 @@ main .form form .field-submit-otp button:disabled {
   display: flex;
   align-items: center;
   gap: 8px;
-
   background: #dbeafe;
   color: #1e3a8a;
-
   font-weight: 600;
   font-size: 16px;
   padding: 14px 18px;
@@ -1879,5 +1877,188 @@ main .form form .field-submit-otp button:disabled {
 
   #panelcontainer-5269a51906 .radio-wrapper {
     margin-bottom: 8px;
+  }
+}
+#panelcontainer-643a00b714 > .field-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  width: 100%;
+}
+
+/* HEADER ICON */
+#panelcontainer-643a00b714 > .field-label::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236366f1' stroke-width='1.8'><path stroke-linecap='round' stroke-linejoin='round' d='M9 12h6m-6 4h6M9 8h6M4 6h16M4 18h16'/></svg>");
+}
+
+/* ================= KYC NOTE ================= */
+#text-6f8fb15d84 {
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+/* ================= GRID ================= */
+#panelcontainer-643a00b714 .col-6 {
+  flex: 1 1 calc(50% - 8px);
+}
+
+#panelcontainer-643a00b714 .col-12 {
+  flex: 1 1 100%;
+}
+
+/* ================= INPUT BLOCK ================= */
+#panelcontainer-643a00b714 .text-wrapper {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 14px 16px;
+  position: relative;
+}
+
+/* LABEL */
+#panelcontainer-643a00b714 .text-wrapper .field-label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+/* VALUE */
+#panelcontainer-643a00b714 input {
+  border: none;
+  background: #dbeafe;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  padding-left: 28px;
+}
+
+/* REMOVE INPUT BORDER */
+#panelcontainer-643a00b714 input:focus {
+  outline: none;
+}
+
+/* ================= ICONS ================= */
+.field-loan-application-number::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 38px;
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+.field-loan-amount::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 38px;
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+/* ================= CONTACT NOTE ================= */
+#text-4a2021b3c0 {
+  font-size: 13px;
+  color: #6b7280;
+  width: 100%;
+}
+
+/* ================= INNER SUMMARY ================= */
+#panelcontainer-79bc739bfe {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 16px;
+  width: 100%;
+}
+
+#panelcontainer-79bc739bfe > .field-label {
+  font-weight: 600;
+  color: #111827;
+}
+
+/* ================= DISBURSAL NOTE ================= */
+#text-152a8ba352 {
+  background: #eef2ff;
+  color: #3730a3;
+  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+/* ================= EASY LOAN MANAGEMENT CARD ================= */
+#panelcontainer-2193cc3dfb {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+/* TOP BAR */
+#panelcontainer-2193cc3dfb > .field-label {
+  background: linear-gradient(to right, #c7d2fe, #dbeafe);
+  padding: 14px;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+/* ================= DOWNLOAD APP (BLUE LINK STYLE) ================= */
+#text-34843b2f2e {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 14px;
+  font-size: 14px;
+  color: #2563eb;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ARROW ICON */
+#text-34843b2f2e::after {
+  content: "›";
+  font-size: 20px;
+  color: #2563eb;
+}
+
+/* HOVER */
+#text-34843b2f2e:hover {
+  background: #f1f5f9;
+}
+
+/* ================= MORE SERVICES (BLUE LINK) ================= */
+#text-86699b47e9 {
+  font-size: 13px;
+  margin-top: 10px;
+  color: #6b7280;
+}
+
+/* MAKE ONLY LINK TEXT BLUE */
+#text-86699b47e9 a,
+#text-86699b47e9 span {
+  color: #2563eb;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 600px) {
+  #panelcontainer-643a00b714 .col-6 {
+    flex: 1 1 100%;
   }
 }
