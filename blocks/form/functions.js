@@ -290,8 +290,8 @@ function mapFormFieldsToReview() {
     if (!Number.isNaN(num)) tenureForDisplay = `${Math.round(num)} months`;
   }
 
-  setValById('textinput-9aabe41171', loanAmountForDisplay); // loan_amount
-  setValById('textinput-bf78c6e7d2', emiAmountDisplay); // emi_amount
+  setValById('textinput-ca40938a70', loanAmountForDisplay); // loan_amount
+  setValById('textinput-faa35cc00c', emiAmountDisplay); // emi_amount 
   setValById('textinput-5f4d136d28', tenureForDisplay); // tenure
   setValById('textinput-22b1e701b9', taxesDisplay); // processing_fee (Taxes)
   setValById('textinput-721bf835c1', roiDisplay); // rate_of_interest
