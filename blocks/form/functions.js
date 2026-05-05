@@ -270,7 +270,7 @@ function mapFormFieldsToReview() {
   // Taxes display field (textinput-ec3ebad510)
   const taxesDisplay = getValById('textinput-ec3ebad510');
   // Employer name: prefer free-text entry; fall back to dropdown label
-  const enterEmployerName = getVal('enter_employer_company_name');
+  const enterEmployerName = getVal('textinput-3a2473bd28');
   const employerDropdownVal = getVal('employer_company_name');
   const resolvedEmployerName = enterEmployerName || (employerDropdownVal !== 'others' ? employerDropdownVal : '');
   // Loan type dropdown
@@ -291,7 +291,7 @@ function mapFormFieldsToReview() {
   }
 
   setValById('textinput-ca40938a70', loanAmountForDisplay); // loan_amount
-  setValById('textinput-faa35cc00c', emiAmountDisplay); // emi_amount 
+  setValById('textinput-faa35cc00c', emiAmountDisplay); // emi_amount
   setValById('textinput-5ac96d3c9f', tenureForDisplay);
   setValById('textinput-2775dad98d', taxesDisplay); // processing_fee 
   setValById('textinput-40ebd5a0e2', roiDisplay); // rate_of_interest ✅ FIXED
@@ -322,7 +322,7 @@ function mapFormFieldsToReview() {
   // Residence type: label of the selected "is_customers_aadhaar_address" radio
   const residenceType = getRadioLabel('is_customers_aadhaar_address');
 
-  setValById('textinput-338c537319', fullName); // full_name
+  setValById('textinput-73aef4c181', fullName); // full_name
   setValById('textinput-48f479429a', mobileNumber); // mobile_number
 
   // Date of birth target (datepicker-a8de48027a)
@@ -333,9 +333,9 @@ function mapFormFieldsToReview() {
     dobTarget.setAttribute('edit-value', dobEditValue);
   }
 
-  setValById('textinput-f7cb1ba930', panNumber); // pan
-  setValById('textinput-0f232dc804', aadhaarAddress); // current_address
-  setValById('textinput-322734dd37', residenceType); // residence_type
+  setValById('textinput-4e73ae7b41', panNumber); // pan
+  setValById('textinput-1e826e3496', aadhaarAddress); // current_address
+  setValById('textinput-2a6ea8b0d8', residenceType); // residence_type 
 
   // ─── 3. Salary Account Details ──────────────────────────────────────────────
   // Salary account number (textinput-6cd7d23dbf → name="salary_account")
@@ -365,7 +365,7 @@ function mapFormFieldsToReview() {
   const workEmail = getValById('emailinput-20d267620a');
 
   setValById('emailinput-a406431806', personalEmail); // personal_email_id
-  setValById('emailinput-eecc41b376', workEmail); // work_email_id
+  setValById('emailinput-2a658c4c9f', workEmail); // work_email_id 
 }
 
 /**
