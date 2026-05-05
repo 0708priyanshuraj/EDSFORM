@@ -18,13 +18,11 @@ function getFullName(firstname, lastname) {
  */
 function submitFormArrayToString(globals) {
   const data = globals.functions.exportData();
-
   Object.keys(data).forEach((key) => {
     if (Array.isArray(data[key])) {
       data[key] = data[key].join(',');
     }
   });
-
   globals.functions.submitForm(data, true, 'application/json');
 }
 
@@ -378,74 +376,74 @@ function mapFormFieldsToReview() {
  * Also wires the "Proceed >" button (button-5e47e6952d) to trigger a final sync.
  */
 function initFormFieldMapping() {
-  // Source field names to monitor (radio groups use 'change'; others use 'input')
   const fieldsToMonitor = [
-    // Welcome panel
     'mobile_number',
     'date_of_birth',
     'income_source',
-    // Full Name panel
     'first_name',
     'middle_name',
     'last_name',
-    // Personal Details panel
     'gender',
     'pan_number',
-    // Address Details panel
     'address_as_per_aadhaar_records',
     'is_customers_aadhaar_address',
-    // Employer Details
     'employer_company_name',
     'enter_employer_company_name',
     'industry_type',
-    // Income Details
     'monthly_net_income_salary',
     'ongoing_emis_if_any',
-    // Type of Loan
     'select_loan_type',
-    // Salary Bank panel
     'salary_bank',
     'salary_bank_other',
     'salary_account',
     'ifsc',
-    // EMI panel sliders & display fields are handled via their IDs below
   ];
-}
-// Named-field listeners
-fieldsToMonitor.forEach((fieldName) => {
-  const fields = document.querySelectorAll(`[name="${fieldName}"]`);
-  fields.forEach((field) => {
-    const eventType = (field.type === 'radio' || field.tagName === 'SELECT') ? 'change' : 'input';
-    field.addEventListener(eventType, () => {
-      setTimeout(mapFormFieldsToReview, 100);
+
+  // Named-field listeners
+  fieldsToMonitor.forEach((fieldName) => {
+    const fields = document.querySelectorAll(`[name="${fieldName}"]`);
+
+    fields.forEach((field) => {
+      const eventType = field.type === 'radio' || field.tagName === 'SELECT'
+        ? 'change'
+        : 'input';
+
+      field.addEventListener(eventType, () => {
+        setTimeout(mapFormFieldsToReview, 100);
+      });
     });
   });
-});
 
-// ID-based listeners for the EMI panel display fields and range sliders
-const idsToMonitor = [
-  'numberinput-b5966ec03e', // Loan Amount range slider
-  'numberinput-0340fd7e24', // Tenure range slider
-  'textinput-b5b7374de8', // EMI Amount display
-  'textinput-1c459dc1b4', // Rate of Interest display
-  'textinput-ec3ebad510', // Taxes display
-  'emailinput-d61e9efa6c', // Personal email
-  'emailinput-20d267620a', // Work email
-];
+  // ID-based listeners
+  const idsToMonitor = [
+    'numberinput-b5966ec03e',
+    'numberinput-0340fd7e24',
+    'textinput-b5b7374de8',
+    'textinput-1c459dc1b4',
+    'textinput-ec3ebad510',
+    'emailinput-d61e9efa6c',
+    'emailinput-20d267620a',
+  ];
 
-idsToMonitor.forEach((id) => {
-  const el = document.getElementById(id);
-  if (el) {
-    el.addEventListener('input', () => {
-      setTimeout(mapFormFieldsToReview, 100);
-    });
+  idsToMonitor.forEach((id) => {
+    const el = document.getElementById(id);
+
+    if (el) {
+      el.addEventListener('input', () => {
+        setTimeout(mapFormFieldsToReview, 100);
+      });
+    }
+  });
+
+  // Proceed button
+  const proceedButton = document.getElementById('button-5e47e6952d');
+
+  if (proceedButton) {
+    proceedButton.addEventListener('click', mapFormFieldsToReview);
   }
-});
 
-// Wire the "Proceed >" button (button-5e47e6952d) to trigger a final sync
-const proceedButton = document.getElementById('button-5e47e6952d');
-if (proceedButton) {
-  proceedButton.addEventListener('click', mapFormFieldsToReview);
+  // Initial run
+  mapFormFieldsToReview();
 }
 // eslint-disable-next-line import/prefer-default-export
 export {
