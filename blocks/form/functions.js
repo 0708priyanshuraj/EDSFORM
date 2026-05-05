@@ -19,8 +19,7 @@ function getFullName(firstname, lastname) {
 function submitFormArrayToString(globals) {
   const data = globals.functions.exportData();
   Object.keys(data).forEach((key) => {
-    if (Array.isArray(data[key])) {
-      data[key] = data[key].join(',');
+    if (Array.i      data[key] = data[key].join(',');
     }
   });
   globals.functions.submitForm(data, true, 'application/json');
@@ -60,24 +59,8 @@ function maskMobileNumber(mobileNumber) {
   return ` ${'*'.repeat(5)}${value.substring(5)}`;
 }
 
-let otpTimerInterval = null;
-const MAX_ATTEMPTS = 3;
-let attemptsLeft = MAX_ATTEMPTS;
+let otpTimerInterval;
 
-function updateAttemptsUI() {
-  const attemptsEl = document.querySelector('.field-otp-attempts-info p');
-
-  if (!attemptsEl) return;
-
-  if (attemptsLeft > 0) {
-    attemptsEl.textContent = `${attemptsLeft}/${MAX_ATTEMPTS} attempts left`;
-    attemptsEl.style.color = '#6b7280';
-  } else {
-    attemptsEl.textContent = 'Try again after 24 hours';
-    attemptsEl.style.color = '#dc2626';
-    attemptsEl.style.fontWeight = '600';
-  }
-}
 /**
  * Start OTP timer - counts down from 30 seconds
  * Disables resend button during countdown
@@ -88,21 +71,42 @@ function startOtpTimer() {
 
   let timeLeft = 30;
 
+  // Clear any existing timer
   if (otpTimerInterval) {
     clearInterval(otpTimerInterval);
   }
 
+  // Disable resend button
   if (resendBtn) {
     resendBtn.disabled = true;
   }
 
-  // ✅ ADD THIS LINE
-  updateAttemptsUI();
+  // ✅ CREATE / UPDATE ATTEMPT MESSAGE (NO TEXTBOX)
+  let attemptMsg = document.querySelector('#otp-attempt-msg');
 
+  if (!attemptMsg) {
+    attemptMsg = document.createElement('div');
+    attemptMsg.id = 'otp-attempt-msg';
+
+    // insert below timer input
+    if (timerInput && timerInput.parentNode) {
+      timerInput.parentNode.appendChild(attemptMsg);
+    }
+  }
+
+  attemptMsg.textContent = '3/3 attempts left';
+
+  // styling
+  attemptMsg.style.marginTop = '6px';
+  attemptMsg.style.fontSize = '13px';
+  attemptMsg.style.color = '#374151';
+
+  // Set initial timer value
   if (timerInput) {
     timerInput.value = `${timeLeft}s`;
   }
 
+  // Start countdown
   otpTimerInterval = setInterval(() => {
     timeLeft -= 1;
 
@@ -110,10 +114,12 @@ function startOtpTimer() {
       timerInput.value = `${timeLeft}s`;
     }
 
+    // When timer reaches 0
     if (timeLeft <= 0) {
       clearInterval(otpTimerInterval);
 
-      if (resendBtn && attemptsLeft > 0) {
+      // Enable resend button
+      if (resendBtn) {
         resendBtn.disabled = false;
       }
 
@@ -122,21 +128,6 @@ function startOtpTimer() {
       }
     }
   }, 1000);
-}
-function handleResendClick() {
-  const resendBtn = document.querySelector('.field-resend-button button');
-
-  if (attemptsLeft <= 0) return;
-
-  attemptsLeft--;
-
-  updateAttemptsUI();
-
-  if (attemptsLeft > 0) {
-    startOtpTimer();
-  } else if (resendBtn) {
-    resendBtn.disabled = true;
-  }
 }
 /**
  * Stop OTP timer
@@ -473,6 +464,21 @@ function initFormFieldMapping() {
     proceedButton.addEventListener('click', mapFormFieldsToReview);
   }
 
+rEach((id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', () => {
+        setTimeout(mapFormFieldsToReview, 100);
+      });
+    }
+  });
+ 
+  // Wire the "Proceed >" button (button-5e47e6952d) to trigger a final sync
+  const proceedButton = document.getElementById('button-5e47e6952d');
+  if (proceedButton) {
+    proceedButton.addEventListener('click', mapFormFieldsToReview);
+  }
+ 
   // Run an initial mapping pass in case fields are pre-populated
   mapFormFieldsToReview();
 }
@@ -484,8 +490,6 @@ export {
   maskMobileNumber,
   startOtpTimer,
   stopOtpTimer,
-  handleResendClick,
-  updateAttemptsUI,
   calculateEMI,
   formatIndianCurrency,
   initEMICalculator,
