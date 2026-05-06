@@ -376,7 +376,7 @@ function mapFormFieldsToReview() {
   // Work email: emailinput-20d267620a (name="enter_email_id" inside work_email_id_panel)
   const workEmail = getValById('emailinput-20d267620a');
 
-  setValById('emailinput-a406431806', personalEmail); // personal_email_id
+  setValById('emailinput-7caf42d1f8', personalEmail); // personal_email_id // personal_email_id
   setValById('emailinput-2a658c4c9f', workEmail); // work_email_id 
 }
 
