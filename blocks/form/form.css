@@ -2841,77 +2841,188 @@ main .form form .field-form-button1777803450216 button:active {
 }
 /* ================= LOAN DETAILS PANEL ================= */
 #panelcontainer-16e7f63046 {
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #e5e7eb;
     background: #ffffff;
-    font-family: system-ui, sans-serif;
+    border: 1px solid #dde2ec;
+    border-radius: 12px;
+    padding: 0 0 20px;
+    box-shadow: 0 1px 8px rgb(0 0 0 / 6%);
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+
+    row-gap: 16px;
+    column-gap: 24px;
+
+    box-sizing: border-box;
 }
 
 /* ================= HEADER ================= */
 #panelcontainer-16e7f63046 > .accordion-legend {
+    width: 100%;
+    grid-column: 1 / -1;
+
+    background: #eef2ff;
+    border-bottom: 1px solid #dde2ec;
+
+    padding: 16px 24px;
+
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a2e;
+
+    margin-bottom: 0;
+
     display: flex;
     align-items: center;
-    padding: 14px 18px;
-    background: #dbeafe;
-    color: #1e3a8a;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius:18px
+    gap: 10px;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    border-radius: 17px;
 }
 
-/* ICON */
+/* ================= LOAN ICON ================= */
 #panelcontainer-16e7f63046 > .accordion-legend::before {
     content: "";
-    width: 50px;
-    height: 40px;
-    margin-right: 8px;
+
+    display: inline-block;
+
+    width: 18px;
+    height: 18px;
+
+    flex-shrink: 0;
+
     background-image: url("https://cdn-icons-png.flaticon.com/128/1990/1990348.png");
-    background-size: contain;
+
     background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
+
+/* ================= CHEVRON ICON ================= */
+#panelcontainer-16e7f63046 > .accordion-legend::after {
+    display: inline-block;
+
+    width: 18px;
+    height: 18px;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* ================= COLLAPSED STATE ================= */
+#panelcontainer-16e7f63046.collapsed {
+    padding-bottom: 0;
+    row-gap: 0;
+}
+
+#panelcontainer-16e7f63046.collapsed > *:not(.accordion-legend) {
+    display: none !important;
+}
+
+#panelcontainer-16e7f63046.collapsed > .accordion-legend::after {
+    transform: rotate(180deg);
+}
+
+/* ================= 3 COLUMN FIELDS ================= */
+#panelcontainer-16e7f63046 .col-3 {
+    grid-column: span 3;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+/* ================= FULL WIDTH FIELDS ================= */
+#panelcontainer-16e7f63046 .col-12 {
+    grid-column: 1 / -1;
+    box-sizing: border-box;
+}
+
 /* ================= FIELD BLOCK ================= */
-#panelcontainer-16e7f63046 .field-wrapper {
-    padding: 18px 16px 18px 24px;
+#panelcontainer-16e7f63046 .text-wrapper,
+#panelcontainer-16e7f63046 .date-wrapper,
+#panelcontainer-16e7f63046 .number-wrapper {
+    padding: 14px 16px 10px 14px;
+    margin: 0;
+
     position: relative;
-    border-bottom: 1px solid #fff;
+
+    box-sizing: border-box;
+
+    min-width: 0;
 }
 
-/* REMOVE LAST BORDER */
-#panelcontainer-16e7f63046 .field-wrapper:last-child {
-    border-bottom: none;
-}
-
-/* ================= BLUE LEFT LINE ================= */
-#panelcontainer-16e7f63046 .field-wrapper::before {
+/* ================= LEFT ACCENT LINE ================= */
+#panelcontainer-16e7f63046 .text-wrapper::before,
+#panelcontainer-16e7f63046 .date-wrapper::before,
+#panelcontainer-16e7f63046 .number-wrapper::before {
     content: "";
+
     position: absolute;
-    left: 10px;
+
+    left: 0;
     top: 50%;
+
     transform: translateY(-50%);
-    width: 4px;
-    height: 60px;
-    background: #a5b4fc;
-    border-radius: 3px;
+
+    width: 2.5px;
+    height: 36px;
+
+    background-color: #c7d0f8;
+
+    border-radius: 2px;
 }
 
 /* ================= LABEL ================= */
-#panelcontainer-16e7f63046 .field-label {
-    font-size: 18px;
-    color: #2b2e32;
-    font-weight:500;
-    margin-bottom: 0px;
+#panelcontainer-16e7f63046 .text-wrapper > label,
+#panelcontainer-16e7f63046 .date-wrapper > label,
+#panelcontainer-16e7f63046 .number-wrapper > label {
+    font-size: 0.72rem;
+    color: #888;
+    font-weight: 400;
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-/* ================= VALUE ================= */
-#panelcontainer-16e7f63046 input {
+
+/* ================= INPUT VALUE ================= */
+#panelcontainer-16e7f63046 input[type="text"],
+#panelcontainer-16e7f63046 input[type="number"] {
     border: none;
-    background: #ffffff;   /* light highlight like your screenshot */
-    padding: 10px 12px;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #0f172a;
+    background: transparent;
+
+    padding: 0;
+
+    height: auto;
+
+    font-size: 0.92rem;
+    font-weight: 700;
+
+    color: #1a1a1a;
+
+    margin: 0;
+
     width: 100%;
+    min-width: 0;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* ================= CLICK HERE ================= */
@@ -2919,258 +3030,682 @@ main .form form .field-form-button1777803450216 button:active {
     color: #3362c8 !important;
     font-weight: 600;
 }
-#panelcontainer-16e7f63046 .field-label {
-    font-size: 18px;
-    color: #2b2e32;
-    font-weight: 500;
-    /* margin-bottom: 6px; */
+
+/* ================= REMOVE HOVER BORDER ================= */
+#panelcontainer-16e7f63046 input[type="text"]:hover,
+#panelcontainer-16e7f63046 input[type="number"]:hover {
+    border: none;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+    #panelcontainer-16e7f63046 .col-3 {
+        grid-column: span 6;
+    }
+}
+
+@media (max-width: 768px) {
+    #panelcontainer-16e7f63046 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    #panelcontainer-16e7f63046 .col-3,
+    #panelcontainer-16e7f63046 .col-12 {
+        grid-column: 1 / -1;
+    }
+
+    #panelcontainer-16e7f63046 .text-wrapper,
+    #panelcontainer-16e7f63046 .date-wrapper,
+    #panelcontainer-16e7f63046 .number-wrapper {
+        padding-right: 12px;
+    }
+
+    #panelcontainer-16e7f63046 input[type="text"],
+    #panelcontainer-16e7f63046 input[type="number"] {
+        white-space: normal;
+    }
 }
 /* ================= PERSONAL DETAILS PANEL ================= */
-#panelcontainer-ee04fc6b59 .field-label {
-    font-size: 18px;
-    color: #2b2e32;
-    font-weight: 500;
-    margin-bottom: 0px;
-    white-space: nowrap;
+#panelcontainer-ee04fc6b59 {
+    background: #ffffff;
+    border: 1px solid #dde2ec;
+    border-radius: 12px;
+    padding: 0 0 20px;
+    box-shadow: 0 1px 8px rgb(0 0 0 / 6%);
     overflow: hidden;
-    text-overflow: ellipsis;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    row-gap: 16px;
+    column-gap: 24px;
+    box-sizing: border-box;
 }
+
 /* ================= HEADER ================= */
 #panelcontainer-ee04fc6b59 > .accordion-legend {
+    width: 100%;
+    grid-column: 1 / -1;
+    background: #eef2ff;
+    border-bottom: 1px solid #dde2ec;
+    padding: 16px 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 0;
     display: flex;
     align-items: center;
-    padding: 14px 18px;
-    background: #dbeafe;
-    color: #1e3a8a;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 18px;
+    gap: 10px;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 17px;
 }
 
-/* ================= HEADER ICON ================= */
+/* ================= PERSON ICON ================= */
 #panelcontainer-ee04fc6b59 > .accordion-legend::before {
     content: "";
-    width: 35px;
-    height: 40px;
-    margin-right: 8px;
-    background-image: url("https://cdn-icons-png.flaticon.com/128/747/747376.png");
-    background-size: contain;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233d52d5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='2' width='18' height='20' rx='3' ry='3'/%3E%3Ccircle cx='12' cy='9' r='3'/%3E%3Cpath d='M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
+    background-size: contain;
 }
 
-/* ================= FIELD BLOCK ================= */
-#panelcontainer-ee04fc6b59 .field-wrapper {
-    padding: 18px 16px 18px 24px;
-    position: relative;
-    border-bottom: 0px solid #ffffff;
+/* ================= CHEVRON ICON ================= */
+#panelcontainer-ee04fc6b59 > .accordion-legend::after {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-left: auto;
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
-/* ================= REMOVE LAST BORDER ================= */
-#panelcontainer-ee04fc6b59 .field-wrapper:last-child {
-    border-bottom: none;
+/* ================= COLLAPSED STATE ================= */
+#panelcontainer-ee04fc6b59.collapsed {
+    padding-bottom: 0;
+    row-gap: 0;
 }
 
-/* ================= BLUE LEFT LINE ================= */
-#panelcontainer-ee04fc6b59 .field-wrapper::before {
-    content: "";
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 60px;
-    background: #a5b4fc;
-    border-radius: 3px;
+#panelcontainer-ee04fc6b59.collapsed > *:not(.accordion-legend) {
+    display: none !important;
 }
 
-/* ================= LABEL ================= */
-#panelcontainer-ee04fc6b59 .field-label {
-    font-size: 18px;
-    color: #2b2e32;
-    font-weight: 500;
-    margin-bottom: 0px;
-}
-
-/* ================= INPUT VALUE ================= */
-#panelcontainer-ee04fc6b59 input {
-    border: none;
-    background: #ffffff;
-    padding: 10px 12px;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #0f172a;
-    width: 100%;
-    outline: none;
-}
-
-/* ================= FULL WIDTH FIELDS ================= */
-#panelcontainer-ee04fc6b59 .col-12 {
-    width: 100%;
+#panelcontainer-ee04fc6b59.collapsed > .accordion-legend::after {
+    transform: rotate(180deg);
 }
 
 /* ================= 3 COLUMN FIELDS ================= */
 #panelcontainer-ee04fc6b59 .col-3 {
-    width: 25%;
-    float: left;
+    grid-column: span 3;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+/* ================= FULL WIDTH FIELDS ================= */
+#panelcontainer-ee04fc6b59 .col-12 {
+    grid-column: 1 / -1;
     box-sizing: border-box;
 }
 
-/* ================= CLEAR FLOAT ================= */
-#panelcontainer-ee04fc6b59::after {
-    content: "";
-    display: block;
-    clear: both;
+/* ================= FIELD BLOCK ================= */
+#panelcontainer-ee04fc6b59 .text-wrapper,
+#panelcontainer-ee04fc6b59 .date-wrapper {
+    padding: 14px 16px 10px 14px;
+    margin: 0;
+    position: relative;
+    box-sizing: border-box;
+    min-width: 0;
 }
-/* ================= SALARY ACCOUNT DETAILS PANEL ================= */
-#panelcontainer-bcc6d0bdac .field-label {
-    font-size: 18px;
-    color: #2b2e32;
-    font-weight: 500;
-    margin-bottom: 0px;
+
+/* ================= LEFT ACCENT LINE ================= */
+#panelcontainer-ee04fc6b59 .text-wrapper::before,
+#panelcontainer-ee04fc6b59 .date-wrapper::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 2.5px;
+    height: 36px;
+
+    background-color: #c7d0f8;
+
+    border-radius: 2px;
+}
+
+/* ================= LABEL ================= */
+#panelcontainer-ee04fc6b59 .text-wrapper > label,
+#panelcontainer-ee04fc6b59 .date-wrapper > label {
+    font-size: 0.72rem;
+    color: #888;
+    font-weight: 400;
+
+    display: block;
+
+    margin-bottom: 4px;
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+/* ================= INPUT VALUE ================= */
+#panelcontainer-ee04fc6b59 input[type="text"],
+#panelcontainer-ee04fc6b59 input[type="email"] {
+    border: none;
+    background: transparent;
+
+    padding: 0;
+
+    height: auto;
+
+    font-size: 0.92rem;
+    font-weight: 700;
+
+    color: #1a1a1a;
+
+    margin: 0;
+
+    pointer-events: none;
+    cursor: default;
+
+    width: 100%;
+    min-width: 0;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ================= REMOVE HOVER BORDER ================= */
+#panelcontainer-ee04fc6b59 input[type="text"]:hover,
+#panelcontainer-ee04fc6b59 input[type="email"]:hover {
+    border: none;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+    #panelcontainer-ee04fc6b59 .col-3 {
+        grid-column: span 6;
+    }
+}
+
+@media (max-width: 768px) {
+    #panelcontainer-ee04fc6b59 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    #panelcontainer-ee04fc6b59 .col-3,
+    #panelcontainer-ee04fc6b59 .col-12 {
+        grid-column: 1 / -1;
+    }
+
+    #panelcontainer-ee04fc6b59 .text-wrapper,
+    #panelcontainer-ee04fc6b59 .date-wrapper {
+        padding-right: 12px;
+    }
+
+    #panelcontainer-ee04fc6b59 input[type="text"],
+    #panelcontainer-ee04fc6b59 input[type="email"] {
+        white-space: normal;
+    }
+}
+/* ================= SALARY ACCOUNT DETAILS PANEL ================= */
+#panelcontainer-bcc6d0bdac {
+    background: #ffffff;
+    border: 1px solid #dde2ec;
+    border-radius: 12px;
+    padding: 0 0 20px;
+    box-shadow: 0 1px 8px rgb(0 0 0 / 6%);
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+
+    row-gap: 16px;
+    column-gap: 24px;
+
+    box-sizing: border-box;
+}
+
 /* ================= HEADER ================= */
 #panelcontainer-bcc6d0bdac > .accordion-legend {
+    width: 100%;
+    grid-column: 1 / -1;
+
+    background: #eef2ff;
+    border-bottom: 1px solid #dde2ec;
+
+    padding: 16px 24px;
+
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a2e;
+
+    margin-bottom: 0;
+
     display: flex;
     align-items: center;
-    padding: 14px 18px;
-    background: #dbeafe;
-    color: #1e3a8a;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 18px;
+    gap: 10px;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    border-radius: 17px;
 }
 
 /* ================= HEADER ICON ================= */
 #panelcontainer-bcc6d0bdac > .accordion-legend::before {
     content: "";
-    width: 40px;
-    height: 35px;
-    margin-right: 10px;
+
+    display: inline-block;
+
+    width: 18px;
+    height: 18px;
+
+    flex-shrink: 0;
+
     background-image: url("https://cdn-icons-png.flaticon.com/128/2830/2830155.png");
-    background-size: contain;
+
     background-repeat: no-repeat;
+    background-size: contain;
     background-position: center;
+
     filter: grayscale(100%);
 }
-/* ================= FIELD BLOCK ================= */
-#panelcontainer-bcc6d0bdac .field-wrapper {
-    padding: 18px 16px 18px 24px;
-    position: relative;
-    border-bottom: 0px solid #ffffff;
+
+/* ================= CHEVRON ICON ================= */
+#panelcontainer-bcc6d0bdac > .accordion-legend::after {
+    display: inline-block;
+
+    width: 18px;
+    height: 18px;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
-/* ================= REMOVE LAST BORDER ================= */
-#panelcontainer-bcc6d0bdac .field-wrapper:last-child {
-    border-bottom: none;
+/* ================= COLLAPSED STATE ================= */
+#panelcontainer-bcc6d0bdac.collapsed {
+    padding-bottom: 0;
+    row-gap: 0;
 }
 
-/* ================= BLUE LEFT LINE ================= */
-#panelcontainer-bcc6d0bdac .field-wrapper::before {
-    content: "";
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 60px;
-    background: #a5b4fc;
-    border-radius: 3px;
+#panelcontainer-bcc6d0bdac.collapsed > *:not(.accordion-legend) {
+    display: none !important;
 }
 
-/* ================= LABEL ================= */
-#panelcontainer-bcc6d0bdac .field-label {
-    font-size: 18px;
-    color: #2b2e32;
-    font-weight: 500;
-    margin-bottom: 0px;
+#panelcontainer-bcc6d0bdac.collapsed > .accordion-legend::after {
+    transform: rotate(180deg);
 }
 
-/* ================= INPUT VALUE ================= */
-#panelcontainer-bcc6d0bdac input {
-    border: none;
-    background: #ffffff;
-    padding: 10px 12px;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #0f172a;
-    width: 100%;
-    outline: none;
-}
-
-/* ================= 3 COLUMN FIELDS ================= */
+/* ================= 4 COLUMN FIELDS ================= */
 #panelcontainer-bcc6d0bdac .col-4 {
-    width: 33.33%;
-    float: left;
+    grid-column: span 4;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+/* ================= FULL WIDTH FIELDS ================= */
+#panelcontainer-bcc6d0bdac .col-12 {
+    grid-column: 1 / -1;
     box-sizing: border-box;
 }
 
-/* ================= CLEAR FLOAT ================= */
-#panelcontainer-bcc6d0bdac::after {
+/* ================= FIELD BLOCK ================= */
+#panelcontainer-bcc6d0bdac .text-wrapper,
+#panelcontainer-bcc6d0bdac .date-wrapper {
+    padding: 14px 16px 10px 14px;
+    margin: 0;
+
+    position: relative;
+
+    box-sizing: border-box;
+
+    min-width: 0;
+}
+
+/* ================= LEFT ACCENT LINE ================= */
+#panelcontainer-bcc6d0bdac .text-wrapper::before,
+#panelcontainer-bcc6d0bdac .date-wrapper::before {
     content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 2.5px;
+    height: 36px;
+
+    background-color: #c7d0f8;
+
+    border-radius: 2px;
+}
+
+/* ================= LABEL ================= */
+#panelcontainer-bcc6d0bdac .text-wrapper > label,
+#panelcontainer-bcc6d0bdac .date-wrapper > label {
+    font-size: 0.72rem;
+    color: #888;
+    font-weight: 400;
+
     display: block;
-    clear: both;
+
+    margin-bottom: 4px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ================= INPUT VALUE ================= */
+#panelcontainer-bcc6d0bdac input[type="text"],
+#panelcontainer-bcc6d0bdac input[type="email"] {
+    border: none;
+    background: transparent;
+
+    padding: 0;
+
+    height: auto;
+
+    font-size: 0.92rem;
+    font-weight: 700;
+
+    color: #1a1a1a;
+
+    margin: 0;
+
+    width: 100%;
+    min-width: 0;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ================= REMOVE HOVER BORDER ================= */
+#panelcontainer-bcc6d0bdac input[type="text"]:hover,
+#panelcontainer-bcc6d0bdac input[type="email"]:hover {
+    border: none;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+    #panelcontainer-bcc6d0bdac .col-4 {
+        grid-column: span 6;
+    }
+}
+
+@media (max-width: 768px) {
+    #panelcontainer-bcc6d0bdac {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    #panelcontainer-bcc6d0bdac .col-4,
+    #panelcontainer-bcc6d0bdac .col-12 {
+        grid-column: 1 / -1;
+    }
+
+    #panelcontainer-bcc6d0bdac .text-wrapper,
+    #panelcontainer-bcc6d0bdac .date-wrapper {
+        padding-right: 12px;
+    }
+
+    #panelcontainer-bcc6d0bdac input[type="text"],
+    #panelcontainer-bcc6d0bdac input[type="email"] {
+        white-space: normal;
+    }
 }
 /* ================= VERIFY EMAIL PANEL ================= */
 #panelcontainer-96aa640418 {
-    border-radius: 12px;
-    overflow: hidden;
     background: #ffffff;
+    border: 1px solid #dde2ec;
+    border-radius: 12px;
+    padding: 0 0 20px;
+    box-shadow: 0 1px 8px rgb(0 0 0 / 6%);
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+
+    row-gap: 16px;
+    column-gap: 24px;
+
+    box-sizing: border-box;
+
     font-family: system-ui, sans-serif;
 }
 
 /* ================= HEADER ================= */
 #panelcontainer-96aa640418 > .accordion-legend {
+    width: 100%;
+    grid-column: 1 / -1;
+
+    background: #eef2ff;
+    border-bottom: 1px solid #dde2ec;
+
+    padding: 16px 24px;
+
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a2e;
+
+    margin-bottom: 0;
+
     display: flex;
     align-items: center;
-    padding: 14px 18px;
-    background: #dbeafe;
-    color: #1e3a8a;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 18px;
+    gap: 10px;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    border-radius: 17px;
 }
 
 /* ================= HEADER ICON ================= */
 #panelcontainer-96aa640418 > .accordion-legend::before {
     content: "";
-    width: 35px;
-    height: 30px;
-    margin-right: 10px;
+
+    display: inline-block;
+
+    width: 18px;
+    height: 18px;
+
+    flex-shrink: 0;
+
     background-image: url("https://cdn-icons-png.flaticon.com/128/646/646094.png");
-    background-size: contain;
+
     background-repeat: no-repeat;
+    background-size: contain;
     background-position: center;
+
     filter: grayscale(100%);
 }
 
-/* ================= FIELD BLOCK ================= */
-#panelcontainer-96aa640418 .field-wrapper {
-    padding: 18px 16px 18px 24px;
-    position: relative;
-    border-bottom: 0px solid #ffffff;
+/* ================= CHEVRON ICON ================= */
+#panelcontainer-96aa640418 > .accordion-legend::after {
+    display: inline-block;
+
+    width: 18px;
+    height: 18px;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
-/* ================= BLUE LEFT LINE ================= */
-#panelcontainer-96aa640418 .field-wrapper::before {
-    content: "";
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 60px;
-    background: #a5b4fc;
-    border-radius: 3px;
+/* ================= COLLAPSED STATE ================= */
+#panelcontainer-96aa640418.collapsed {
+    padding-bottom: 0;
+    row-gap: 0;
 }
-/* REMOVE EXTRA BLUE LINE FROM INNER FIELDSETS */
+
+#panelcontainer-96aa640418.collapsed > *:not(.accordion-legend) {
+    display: none !important;
+}
+
+#panelcontainer-96aa640418.collapsed > .accordion-legend::after {
+    transform: rotate(180deg);
+}
+
+/* ================= 6 COLUMN FIELDS ================= */
+#panelcontainer-96aa640418 .col-6 {
+    grid-column: span 6;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+/* ================= FULL WIDTH FIELDS ================= */
+#panelcontainer-96aa640418 .col-12 {
+    grid-column: 1 / -1;
+    box-sizing: border-box;
+}
+
+/* ================= FIELD BLOCK ================= */
+#panelcontainer-96aa640418 .text-wrapper,
+#panelcontainer-96aa640418 .email-wrapper,
+#panelcontainer-96aa640418 .date-wrapper {
+    padding: 14px 16px 10px 14px;
+    margin: 0;
+
+    position: relative;
+
+    box-sizing: border-box;
+
+    min-width: 0;
+}
+
+/* ================= LEFT ACCENT LINE ================= */
+#panelcontainer-96aa640418 .text-wrapper::before,
+#panelcontainer-96aa640418 .email-wrapper::before,
+#panelcontainer-96aa640418 .date-wrapper::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 2.5px;
+    height: 36px;
+
+    background-color: #c7d0f8;
+
+    border-radius: 2px;
+}
+
+/* ================= REMOVE EXTRA BLUE LINE FROM INNER FIELDSETS ================= */
 #panelcontainer-96aa640418 fieldset.field-wrapper::before {
     display: none;
+}
+
+/* ================= LABEL ================= */
+#panelcontainer-96aa640418 .text-wrapper > label,
+#panelcontainer-96aa640418 .email-wrapper > label,
+#panelcontainer-96aa640418 .date-wrapper > label {
+    font-size: 0.72rem;
+    color: #888;
+    font-weight: 400;
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ================= INPUT VALUE ================= */
+#panelcontainer-96aa640418 input[type="text"],
+#panelcontainer-96aa640418 input[type="email"] {
+    border: none;
+    background: transparent;
+
+    padding: 0;
+
+    height: auto;
+
+    font-size: 0.92rem;
+    font-weight: 700;
+
+    color: #1a1a1a;
+
+    margin: 0;
+
+    width: 100%;
+    min-width: 0;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ================= REMOVE HOVER BORDER ================= */
+#panelcontainer-96aa640418 input[type="text"]:hover,
+#panelcontainer-96aa640418 input[type="email"]:hover {
+    border: none;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+    #panelcontainer-96aa640418 .col-6 {
+        grid-column: span 12;
+    }
+}
+
+@media (max-width: 768px) {
+    #panelcontainer-96aa640418 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    #panelcontainer-96aa640418 .col-6,
+    #panelcontainer-96aa640418 .col-12 {
+        grid-column: 1 / -1;
+    }
+
+    #panelcontainer-96aa640418 .text-wrapper,
+    #panelcontainer-96aa640418 .email-wrapper,
+    #panelcontainer-96aa640418 .date-wrapper {
+        padding-right: 12px;
+    }
+
+    #panelcontainer-96aa640418 input[type="text"],
+    #panelcontainer-96aa640418 input[type="email"] {
+        white-space: normal;
+    }
 }
 /* ================= LABEL ================= */
 #panelcontainer-96aa640418 .field-label {
