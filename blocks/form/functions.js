@@ -128,6 +128,17 @@ function formatIndianCurrency(amount) {
   return `₹${amount.toLocaleString('en-IN', { maximumFractionDigits: 0 })}`;
 }
 
+function generateReferenceNumber() {
+  const refInput = document.querySelector('input[name="reference_number"]');
+
+  const refNo = Math.floor(1000000000 + Math.random() * 9000000000);
+
+  if (refInput) {
+    refInput.value = refNo;
+  }
+
+  return refNo.toString();
+}
 /**
  * EMI Calculation
  */
@@ -291,13 +302,14 @@ function mapFormFieldsToReview() {
   }
 
   setValById('textinput-ca40938a70', loanAmountForDisplay); // loan_amount
+  setValById('textinput-955c226224', loanAmountForDisplay); // second mapping 
   setValById('textinput-faa35cc00c', emiAmountDisplay); // emi_amount
   setValById('textinput-5ac96d3c9f', tenureForDisplay);
   setValById('textinput-2775dad98d', taxesDisplay); // processing_fee 
-  setValById('textinput-40ebd5a0e2', roiDisplay); // rate_of_interest ✅ FIXED
+  setValById('textinput-40ebd5a0e2', roiDisplay); // rate_of_interest 
   setValById('textinput-44ecd4a77b', resolvedEmployerName);// employer_name
   // schedule_of_charges (textinput-0295f6b473) — no direct source field; leave unchanged
-  setValById('textinput-efee62d637', selectLoanType); // type_of_loan ✅ FIXED
+  setValById('textinput-efee62d637', selectLoanType); // type_of_loan 
   // ─── 2. Personal Details ────────────────────────────────────────────────────
   // Full name: concatenate first + middle + last from the PAN name panel
   const firstName = getVal('first_name');
@@ -457,4 +469,5 @@ export {
   initEMICalculator,
   mapFormFieldsToReview,
   initFormFieldMapping,
+  generateReferenceNumber,
 };
