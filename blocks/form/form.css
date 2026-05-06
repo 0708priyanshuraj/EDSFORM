@@ -2900,7 +2900,7 @@ main .form form .field-form-button1777803450216 button:active {
     font-size: 18px;
     color: #2b2e32;
     font-weight:500;
-    margin-bottom: 6px;
+    margin-bottom: 0px;
 }
 /* ================= VALUE ================= */
 #panelcontainer-16e7f63046 input {
@@ -2924,4 +2924,285 @@ main .form form .field-form-button1777803450216 button:active {
     color: #2b2e32;
     font-weight: 500;
     /* margin-bottom: 6px; */
+}
+/* ================= PERSONAL DETAILS PANEL ================= */
+#panelcontainer-ee04fc6b59 .field-label {
+    font-size: 18px;
+    color: #2b2e32;
+    font-weight: 500;
+    margin-bottom: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* ================= HEADER ================= */
+#panelcontainer-ee04fc6b59 > .accordion-legend {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    background: #dbeafe;
+    color: #1e3a8a;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 18px;
+}
+
+/* ================= HEADER ICON ================= */
+#panelcontainer-ee04fc6b59 > .accordion-legend::before {
+    content: "";
+    width: 35px;
+    height: 40px;
+    margin-right: 8px;
+    background-image: url("https://cdn-icons-png.flaticon.com/128/747/747376.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* ================= FIELD BLOCK ================= */
+#panelcontainer-ee04fc6b59 .field-wrapper {
+    padding: 18px 16px 18px 24px;
+    position: relative;
+    border-bottom: 0px solid #ffffff;
+}
+
+/* ================= REMOVE LAST BORDER ================= */
+#panelcontainer-ee04fc6b59 .field-wrapper:last-child {
+    border-bottom: none;
+}
+
+/* ================= BLUE LEFT LINE ================= */
+#panelcontainer-ee04fc6b59 .field-wrapper::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60px;
+    background: #a5b4fc;
+    border-radius: 3px;
+}
+
+/* ================= LABEL ================= */
+#panelcontainer-ee04fc6b59 .field-label {
+    font-size: 18px;
+    color: #2b2e32;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+/* ================= INPUT VALUE ================= */
+#panelcontainer-ee04fc6b59 input {
+    border: none;
+    background: #ffffff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    width: 100%;
+    outline: none;
+}
+
+/* ================= FULL WIDTH FIELDS ================= */
+#panelcontainer-ee04fc6b59 .col-12 {
+    width: 100%;
+}
+
+/* ================= 3 COLUMN FIELDS ================= */
+#panelcontainer-ee04fc6b59 .col-3 {
+    width: 25%;
+    float: left;
+    box-sizing: border-box;
+}
+
+/* ================= CLEAR FLOAT ================= */
+#panelcontainer-ee04fc6b59::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+/* ================= SALARY ACCOUNT DETAILS PANEL ================= */
+#panelcontainer-bcc6d0bdac .field-label {
+    font-size: 18px;
+    color: #2b2e32;
+    font-weight: 500;
+    margin-bottom: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ================= HEADER ================= */
+#panelcontainer-bcc6d0bdac > .accordion-legend {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    background: #dbeafe;
+    color: #1e3a8a;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 18px;
+}
+
+/* ================= HEADER ICON ================= */
+#panelcontainer-bcc6d0bdac > .accordion-legend::before {
+    content: "";
+    width: 40px;
+    height: 35px;
+    margin-right: 10px;
+    background-image: url("https://cdn-icons-png.flaticon.com/128/2830/2830155.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: grayscale(100%);
+}
+/* ================= FIELD BLOCK ================= */
+#panelcontainer-bcc6d0bdac .field-wrapper {
+    padding: 18px 16px 18px 24px;
+    position: relative;
+    border-bottom: 0px solid #ffffff;
+}
+
+/* ================= REMOVE LAST BORDER ================= */
+#panelcontainer-bcc6d0bdac .field-wrapper:last-child {
+    border-bottom: none;
+}
+
+/* ================= BLUE LEFT LINE ================= */
+#panelcontainer-bcc6d0bdac .field-wrapper::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60px;
+    background: #a5b4fc;
+    border-radius: 3px;
+}
+
+/* ================= LABEL ================= */
+#panelcontainer-bcc6d0bdac .field-label {
+    font-size: 18px;
+    color: #2b2e32;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+/* ================= INPUT VALUE ================= */
+#panelcontainer-bcc6d0bdac input {
+    border: none;
+    background: #ffffff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    width: 100%;
+    outline: none;
+}
+
+/* ================= 3 COLUMN FIELDS ================= */
+#panelcontainer-bcc6d0bdac .col-4 {
+    width: 33.33%;
+    float: left;
+    box-sizing: border-box;
+}
+
+/* ================= CLEAR FLOAT ================= */
+#panelcontainer-bcc6d0bdac::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+/* ================= VERIFY EMAIL PANEL ================= */
+#panelcontainer-96aa640418 {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+    font-family: system-ui, sans-serif;
+}
+
+/* ================= HEADER ================= */
+#panelcontainer-96aa640418 > .accordion-legend {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    background: #dbeafe;
+    color: #1e3a8a;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 18px;
+}
+
+/* ================= HEADER ICON ================= */
+#panelcontainer-96aa640418 > .accordion-legend::before {
+    content: "";
+    width: 35px;
+    height: 30px;
+    margin-right: 10px;
+    background-image: url("https://cdn-icons-png.flaticon.com/128/646/646094.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: grayscale(100%);
+}
+
+/* ================= FIELD BLOCK ================= */
+#panelcontainer-96aa640418 .field-wrapper {
+    padding: 18px 16px 18px 24px;
+    position: relative;
+    border-bottom: 0px solid #ffffff;
+}
+
+/* ================= BLUE LEFT LINE ================= */
+#panelcontainer-96aa640418 .field-wrapper::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60px;
+    background: #a5b4fc;
+    border-radius: 3px;
+}
+
+/* ================= LABEL ================= */
+#panelcontainer-96aa640418 .field-label {
+    font-size: 18px;
+    color: #2b2e32;
+    font-weight: 500;
+    margin-bottom: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ================= INPUT ================= */
+#panelcontainer-96aa640418 input {
+    border: none;
+    background: #ffffff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    width: 100%;
+    outline: none;
+}
+
+/* ================= TWO COLUMN LAYOUT ================= */
+#panelcontainer-96aa640418 .col-6 {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+}
+
+/* ================= CLEAR FLOAT ================= */
+#panelcontainer-96aa640418::after {
+    content: "";
+    display: block;
+    clear: both;
 }
