@@ -2991,28 +2991,17 @@ main .form form .field-form-button1777803450216 button:active {
     margin-bottom: 0px;
 }
 
-/* ================= INPUT VALUE BOX ================= */
+/* ================= INPUT VALUE ================= */
 #panelcontainer-ee04fc6b59 input {
     border: none;
     background: #ffffff;
     padding: 10px 12px;
-    margin-top: 8px;
     border-radius: 8px;
     font-size: 15px;
     font-weight: 600;
-    color: #0f172a !important;
-    -webkit-text-fill-color: #0f172a !important;
+    color: #0f172a;
     width: 100%;
     outline: none;
-    opacity: 1 !important;
-    box-sizing: border-box;
-}
-
-/* ================= READONLY FIX ================= */
-#panelcontainer-ee04fc6b59 input[readonly] {
-    color: #0f172a !important;
-    -webkit-text-fill-color: #0f172a !important;
-    opacity: 1 !important;
 }
 
 /* ================= FULL WIDTH FIELDS ================= */
