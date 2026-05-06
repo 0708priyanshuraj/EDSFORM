@@ -3168,7 +3168,10 @@ main .form form .field-form-button1777803450216 button:active {
     background: #a5b4fc;
     border-radius: 3px;
 }
-
+/* REMOVE EXTRA BLUE LINE FROM INNER FIELDSETS */
+#panelcontainer-96aa640418 fieldset.field-wrapper::before {
+    display: none;
+}
 /* ================= LABEL ================= */
 #panelcontainer-96aa640418 .field-label {
     font-size: 18px;
