@@ -1664,189 +1664,228 @@ main .form form .field-submit-otp button:disabled {
         grid-column: span 12;
     }
 }
-/* ================= PANEL CONTAINER ================= */
-#panelcontainer-e48b52eb75 {
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 24px;
-    background: #ffffff;
+/* Mobile number field */
 
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 16px;
+main .form form .field-mobile-number {
 
-    margin-bottom: 20px;
-    overflow: hidden;
-}
+    grid-column: span 4;
 
-/* ================= HEADER BAR ================= */
-#panelcontainer-e48b52eb75 > .field-label {
-    grid-column: span 12;
-
-    width: 100%;
     display: flex;
-    align-items: center;
-    gap: 8px;
 
-    background: #dbeafe;
-    color: #1e293b;
-
-    font-size: 1rem;
-    font-weight: 700;
-
-    padding: 14px 18px;
-    border-radius: 10px;
-    margin-bottom: 4px;
-}
-
-/* ================= HEADER ICON ================= */
-#panelcontainer-e48b52eb75 > .field-label::before {
-    content: "";
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231e3a8a' stroke-width='1.8'><path stroke-linecap='round' stroke-linejoin='round' d='M20 13V8a2 2 0 00-2-2h-3V5a3 3 0 00-6 0v1H6a2 2 0 00-2 2v5m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0H4'/></svg>");
-}
-
-/* ================= FIELD WRAPPER ================= */
-#panelcontainer-e48b52eb75 .field-wrapper {
-    display: flex;
     flex-direction: column;
+
+    gap: 0;
+
     position: relative;
+
 }
-
-/* ================= GRID WIDTHS ================= */
-
-/* HALF WIDTH */
-#panelcontainer-e48b52eb75 .col-6 {
-    grid-column: span 6;
-}
-
-/* FULL WIDTH */
-#panelcontainer-e48b52eb75 .col-12 {
-    grid-column: span 12;
-}
-
-/* ================= LABEL ================= */
-#panelcontainer-e48b52eb75 .field-wrapper > .field-label {
-    background: transparent !important;
-    padding: 0;
-    margin-bottom: 4px;
-    border-radius: 0;
+ 
+main .form form .field-mobile-number > label {
 
     font-size: 0.78rem;
+
     font-weight: 600;
+
     color: #4b5563;
 
-    display: block;
-}
+    margin-bottom: 4px;
 
-/* ================= INPUT / SELECT ================= */
-#panelcontainer-e48b52eb75 input,
-#panelcontainer-e48b52eb75 select {
-    width: 100%;
+}
+ 
+main .form form .field-mobile-number input {
+
     height: 48px;
 
     border: 1.5px solid #d0d5dd;
+
     border-radius: 8px;
 
-    background-color: #ffffff;
+    background-color: #fff;
 
     font-size: 0.95rem;
+
+    font-weight: 500;
+
     color: #111827;
 
-    padding: 0 14px 0 40px;
     margin: 0;
 
+    padding-left: 82px;
+
     transition: border-color 0.2s, box-shadow 0.2s;
-}
 
-/* ================= FOCUS ================= */
-#panelcontainer-e48b52eb75 input:focus,
-#panelcontainer-e48b52eb75 select:focus {
+}
+ 
+main .form form .field-mobile-number input:focus {
+
     outline: none;
+
     border-color: #a5b4fc;
+
     box-shadow: 0 0 0 3px rgb(165 180 252 / 20%);
-    background: #ffffff;
+
+}
+ 
+main .form form .field-mobile-number input:invalid:not(:placeholder-shown) {
+
+    border-color: #f87171;
+
+}
+ 
+main .form form .field-mobile-number .field-description {
+
+    font-size: 0.78rem;
+
+    color: #6b7280;
+
+    margin-top: 4px;
+
+    font-style: italic;
+
 }
 
-/* ================= FIELD ICON BASE ================= */
-#panelcontainer-e48b52eb75 .field-wrapper::before {
-    content: "";
-    position: absolute;
+ 
+/* ── Personal Details Panel ── */
 
-    left: 12px;
-    top: 38px;
+main .form form .field-personal-details-panel {
 
-    width: 16px;
-    height: 16px;
+    border: 1px solid #e5e7eb;
 
-    background-size: contain;
-    background-repeat: no-repeat;
+    border-radius: 12px;
+
+    padding: 24px;
+
+    background: #fff;
+
+    display: grid;
+
+    grid-template-columns: repeat(12, 1fr);
+
+    gap: 16px;
+
 }
+ 
+main .form form .field-personal-details-panel > legend {
 
-/* ================= VERIFY BUTTON WRAPPER ================= */
-#panelcontainer-e48b52eb75 .field-verify-button {
-    display: flex;
-    align-items: flex-end;
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    color: #1e293b;
+
+    padding: 0 8px;
+
+    margin-bottom: 4px;
+
 }
+ 
+/* ── Gender dropdown ── */
 
-/* ================= VERIFY BUTTON ================= */
-#panelcontainer-e48b52eb75 .button {
-    width: 100%;
-    height: 48px;
+main .form form .field-personal-details-panel .field-gender {
 
-    padding: 0 16px;
+    grid-column: span 6;
 
-    border-radius: 8px;
-    border: none;
+}
+ 
+main .form form .field-personal-details-panel .field-gender > label {
 
-    background: #2563eb;
-    color: #ffffff;
+    font-size: 0.78rem;
 
-    font-size: 14px;
     font-weight: 600;
 
+    color: #4b5563;
+
+    display: block;
+
+    margin-bottom: 4px;
+
+}
+ 
+main .form form .field-personal-details-panel .field-gender select {
+
+    width: 100%;
+
+    height: 48px;
+
+    border: 1.5px solid #d0d5dd;
+
+    border-radius: 8px;
+
+    background-color: #fff;
+
+    font-size: 0.95rem;
+
+    color: #111827;
+
+    padding: 0 14px;
+
+    margin: 0;
+
     cursor: pointer;
-    transition: 0.2s ease;
-}
 
-#panelcontainer-e48b52eb75 .button:hover {
-    background: #1d4ed8;
-}
+    transition: border-color 0.2s, box-shadow 0.2s;
 
-/* ================= EMAIL + BUTTON ALIGN ================= */
-#panelcontainer-e48b52eb75 .field-enter-email-id {
-    grid-column: span 9;
 }
+ 
+main .form form .field-personal-details-panel .field-gender select:focus {
 
-#panelcontainer-e48b52eb75 .field-verify-button {
-    grid-column: span 3;
+    outline: none;
+
+    border-color: #a5b4fc;
+
+    box-shadow: 0 0 0 3px rgb(165 180 252 / 20%);
+
 }
+ 
+/* ── PAN Number ── */
 
-/* ================= HIDE EXTRA VERIFY WRAPPERS ================= */
-#panelcontainer-e48b52eb75 .field-verify-email-button {
+main .form form .field-personal-details-panel .field-pan-number {
+
+    grid-column: span 6;
+
+}
+ 
+main .form form .field-personal-details-panel .field-pan-number > label {
+
+    font-size: 0.78rem;
+
+    font-weight: 600;
+
+    color: #4b5563;
+
+    display: block;
+
+    margin-bottom: 4px;
+
+}
+ 
+/* ── Email ID + Verify ── */
+
+main .form form .field-personal-details-panel .field-email-id {
+
+    grid-column: span 12;
+
+}
+ 
+main .form form .field-personal-details-panel .field-email-id > label {
+
+    font-size: 0.78rem;
+
+    font-weight: 600;
+
+    color: #4b5563;
+
+}
+ 
+/* ── Hide the stray extra verify button wrappers ── */
+
+main .form form .field-personal-details-panel .field-verify-email-button {
+
     display: none !important;
+
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 600px) {
-
-    #panelcontainer-e48b52eb75 {
-        grid-template-columns: 1fr;
-    }
-
-    #panelcontainer-e48b52eb75 .col-6,
-    #panelcontainer-e48b52eb75 .col-12,
-    #panelcontainer-e48b52eb75 .field-enter-email-id,
-    #panelcontainer-e48b52eb75 .field-verify-button {
-        grid-column: span 12;
-    }
-}
+ 
 /* ================= PANEL CONTAINER ================= */
 #panelcontainer-5269a51906 {
   background: #ffffff;
