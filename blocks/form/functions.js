@@ -62,6 +62,10 @@ function maskMobileNumber(mobileNumber) {
 
 let otpTimerInterval;
 
+const OTP_API_BASE = 'https://dimmer-headroom-feed.ngrok-free.dev';
+
+let attemptsLeft = 3;
+
 /**
  * Start OTP timer - counts down from 30 seconds
  * Disables resend button during countdown
@@ -121,6 +125,158 @@ function stopOtpTimer() {
   }
 }
 
+/**
+ * Generate OTP
+ */
+async function generateOtp(e) {
+  // Prevent form refresh
+  if (e) e.preventDefault();
+
+  try {
+    // Mobile number
+    const mobile = document.getElementById(
+      'textinput-ab0417d81c',
+    )?.value;
+
+    // DOB
+    const dob = document.getElementById(
+      'datepicker-2e2ea3b883',
+    )?.value;
+
+    // API call
+    const res = await fetch(
+      `${OTP_API_BASE}/api/generate-otp`,
+      {
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify({
+          mobile,
+          dob,
+        }),
+      },
+    );
+
+    const data = await res.json();
+
+    console.log('Generate OTP:', data);
+
+    // SUCCESS
+    if (res.ok) {
+      // Reset attempts
+      attemptsLeft = 3;
+
+      // Show attempts
+      const validationField = document.getElementById(
+        'textinput-249c33fc5d',
+      );
+
+      if (validationField) {
+        validationField.value = `Attempts Left: ${attemptsLeft}/3`;
+      }
+
+      // Start timer
+      startOtpTimer();
+    }
+  } catch (err) {
+    console.error(
+      'Generate OTP Error:',
+      err,
+    );
+  }
+}
+
+/**
+ * Validate OTP
+ */
+async function validateOtp(e) {
+  // Prevent form refresh
+  if (e) e.preventDefault();
+
+  try {
+    // Mobile number
+    const mobile = document.getElementById(
+      'textinput-ab0417d81c',
+    )?.value;
+
+    // OTP
+    const otp = document.getElementById(
+      'textinput-824653b80f',
+    )?.value;
+
+    // API call
+    const res = await fetch(
+      `${OTP_API_BASE}/api/validate-otp`,
+      {
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify({
+          mobile,
+          otp,
+        }),
+      },
+    );
+
+    const data = await res.json();
+
+    console.log('Validate OTP:', data);
+
+    const validationField = document.getElementById(
+      'textinput-249c33fc5d',
+    );
+
+    // SUCCESS
+    if (res.ok) {
+      if (validationField) {
+        validationField.value = 'OTP Verified Successfully';
+      }
+
+      // Stop timer
+      stopOtpTimer();
+    }
+    // FAILED
+    else {
+      // Decrease attempts
+      attemptsLeft -= 1;
+
+      // Prevent negative values
+      if (attemptsLeft < 0) {
+        attemptsLeft = 0;
+      }
+
+      // Show attempts
+      if (validationField) {
+        validationField.value = `Attempts Left: ${attemptsLeft}/3`;
+      }
+
+      // Enable resend button
+      const resendBtn = document.querySelector(
+        '.field-resend-button button',
+      );
+
+      if (resendBtn) {
+        resendBtn.disabled = false;
+      }
+
+      // Log backend message
+      if (data.message) {
+        console.log(data.message);
+      }
+    }
+  } catch (err) {
+    console.error(
+      'Validate OTP Error:',
+      err,
+    );
+  }
+}
 /**
  * Format number to Indian currency format
  */
@@ -302,14 +458,14 @@ function mapFormFieldsToReview() {
   }
 
   setValById('textinput-ca40938a70', loanAmountForDisplay); // loan_amount
-  setValById('textinput-955c226224', loanAmountForDisplay); // second mapping 
+  setValById('textinput-955c226224', loanAmountForDisplay); // second mapping
   setValById('textinput-faa35cc00c', emiAmountDisplay); // emi_amount
   setValById('textinput-5ac96d3c9f', tenureForDisplay);
-  setValById('textinput-2775dad98d', taxesDisplay); // processing_fee 
-  setValById('textinput-40ebd5a0e2', roiDisplay); // rate_of_interest 
+  setValById('textinput-2775dad98d', taxesDisplay); // processing_fee
+  setValById('textinput-40ebd5a0e2', roiDisplay); // rate_of_interest
   setValById('textinput-44ecd4a77b', resolvedEmployerName);// employer_name
   // schedule_of_charges (textinput-0295f6b473) — no direct source field; leave unchanged
-  setValById('textinput-efee62d637', selectLoanType); // type_of_loan 
+  setValById('textinput-efee62d637', selectLoanType); // type_of_loan
   // ─── 2. Personal Details ────────────────────────────────────────────────────
   // Full name: concatenate first + middle + last from the PAN name panel
   const firstName = getVal('first_name');
@@ -347,7 +503,7 @@ function mapFormFieldsToReview() {
 
   setValById('textinput-4e73ae7b41', panNumber); // pan
   setValById('textinput-1e826e3496', aadhaarAddress); // current_address
-  setValById('textinput-2a6ea8b0d8', residenceType); // residence_type 
+  setValById('textinput-2a6ea8b0d8', residenceType); // residence_type
 
   // ─── 3. Salary Account Details ──────────────────────────────────────────────
   // Salary account number (textinput-6cd7d23dbf → name="salary_account")
@@ -358,7 +514,7 @@ function mapFormFieldsToReview() {
   const salaryBankOther = getVal('salary_bank_other');
   const salaryBankLabel = getRadioLabel('salary_bank');
   const bankName = salaryBankOther.trim() || salaryBankLabel;
- 
+
   setValById('textinput-86936ede94', salaryAccountNumber); // salary_account_number
   setValById('textinput-7c948823f5', ifscSource); // ifsc
   setValById('textinput-99ee84213a', bankName); // bank_name
@@ -377,7 +533,7 @@ function mapFormFieldsToReview() {
   const workEmail = getValById('emailinput-20d267620a');
 
   setValById('emailinput-7caf42d1f8', personalEmail); // personal_email_id // personal_email_id
-  setValById('emailinput-2a658c4c9f', workEmail); // work_email_id 
+  setValById('emailinput-2a658c4c9f', workEmail); // work_email_id
 }
 
 /**
@@ -453,6 +609,55 @@ function initFormFieldMapping() {
     proceedButton.addEventListener('click', mapFormFieldsToReview);
   }
 
+  // =============================================
+  // VIEW LOAN ELIGIBILITY BUTTON
+  // =============================================
+  const eligibilityButton = document.getElementById(
+    'submit-52b8213e98',
+  );
+
+  if (eligibilityButton) {
+    eligibilityButton.addEventListener('click', (e) => {
+      // Prevent form refresh
+      e.preventDefault();
+
+      // Generate OTP
+      generateOtp(e);
+    });
+  }
+
+  // =============================================
+  // RESEND OTP BUTTON
+  // =============================================
+  const resendButton = document.getElementById(
+    'button-c8e85fa9d2',
+  );
+
+  if (resendButton) {
+    resendButton.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // Generate OTP again
+      generateOtp(e);
+    });
+  }
+
+  // =============================================
+  // SUBMIT OTP BUTTON
+  // =============================================
+  const submitOtpButton = document.getElementById(
+    'submit-aff44386ed',
+  );
+
+  if (submitOtpButton) {
+    submitOtpButton.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // Validate OTP
+      validateOtp(e);
+    });
+  }
+
   // Initial run
   mapFormFieldsToReview();
 }
@@ -470,4 +675,6 @@ export {
   mapFormFieldsToReview,
   initFormFieldMapping,
   generateReferenceNumber,
+  generateOtp,
+  validateOtp,
 };
