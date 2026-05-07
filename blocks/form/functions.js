@@ -1132,18 +1132,31 @@ function validateEmail() {
 }
 
 /* ================= BUTTON EVENTS ================= */
+/* ================= BUTTON EVENTS ================= */
 
-document
-  .getElementById('button-3298011112')
-  .addEventListener('click', () => {
-    validatePAN();
-  });
+setTimeout(() => {
+  const panButton = document.getElementById('button-3298011112');
 
-document
-  .getElementById('button-a8290da259')
-  .addEventListener('click', () => {
-    validateEmail();
-  });
+  const emailButton = document.getElementById('button-a8290da259');
+
+  if (panButton) {
+    panButton.addEventListener(
+      'click',
+      () => {
+        validatePAN();
+      },
+    );
+  }
+
+  if (emailButton) {
+    emailButton.addEventListener(
+      'click',
+      () => {
+        validateEmail();
+      },
+    );
+  }
+}, 2000);
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName,
