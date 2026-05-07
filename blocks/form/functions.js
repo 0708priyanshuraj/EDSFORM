@@ -714,7 +714,7 @@ setTimeout(() => {
   initEMICalculator();
 }, 2000);
 
-function mapFormFieldsToReview() {
+async function mapFormFieldsToReview() {
   // ─── Helpers ────────────────────────────────────────────────────────────────
 
   /**
@@ -758,115 +758,287 @@ function mapFormFieldsToReview() {
   };
 
   // ─── 1. Loan Details ────────────────────────────────────────────────────────
-  // Loan amount comes from the range slider (numberinput-b5966ec03e)
   const rawLoanAmount = getValById('numberinput-b5966ec03e');
-  // Tenure comes from the tenure range slider (numberinput-0340fd7e24)
+
   const rawTenure = getValById('numberinput-0340fd7e24');
-  // EMI Amount display field (textinput-b5b7374de8 — label "EMI Amount")
+
   const emiAmountDisplay = getValById('textinput-b5b7374de8');
-  // Rate of Interest display field (textinput-1c459dc1b4)
+
   const roiDisplay = getValById('textinput-1c459dc1b4');
-  // Taxes display field (textinput-ec3ebad510)
+
   const taxesDisplay = getValById('textinput-ec3ebad510');
-  // Employer name: prefer free-text entry; fall back to dropdown label
+
   const enterEmployerName = getVal('textinput-c124fb16fa');
+
   const employerDropdownVal = getVal('employer_company_name');
-  const resolvedEmployerName = enterEmployerName || (employerDropdownVal !== 'others' ? employerDropdownVal : '');
-  // Loan type dropdown
+
+  const resolvedEmployerName = enterEmployerName
+    || (employerDropdownVal !== 'others'
+      ? employerDropdownVal
+      : '');
+
   const selectLoanType = getVal('select_loan_type');
 
-  // Format loan amount for display if it is a raw number
   let loanAmountForDisplay = rawLoanAmount;
+
   if (rawLoanAmount && !rawLoanAmount.includes('₹')) {
     const num = parseFloat(rawLoanAmount);
-    if (!Number.isNaN(num)) loanAmountForDisplay = formatIndianCurrency(num);
+
+    if (!Number.isNaN(num)) {
+      loanAmountForDisplay = formatIndianCurrency(num);
+    }
   }
 
-  // Format tenure for display if it is a raw number
   let tenureForDisplay = rawTenure;
+
   if (rawTenure && !/months/.test(rawTenure)) {
     const num = parseFloat(rawTenure);
-    if (!Number.isNaN(num)) tenureForDisplay = `${Math.round(num)} months`;
+
+    if (!Number.isNaN(num)) {
+      tenureForDisplay = `${Math.round(num)} months`;
+    }
   }
 
-  setValById('textinput-ca40938a70', loanAmountForDisplay); // loan_amount
-  setValById('textinput-955c226224', loanAmountForDisplay); // second mapping
-  setValById('textinput-faa35cc00c', emiAmountDisplay); // emi_amount
-  setValById('textinput-5ac96d3c9f', tenureForDisplay);
-  setValById('textinput-2775dad98d', taxesDisplay); // processing_fee
-  setValById('textinput-40ebd5a0e2', roiDisplay); // rate_of_interest
-  setValById('textinput-44ecd4a77b', resolvedEmployerName);// employer_name
-  // schedule_of_charges (textinput-0295f6b473) — no direct source field; leave unchanged
-  setValById('textinput-efee62d637', selectLoanType); // type_of_loan
+  setValById(
+    'textinput-ca40938a70',
+    loanAmountForDisplay,
+  );
+
+  setValById(
+    'textinput-955c226224',
+    loanAmountForDisplay,
+  );
+
+  setValById(
+    'textinput-faa35cc00c',
+    emiAmountDisplay,
+  );
+
+  setValById(
+    'textinput-5ac96d3c9f',
+    tenureForDisplay,
+  );
+
+  setValById(
+    'textinput-2775dad98d',
+    taxesDisplay,
+  );
+
+  setValById(
+    'textinput-40ebd5a0e2',
+    roiDisplay,
+  );
+
+  setValById(
+    'textinput-44ecd4a77b',
+    resolvedEmployerName,
+  );
+
+  setValById(
+    'textinput-efee62d637',
+    selectLoanType,
+  );
+
   // ─── 2. Personal Details ────────────────────────────────────────────────────
-  // Full name: concatenate first + middle + last from the PAN name panel
+
   const firstName = getVal('first_name');
+
   const middleName = getVal('middle_name');
+
   const lastName = getVal('last_name');
-  const fullName = [firstName, middleName, lastName].filter(Boolean).join(' ').trim();
 
-  // Mobile number from the welcome panel (textinput-ab0417d81c)
-  const mobileNumber = getValById('textinput-ab0417d81c');
+  const fullName = [
+    firstName,
+    middleName,
+    lastName,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .trim();
 
-  // Date of birth from the welcome panel (datepicker-2e2ea3b883)
-  const dobSource = document.getElementById('datepicker-2e2ea3b883');
-  const dobDisplayValue = dobSource ? (dobSource.getAttribute('display-value') || dobSource.value || '') : '';
-  const dobEditValue = dobSource ? (dobSource.getAttribute('edit-value') || dobSource.value || '') : '';
+  const mobileNumber = getValById(
+    'textinput-ab0417d81c',
+  );
 
-  // PAN number
+  const dobSource = document.getElementById(
+    'datepicker-2e2ea3b883',
+  );
+
+  const dobDisplayValue = dobSource
+    ? (
+      dobSource.getAttribute('display-value')
+      || dobSource.value
+      || ''
+    )
+    : '';
+
+  const dobEditValue = dobSource
+    ? (
+      dobSource.getAttribute('edit-value')
+      || dobSource.value
+      || ''
+    )
+    : '';
+
   const panNumber = getVal('pan_number');
 
-  // Address from Aadhaar records
-  const aadhaarAddress = getVal('address_as_per_aadhaar_records');
+  const aadhaarAddress = getVal(
+    'address_as_per_aadhaar_records',
+  );
 
-  // Residence type: label of the selected "is_customers_aadhaar_address" radio
-  const residenceType = getRadioLabel('is_customers_aadhaar_address');
+  const residenceType = getRadioLabel(
+    'is_customers_aadhaar_address',
+  );
 
-  setValById('textinput-73aef4c181', fullName); // full_name
-  setValById('textinput-48f479429a', mobileNumber); // mobile_number
+  setValById(
+    'textinput-73aef4c181',
+    fullName,
+  );
 
-  // Date of birth target (datepicker-a8de48027a)
-  const dobTarget = document.getElementById('datepicker-a8de48027a');
+  setValById(
+    'textinput-48f479429a',
+    mobileNumber,
+  );
+
+  const dobTarget = document.getElementById(
+    'datepicker-a8de48027a',
+  );
+
   if (dobTarget) {
     dobTarget.value = dobDisplayValue;
-    dobTarget.setAttribute('display-value', dobDisplayValue);
-    dobTarget.setAttribute('edit-value', dobEditValue);
+
+    dobTarget.setAttribute(
+      'display-value',
+      dobDisplayValue,
+    );
+
+    dobTarget.setAttribute(
+      'edit-value',
+      dobEditValue,
+    );
   }
-  setValById('textinput-4e73ae7b41', panNumber); // pan
-  setValById('textinput-1e826e3496', aadhaarAddress); // current_address
-  setValById('textinput-2a6ea8b0d8', residenceType); // residence_type
+
+  setValById(
+    'textinput-4e73ae7b41',
+    panNumber,
+  );
+
+  setValById(
+    'textinput-1e826e3496',
+    aadhaarAddress,
+  );
+
+  setValById(
+    'textinput-2a6ea8b0d8',
+    residenceType,
+  );
 
   // ─── 3. Salary Account Details ──────────────────────────────────────────────
-  // Salary account number (textinput-6cd7d23dbf → name="salary_account")
-  const salaryAccountNumber = getVal('salary_account');
-  // IFSC (textinput-31c9044207 → name="ifsc") — source panel has one ifsc field
-  const ifscSource = getValById('textinput-31c9044207');
-  // Bank name: prefer "Other" text; otherwise use the radio button label
-  const salaryBankOther = getVal('salary_bank_other');
-  const salaryBankLabel = getRadioLabel('salary_bank');
-  const bankName = salaryBankOther.trim() || salaryBankLabel;
 
-  setValById('textinput-86936ede94', salaryAccountNumber); // salary_account_number
-  setValById('textinput-7c948823f5', ifscSource); // ifsc
-  setValById('textinput-99ee84213a', bankName); // bank_name
+  const salaryAccountNumber = getVal(
+    'salary_account',
+  );
 
-  // ─── 4. Office Address ──────────────────────────────────────────────────────
-  // No explicit "office address" source field in the provided HTML.
-  // The employer name is already mapped above; industry type is available if needed.
-  // current_employer_address (textinput-76f014ea9b) — leave unchanged unless a source
-  // field is added later; map employer name as a fallback label.
-  // (no-op — placeholder for future source field)
+  const ifscSource = getValById(
+    'textinput-31c9044207',
+  );
+
+  const salaryBankOther = getVal(
+    'salary_bank_other',
+  );
+
+  const salaryBankLabel = getRadioLabel(
+    'salary_bank',
+  );
+
+  const bankName = salaryBankOther.trim()
+    || salaryBankLabel;
+
+  setValById(
+    'textinput-86936ede94',
+    salaryAccountNumber,
+  );
+
+  setValById(
+    'textinput-7c948823f5',
+    ifscSource,
+  );
+
+  setValById(
+    'textinput-99ee84213a',
+    bankName,
+  );
 
   // ─── 5. Verify Email ID ─────────────────────────────────────────────────────
-  // Personal email: emailinput-d61e9efa6c (name="enter_email_id" inside personal_details panel)
-  const personalEmail = getValById('emailinput-d61e9efa6c');
-  // Work email: emailinput-20d267620a (name="enter_email_id" inside work_email_id_panel)
-  const workEmail = getValById('emailinput-20d267620a');
 
-  setValById('emailinput-7caf42d1f8', personalEmail); // personal_email_id // personal_email_id
-  setValById('emailinput-2a658c4c9f', workEmail); // work_email_id
+  const personalEmail = getValById(
+    'emailinput-d61e9efa6c',
+  );
+
+  const workEmail = getValById(
+    'emailinput-20d267620a',
+  );
+
+  setValById(
+    'emailinput-7caf42d1f8',
+    personalEmail,
+  );
+
+  setValById(
+    'emailinput-2a658c4c9f',
+    workEmail,
+  );
+
+  // =========================================
+  // BACKEND MAPPING API
+  // =========================================
+
+  const payload = {
+
+    mobile: mobileNumber,
+
+    firstName,
+
+    middleName,
+
+    lastName,
+
+    loanAmount: rawLoanAmount,
+
+  };
+
+  try {
+    const response = await fetch(
+
+      `${OTP_API_BASE}/api/map-review-fields`,
+
+      {
+
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify(payload),
+
+      },
+
+    );
+
+    const result = await response.json();
+
+    console.log(
+      'Mapped Review Response:',
+      result,
+    );
+  } catch (err) {
+    console.error(
+      'Mapping API Error:',
+      err,
+    );
+  }
 }
-
 /**
  * Initialize form field mapping.
  * Attaches input/change listeners to all source fields so the review section
@@ -1362,7 +1534,7 @@ function initBankValidation() {
   });
 }
 setTimeout(() => {
-    initBankValidation();
+  initBankValidation();
 }, 2000);
 // eslint-disable-next-line import/prefer-default-export
 export {
