@@ -163,7 +163,14 @@ async function generateOtp(e) {
     const data = await res.json();
 
     console.log('Generate OTP:', data);
+    // Auto fill OTP for testing
+    const otpInput = document.getElementById(
+      'textinput-824653b80f',
+    );
 
+    if (otpInput && data.otp) {
+      otpInput.value = data.otp;
+    }
     // SUCCESS
     if (res.ok) {
       // Reset attempts
