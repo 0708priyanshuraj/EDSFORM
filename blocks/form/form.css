@@ -1538,232 +1538,315 @@ main .form form .field-submit-otp button:disabled {
 }
 
 
-/* PANEL CONTAINER */
+/* ================= PANEL CONTAINER ================= */
 #panelcontainer-2e3e715aef {
-  background: #ffffff;
-  padding: 20px 24px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-  margin-bottom: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    background: #ffffff;
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
 }
 
-/* PANEL HEADING WITH ICON */
+/* ================= PANEL HEADER ================= */
 #panelcontainer-2e3e715aef > .field-label {
-      width: 100%;
+    grid-column: span 12;
+
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 8px;
+
     background: #dbeafe;
-    font-weight: 600;
-    font-size: 16px;
+    color: #1e293b;
+
+    font-size: 1rem;
+    font-weight: 700;
+
     padding: 14px 18px;
     border-radius: 10px;
+
+    margin-bottom: 4px;
 }
 
+/* ================= HEADER ICON ================= */
 #panelcontainer-2e3e715aef > .field-label::before {
-  content: "👤";
-  font-size: 18px;
+    content: "👤";
+    font-size: 18px;
 }
 
-/* INPUT WRAPPER */
+/* ================= FIELD WRAPPER ================= */
 #panelcontainer-2e3e715aef .text-wrapper {
-  flex: 1 1 calc(50% - 8px);
-  display: flex;
-  flex-direction: column;
-  position: relative;
+    grid-column: span 6;
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
-/* LABEL */
+/* ================= LABEL ================= */
 #panelcontainer-2e3e715aef .text-wrapper .field-label {
-  font-size: 13px;
-  font-weight: 500;
-  color: #6b7280;
-  margin-bottom: 6px;
+    background: transparent !important;
+    padding: 0;
+    margin-bottom: 4px;
+    border-radius: 0;
+
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #4b5563;
+
+    display: block;
 }
 
-/* INPUT FIELD */
+/* ================= INPUT FIELD ================= */
 #panelcontainer-2e3e715aef input[type="text"] {
-  height: 42px;
-  padding: 0 12px 0 36px; /* space for icon */
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  font-size: 14px;
-  transition: all 0.2s ease;
-  background: #f9fafb;
+    width: 100%;
+    height: 48px;
+
+    border: 1.5px solid #d0d5dd;
+    border-radius: 8px;
+
+    background-color: #ffffff;
+
+    font-size: 0.95rem;
+    color: #111827;
+
+    padding: 0 14px 0 40px;
+    margin: 0;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* INPUT FOCUS */
+/* ================= INPUT FOCUS ================= */
 #panelcontainer-2e3e715aef input[type="text"]:focus {
-  outline: none;
-  border-color: #2563eb;
-  background: #ffffff;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    outline: none;
+    border-color: #a5b4fc;
+    box-shadow: 0 0 0 3px rgb(165 180 252 / 20%);
+    background: #ffffff;
 }
 
-/* ICONS INSIDE INPUTS */
+/* ================= FIELD ICON BASE ================= */
 #panelcontainer-2e3e715aef .text-wrapper::before {
-  position: absolute;
-  left: 10px;
-  top: 34px;
-  font-size: 14px;
-  color: #9ca3af;
+    content: "";
+
+    position: absolute;
+    left: 12px;
+    top: 38px;
+
+    width: 16px;
+    height: 16px;
+
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-/* DESCRIPTION */
+/* ================= DESCRIPTION ================= */
 #panelcontainer-2e3e715aef .field-description {
-  font-size: 12px;
-  color: #9ca3af;
-  margin-top: 4px;
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 4px;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 @media (max-width: 600px) {
-  #panelcontainer-2e3e715aef .text-wrapper {
-    flex: 1 1 100%;
-  }
+
+    #panelcontainer-2e3e715aef {
+        grid-template-columns: 1fr;
+    }
+
+    #panelcontainer-2e3e715aef .text-wrapper {
+        grid-column: span 12;
+    }
 }
 /* ================= PANEL CONTAINER ================= */
 #panelcontainer-e48b52eb75 {
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  overflow: hidden;
-  margin-bottom: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    background: #ffffff;
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+
+    margin-bottom: 20px;
+    overflow: hidden;
 }
 
 /* ================= HEADER BAR ================= */
 #panelcontainer-e48b52eb75 > .field-label {
- width: 100%;
+    grid-column: span 12;
+
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 8px;
+
     background: #dbeafe;
-    font-weight: 600;
-    font-size: 16px;
+    color: #1e293b;
+
+    font-size: 1rem;
+    font-weight: 700;
+
     padding: 14px 18px;
     border-radius: 10px;
+    margin-bottom: 4px;
 }
 
-/* ================= HEADER ICON (EXACT MATCH) ================= */
+/* ================= HEADER ICON ================= */
 #panelcontainer-e48b52eb75 > .field-label::before {
-  content: "";
-  width: 18px;
-  height: 18px;
-  display: inline-block;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231e3a8a' stroke-width='1.8'><path stroke-linecap='round' stroke-linejoin='round' d='M20 13V8a2 2 0 00-2-2h-3V5a3 3 0 00-6 0v1H6a2 2 0 00-2 2v5m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0H4'/></svg>");
-}
+    content: "";
+    width: 18px;
+    height: 18px;
+    display: inline-block;
 
-/* ================= INNER LAYOUT ================= */
-#panelcontainer-e48b52eb75 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231e3a8a' stroke-width='1.8'><path stroke-linecap='round' stroke-linejoin='round' d='M20 13V8a2 2 0 00-2-2h-3V5a3 3 0 00-6 0v1H6a2 2 0 00-2 2v5m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0H4'/></svg>");
 }
 
 /* ================= FIELD WRAPPER ================= */
 #panelcontainer-e48b52eb75 .field-wrapper {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
+
+/* ================= GRID WIDTHS ================= */
 
 /* HALF WIDTH */
 #panelcontainer-e48b52eb75 .col-6 {
-  flex: 1 1 calc(50% - 8px);
+    grid-column: span 6;
 }
 
 /* FULL WIDTH */
 #panelcontainer-e48b52eb75 .col-12 {
-  flex: 1 1 100%;
+    grid-column: span 12;
 }
 
 /* ================= LABEL ================= */
-#panelcontainer-e48b52eb75 .field-label {
-  color: #6b7280;
-  margin-bottom: 6px;
+#panelcontainer-e48b52eb75 .field-wrapper > .field-label {
+    background: transparent !important;
+    padding: 0;
+    margin-bottom: 4px;
+    border-radius: 0;
+
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #4b5563;
+
+    display: block;
 }
 
 /* ================= INPUT / SELECT ================= */
 #panelcontainer-e48b52eb75 input,
 #panelcontainer-e48b52eb75 select {
-  height: 42px;
-  padding: 0 12px 0 36px;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  font-size: 14px;
-  background: #f9fafb;
-  transition: all 0.2s ease;
+    width: 100%;
+    height: 48px;
+
+    border: 1.5px solid #d0d5dd;
+    border-radius: 8px;
+
+    background-color: #ffffff;
+
+    font-size: 0.95rem;
+    color: #111827;
+
+    padding: 0 14px 0 40px;
+    margin: 0;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 /* ================= FOCUS ================= */
 #panelcontainer-e48b52eb75 input:focus,
 #panelcontainer-e48b52eb75 select:focus {
-  outline: none;
-  border-color: #2563eb;
-  background: #ffffff;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    outline: none;
+    border-color: #a5b4fc;
+    box-shadow: 0 0 0 3px rgb(165 180 252 / 20%);
+    background: #ffffff;
 }
 
 /* ================= FIELD ICON BASE ================= */
 #panelcontainer-e48b52eb75 .field-wrapper::before {
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 34px;
-  width: 16px;
-  height: 16px;
-  background-size: contain;
-  background-repeat: no-repeat;
+    content: "";
+    position: absolute;
+
+    left: 12px;
+    top: 38px;
+
+    width: 16px;
+    height: 16px;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* ================= VERIFY BUTTON WRAPPER ================= */
+#panelcontainer-e48b52eb75 .field-verify-button {
+    display: flex;
+    align-items: flex-end;
 }
 
 /* ================= VERIFY BUTTON ================= */
-#panelcontainer-e48b52eb75 .field-verify-button {
-  display: flex;
-  align-items: flex-end;
-}
-
 #panelcontainer-e48b52eb75 .button {
-  height: 42px;
-  padding: 0 16px;
-  border-radius: 8px;
-  border: none;
-  background: #2563eb;
-  color: #ffffff;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.2s ease;
+    width: 100%;
+    height: 48px;
+
+    padding: 0 16px;
+
+    border-radius: 8px;
+    border: none;
+
+    background: #2563eb;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.2s ease;
 }
 
 #panelcontainer-e48b52eb75 .button:hover {
-  background: #1d4ed8;
+    background: #1d4ed8;
 }
 
 /* ================= EMAIL + BUTTON ALIGN ================= */
 #panelcontainer-e48b52eb75 .field-enter-email-id {
-  flex: 1 1 calc(75% - 8px);
+    grid-column: span 9;
 }
 
 #panelcontainer-e48b52eb75 .field-verify-button {
-  flex: 1 1 calc(25% - 8px);
+    grid-column: span 3;
+}
+
+/* ================= HIDE EXTRA VERIFY WRAPPERS ================= */
+#panelcontainer-e48b52eb75 .field-verify-email-button {
+    display: none !important;
 }
 
 /* ================= MOBILE ================= */
 @media (max-width: 600px) {
-  #panelcontainer-e48b52eb75 .col-6,
-  #panelcontainer-e48b52eb75 .field-enter-email-id,
-  #panelcontainer-e48b52eb75 .field-verify-button {
-    flex: 1 1 100%;
-  }
+
+    #panelcontainer-e48b52eb75 {
+        grid-template-columns: 1fr;
+    }
+
+    #panelcontainer-e48b52eb75 .col-6,
+    #panelcontainer-e48b52eb75 .col-12,
+    #panelcontainer-e48b52eb75 .field-enter-email-id,
+    #panelcontainer-e48b52eb75 .field-verify-button {
+        grid-column: span 12;
+    }
 }
-
-
 /* ================= PANEL CONTAINER ================= */
 #panelcontainer-5269a51906 {
   background: #ffffff;
