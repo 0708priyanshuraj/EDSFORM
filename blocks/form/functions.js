@@ -993,6 +993,157 @@ function initFormFieldMapping() {
   // Initial run
   mapFormFieldsToReview();
 }
+/* ================= PAN VALIDATION ================= */
+
+function validatePAN() {
+  const panInput = document.getElementById('textinput-1c2ca8304e');
+
+  const panWrapper = document.querySelector('.field-pan-number');
+
+  const panValue = panInput.value.trim().toUpperCase();
+
+  panInput.value = panValue;
+
+  const oldError = document.getElementById('pan-error-message');
+
+  if (oldError) {
+    oldError.remove();
+  }
+
+  const oldTick = document.getElementById('pan-success-tick');
+
+  if (oldTick) {
+    oldTick.remove();
+  }
+
+  panInput.style.borderColor = '#d0d5dd';
+  panInput.style.background = '#ffffff';
+
+  const panRegex = /^[A-Z]{3}P[A-Z]{1}[0-9]{4}[A-Z]{1}$/;
+
+  if (panRegex.test(panValue)) {
+    panInput.style.borderColor = '#22c55e';
+    panInput.style.background = '#f0fdf4';
+
+    const tick = document.createElement('span');
+
+    tick.id = 'pan-success-tick';
+
+    tick.innerHTML = '✔';
+
+    tick.style.position = 'absolute';
+    tick.style.right = '12px';
+    tick.style.top = '40px';
+
+    tick.style.color = '#22c55e';
+    tick.style.fontSize = '18px';
+    tick.style.fontWeight = 'bold';
+
+    panWrapper.style.position = 'relative';
+
+    panWrapper.appendChild(tick);
+
+    return true;
+  }
+
+  panInput.style.borderColor = '#ef4444';
+
+  const error = document.createElement('div');
+
+  error.id = 'pan-error-message';
+
+  error.innerText = '4th character must be P (Example: ABCPD1234F)';
+
+  error.style.color = '#ef4444';
+  error.style.fontSize = '12px';
+  error.style.marginTop = '4px';
+
+  panWrapper.appendChild(error);
+
+  return false;
+}
+
+/* ================= EMAIL VALIDATION ================= */
+
+function validateEmail() {
+  const emailInput = document.getElementById('emailinput-d61e9efa6c');
+
+  const emailWrapper = document.querySelector('.field-enter-email-id');
+
+  const emailValue = emailInput.value.trim();
+
+  const oldError = document.getElementById('email-error-message');
+
+  if (oldError) {
+    oldError.remove();
+  }
+
+  const oldTick = document.getElementById('email-success-tick');
+
+  if (oldTick) {
+    oldTick.remove();
+  }
+
+  emailInput.style.borderColor = '#d0d5dd';
+  emailInput.style.background = '#ffffff';
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (emailRegex.test(emailValue)) {
+    emailInput.style.borderColor = '#22c55e';
+    emailInput.style.background = '#f0fdf4';
+
+    const tick = document.createElement('span');
+
+    tick.id = 'email-success-tick';
+
+    tick.innerHTML = '✔';
+
+    tick.style.position = 'absolute';
+    tick.style.right = '12px';
+    tick.style.top = '40px';
+
+    tick.style.color = '#22c55e';
+    tick.style.fontSize = '18px';
+    tick.style.fontWeight = 'bold';
+
+    emailWrapper.style.position = 'relative';
+
+    emailWrapper.appendChild(tick);
+
+    return true;
+  }
+
+  emailInput.style.borderColor = '#ef4444';
+
+  const error = document.createElement('div');
+
+  error.id = 'email-error-message';
+
+  error.innerText = 'Please enter a valid email address';
+
+  error.style.color = '#ef4444';
+  error.style.fontSize = '12px';
+  error.style.marginTop = '4px';
+
+  emailWrapper.appendChild(error);
+
+  return false;
+}
+
+/* ================= BUTTON EVENTS ================= */
+
+document
+  .getElementById('button-3298011112')
+  .addEventListener('click', () => {
+    validatePAN();
+  });
+
+document
+  .getElementById('button-a8290da259')
+  .addEventListener('click', () => {
+    validateEmail();
+  });
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName,
