@@ -571,7 +571,10 @@ function initEMICalculator() {
     const salary = Number(salaryInput.value) || 0;
 
     // ✅ Eligible loan amount
-    const eligibleLoanAmount = calculateEligibleLoan(salary);
+    const eligibleLoanAmount = Math.min(
+      calculateEligibleLoan(salary),
+      1500000,
+    );
 
     // ✅ Eligible tenure
     const eligibleTenure = calculateEligibleTenure(salary);
@@ -603,7 +606,16 @@ function initEMICalculator() {
       loanAmountInput.value = eligibleLoanAmount;
     }
     loanTenureInput.max = eligibleTenure;
+    const tenureFieldDiv = loanTenureInput.closest('.field-wrapper');
 
+    if (tenureFieldDiv?.rangeWrapper) {
+      updateRangeEligibility(
+        tenureFieldDiv.rangeWrapper,
+        tenureFieldDiv.rangeInput,
+        eligibleTenure,
+        tenureFieldDiv.rangeFormatType,
+      );
+    }
     // ✅ Set current tenure properly
     if (
       Number(loanTenureInput.value)
