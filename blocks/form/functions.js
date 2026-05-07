@@ -581,10 +581,26 @@ function initEMICalculator() {
       loanOfferText.innerHTML = `<p>You can get a loan up to ${formatIndianCurrency(eligibleLoanAmount)}!</p>`;
     }
 
-    // ✅ Update slider maximums
     loanAmountInput.max = eligibleLoanAmount;
 
+    // ✅ Set current loan amount properly
+    if (
+      Number(loanAmountInput.value)
+  > eligibleLoanAmount
+  || Number(loanAmountInput.value) === 50000
+    ) {
+      loanAmountInput.value = eligibleLoanAmount;
+    }
     loanTenureInput.max = eligibleTenure;
+
+    // ✅ Set current tenure properly
+    if (
+      Number(loanTenureInput.value)
+  > eligibleTenure
+  || Number(loanTenureInput.value) === 12
+    ) {
+      loanTenureInput.value = eligibleTenure;
+    }
 
     // ✅ Prevent exceeding loan amount
     if (
