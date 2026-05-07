@@ -897,7 +897,9 @@ main .form form select[multiple] {
     content: none !important;
     display: none !important;
 }
-
+#panelcontainer-b3696dc7df .date-wrapper {
+    margin-top: -2px;
+}
 /* Remove any default icon */
 #panelcontainer-b3696dc7df .date-wrapper input {
     background-image: none !important;
