@@ -44,7 +44,75 @@ function days(endDate, startDate) {
   const diffInMs = Math.abs(end.getTime() - start.getTime());
   return Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 }
+/**
+ * Validate DOB age between 18 and 59
+ */
+function validateDOB() {
+  // DOB input
+  const dobInput = document.getElementById(
+    'datepicker-2e2ea3b883',
+  );
 
+  const dobValue = dobInput?.value;
+
+  if (!dobValue) {
+    return false;
+  }
+
+  // Convert DOB
+  const dob = new Date(dobValue);
+
+  // Today's date
+  const today = new Date();
+
+  // Calculate age
+  let age = today.getFullYear()
+    - dob.getFullYear();
+
+  const monthDiff = today.getMonth()
+    - dob.getMonth();
+
+  // Adjust age
+  if (
+    monthDiff < 0
+    || (
+      monthDiff === 0
+      && today.getDate() < dob.getDate()
+    )
+  ) {
+    age -= 1;
+  }
+
+  // Remove old error
+  let errorEl = document.getElementById(
+    'dob-age-error',
+  );
+
+  if (errorEl) {
+    errorEl.remove();
+  }
+
+  // Invalid age
+  if (age < 18 || age > 59) {
+    errorEl = document.createElement('div');
+
+    errorEl.id = 'dob-age-error';
+
+    errorEl.style.color = 'red';
+
+    errorEl.style.fontSize = '12px';
+
+    errorEl.style.marginTop = '5px';
+
+    errorEl.textContent = 'Age must be between 18 and 59 years';
+
+    dobInput.parentElement.appendChild(errorEl);
+
+    return false;
+  }
+
+  return true;
+}
 /**
  * Masks the first 5 digits of the mobile number with *
  * @param {*} mobileNumber
@@ -136,6 +204,11 @@ async function generateOtp(e) {
   if (e) e.preventDefault();
 
   try {
+    const isDobValid = validateDOB();
+
+    if (!isDobValid) {
+      return;
+    }
     // Mobile number
     const mobile = document.getElementById(
       'textinput-ab0417d81c',
@@ -766,4 +839,5 @@ export {
   generateReferenceNumber,
   generateOtp,
   validateOtp,
+  validateDOB,
 };
