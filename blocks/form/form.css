@@ -2184,12 +2184,12 @@ main .form form .field-personal-details-panel .field-verify-email-button {
 /* HEADER ICON */
 #panelcontainer-643a00b714 > .field-label::before {
   content: "";
-  width: 22px;
-  height: 22px;
+  width: 30px;
+  height: 30px;
   background-size: contain;
   background-repeat: no-repeat;
 
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236366f1' stroke-width='1.8'><path stroke-linecap='round' stroke-linejoin='round' d='M9 12h6m-6 4h6M9 8h6M4 6h16M4 18h16'/></svg>");
+  background-image: url("https://img.icons8.com/?size=160&id=42379&format=png");
 }
 
 /* ================= KYC NOTE ================= */
