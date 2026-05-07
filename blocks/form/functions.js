@@ -128,6 +128,9 @@ function stopOtpTimer() {
 /**
  * Generate OTP
  */
+/**
+ * Generate OTP
+ */
 async function generateOtp(e) {
   // Prevent form refresh
   if (e) e.preventDefault();
@@ -142,6 +145,21 @@ async function generateOtp(e) {
     const dob = document.getElementById(
       'datepicker-2e2ea3b883',
     )?.value;
+
+    // OTP input
+    const otpInput = document.getElementById(
+      'textinput-824653b80f',
+    );
+
+    // Validation field
+    const validationField = document.getElementById(
+      'textinput-249c33fc5d',
+    );
+
+    // Submit button
+    const submitBtn = document.getElementById(
+      'submit-aff44386ed',
+    );
 
     // API call
     const res = await fetch(
@@ -163,26 +181,27 @@ async function generateOtp(e) {
     const data = await res.json();
 
     console.log('Generate OTP:', data);
-    // Auto fill OTP for testing
-    const otpInput = document.getElementById(
-      'textinput-824653b80f',
-    );
 
-    if (otpInput && data.otp) {
-      otpInput.value = data.otp;
-    }
     // SUCCESS
     if (res.ok) {
       // Reset attempts
       attemptsLeft = 3;
 
-      // Show attempts
-      const validationField = document.getElementById(
-        'textinput-249c33fc5d',
-      );
+      // Disable submit button initially
+      if (submitBtn) {
+        submitBtn.disabled = true;
+      }
 
+      // Reset validation field
       if (validationField) {
-        validationField.value = `Incorrect OTP. Try Again. Attempts Left: ${attemptsLeft}/3`;
+        validationField.style.color = '#000';
+
+        validationField.value = `Attempts Left: ${attemptsLeft}/3`;
+      }
+
+      // Auto fill OTP for testing
+      if (otpInput && data.otp) {
+        otpInput.value = data.otp;
       }
 
       // Start timer
@@ -196,6 +215,9 @@ async function generateOtp(e) {
   }
 }
 
+/**
+ * Validate OTP
+ */
 /**
  * Validate OTP
  */
@@ -213,6 +235,26 @@ async function validateOtp(e) {
     const otp = document.getElementById(
       'textinput-824653b80f',
     )?.value;
+
+    // Validation field
+    const validationField = document.getElementById(
+      'textinput-249c33fc5d',
+    );
+
+    // Submit button
+    const submitBtn = document.getElementById(
+      'submit-aff44386ed',
+    );
+
+    // Resend button
+    const resendBtn = document.querySelector(
+      '.field-resend-button button',
+    );
+
+    // Timer input
+    const timerInput = document.querySelector(
+      'input[name="timer"]',
+    );
 
     // API call
     const res = await fetch(
@@ -235,19 +277,29 @@ async function validateOtp(e) {
 
     console.log('Validate OTP:', data);
 
-    const validationField = document.getElementById(
-      'textinput-249c33fc5d',
-    );
-
     // SUCCESS
     if (res.ok) {
+      // Success message
       if (validationField) {
-        validationField.value = 'OTP Verified Successfully';
+        validationField.value = '✔ OTP Verified Successfully';
+
+        validationField.style.color = 'green';
+      }
+
+      // Enable submit button
+      if (submitBtn) {
+        submitBtn.disabled = false;
       }
 
       // Stop timer
       stopOtpTimer();
+
+      // Timer text
+      if (timerInput) {
+        timerInput.value = 'Verified';
+      }
     }
+
     // FAILED
     else {
       // Decrease attempts
@@ -258,21 +310,41 @@ async function validateOtp(e) {
         attemptsLeft = 0;
       }
 
-      // Show attempts
-      if (validationField) {
-        validationField.value = `Attempts Left: ${attemptsLeft}/3`;
-      }
+      // Stop timer immediately
+      stopOtpTimer();
 
       // Enable resend button
-      const resendBtn = document.querySelector(
-        '.field-resend-button button',
-      );
-
       if (resendBtn) {
         resendBtn.disabled = false;
       }
 
-      // Log backend message
+      // Timer text
+      if (timerInput) {
+        timerInput.value = 'Stopped';
+      }
+
+      // Attempts remaining
+      if (attemptsLeft > 0) {
+        if (validationField) {
+          validationField.value = `❌ Incorrect OTP. Attempts Left: ${attemptsLeft}/3`;
+
+          validationField.style.color = 'red';
+        }
+      }
+
+      // Attempts exhausted
+      else if (validationField) {
+        validationField.value = '❌ Too many failed attempts. Try again after 24 hours';
+
+        validationField.style.color = 'red';
+      }
+
+      // Keep submit disabled
+      if (submitBtn) {
+        submitBtn.disabled = true;
+      }
+
+      // Backend log
       if (data.message) {
         console.log(data.message);
       }
@@ -650,14 +722,14 @@ function initFormFieldMapping() {
   }
 
   // =============================================
-  // SUBMIT OTP BUTTON
+  // VERIFY OTP BUTTON
   // =============================================
-  const submitOtpButton = document.getElementById(
-    'submit-aff44386ed',
+  const verifyOtpButton = document.getElementById(
+    'button-b40e691afc',
   );
 
-  if (submitOtpButton) {
-    submitOtpButton.addEventListener('click', (e) => {
+  if (verifyOtpButton) {
+    verifyOtpButton.addEventListener('click', (e) => {
       e.preventDefault();
 
       // Validate OTP
