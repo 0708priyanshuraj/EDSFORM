@@ -992,9 +992,9 @@ async function mapFormFieldsToReview() {
   // =========================================
   // BACKEND MAPPING API
   // =========================================
-
   const payload = {
 
+    // PERSONAL DETAILS
     mobile: mobileNumber,
 
     firstName,
@@ -1003,7 +1003,44 @@ async function mapFormFieldsToReview() {
 
     lastName,
 
+    dob: dobDisplayValue,
+
+    panNumber,
+
+    aadhaarAddress,
+
+    residenceType,
+
+    // LOAN DETAILS
     loanAmount: rawLoanAmount,
+
+    tenure: rawTenure,
+
+    emiAmount: emiAmountDisplay,
+
+    roi: roiDisplay,
+
+    taxes: taxesDisplay,
+
+    enterEmployerName,
+
+    employerDropdownVal,
+
+    selectLoanType,
+
+    // BANK DETAILS
+    salaryAccountNumber,
+
+    ifsc: ifscSource,
+
+    salaryBankOther,
+
+    salaryBankLabel,
+
+    // EMAILS
+    personalEmail,
+
+    workEmail,
 
   };
 
@@ -1032,6 +1069,106 @@ async function mapFormFieldsToReview() {
       'Mapped Review Response:',
       result,
     );
+
+    // =========================================
+    // USE API RESPONSE VALUES
+    // =========================================
+
+    if (result?.data) {
+    // PERSONAL DETAILS
+      setValById(
+        'textinput-73aef4c181',
+        result.data.fullName || '',
+      );
+
+      setValById(
+        'textinput-48f479429a',
+        result.data.mobileNumber || '',
+      );
+
+      setValById(
+        'textinput-4e73ae7b41',
+        result.data.panNumber || '',
+      );
+
+      setValById(
+        'textinput-1e826e3496',
+        result.data.aadhaarAddress || '',
+      );
+
+      setValById(
+        'textinput-2a6ea8b0d8',
+        result.data.residenceType || '',
+      );
+
+      // LOAN DETAILS
+      setValById(
+        'textinput-ca40938a70',
+        result.data.loanAmount || '',
+      );
+
+      setValById(
+        'textinput-955c226224',
+        result.data.loanAmount || '',
+      );
+
+      setValById(
+        'textinput-faa35cc00c',
+        result.data.emiAmount || '',
+      );
+
+      setValById(
+        'textinput-5ac96d3c9f',
+        result.data.tenure || '',
+      );
+
+      setValById(
+        'textinput-2775dad98d',
+        result.data.taxes || '',
+      );
+
+      setValById(
+        'textinput-40ebd5a0e2',
+        result.data.roi || '',
+      );
+
+      setValById(
+        'textinput-44ecd4a77b',
+        result.data.employerName || '',
+      );
+
+      setValById(
+        'textinput-efee62d637',
+        result.data.loanType || '',
+      );
+
+      // BANK DETAILS
+      setValById(
+        'textinput-86936ede94',
+        result.data.salaryAccountNumber || '',
+      );
+
+      setValById(
+        'textinput-7c948823f5',
+        result.data.ifsc || '',
+      );
+
+      setValById(
+        'textinput-99ee84213a',
+        result.data.bankName || '',
+      );
+
+      // EMAILS
+      setValById(
+        'emailinput-7caf42d1f8',
+        result.data.personalEmail || '',
+      );
+
+      setValById(
+        'emailinput-2a658c4c9f',
+        result.data.workEmail || '',
+      );
+    }
   } catch (err) {
     console.error(
       'Mapping API Error:',
