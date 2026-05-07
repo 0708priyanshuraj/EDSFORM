@@ -1285,7 +1285,7 @@ function initBankValidation() {
     } else {
       accountInput.style.border = '2px solid red';
 
-      accountMessage.innerHTML = '❌ Invalid Account Number for selected bank';
+      accountMessage.innerHTML = `❌ Account number must be ${rule.minAccount} to ${rule.maxAccount} digits`;
 
       accountMessage.style.color = 'red';
     }
@@ -1324,7 +1324,7 @@ function initBankValidation() {
     } else {
       ifscInput.style.border = '2px solid red';
 
-      ifscMessage.innerHTML = '❌ IFSC does not match selected bank';
+      ifscMessage.innerHTML = `❌ IFSC format should be: ${rule.ifscPrefix}0XXXXXX`;
 
       ifscMessage.style.color = 'red';
     }
