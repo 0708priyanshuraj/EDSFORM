@@ -221,6 +221,9 @@ async function generateOtp(e) {
 /**
  * Validate OTP
  */
+/**
+ * Validate OTP
+ */
 async function validateOtp(e) {
   // Prevent form refresh
   if (e) e.preventDefault();
@@ -294,9 +297,9 @@ async function validateOtp(e) {
       // Stop timer
       stopOtpTimer();
 
-      // Timer text
+      // Clear timer text
       if (timerInput) {
-        timerInput.value = 'Verified';
+        timerInput.value = '';
       }
     }
 
@@ -313,18 +316,18 @@ async function validateOtp(e) {
       // Stop timer immediately
       stopOtpTimer();
 
-      // Enable resend button
-      if (resendBtn) {
-        resendBtn.disabled = false;
-      }
-
-      // Timer text
+      // Clear timer text
       if (timerInput) {
         timerInput.value = '';
       }
 
       // Attempts remaining
       if (attemptsLeft > 0) {
+        // Enable resend button
+        if (resendBtn) {
+          resendBtn.disabled = false;
+        }
+
         if (validationField) {
           validationField.value = `❌ Incorrect OTP. Attempts Left: ${attemptsLeft}/3`;
 
@@ -333,10 +336,17 @@ async function validateOtp(e) {
       }
 
       // Attempts exhausted
-      else if (validationField) {
-        validationField.value = '❌ Too many failed attempts. Try again after 24 hours';
+      else {
+        if (validationField) {
+          validationField.value = '❌ Too many failed attempts. Try again after 24 hours';
 
-        validationField.style.color = 'red';
+          validationField.style.color = 'red';
+        }
+
+        // Disable resend button permanently
+        if (resendBtn) {
+          resendBtn.disabled = true;
+        }
       }
 
       // Keep submit disabled
