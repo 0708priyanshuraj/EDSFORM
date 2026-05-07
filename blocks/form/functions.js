@@ -568,16 +568,23 @@ function initEMICalculator() {
    */
   function updateEMICalculation() {
     // ✅ Salary
-    const salary = Number(salaryInput.value) || 0;
+    const salaryValue = salaryInput.value;
 
-    // ✅ Eligible loan amount
-    const eligibleLoanAmount = Math.min(
-      calculateEligibleLoan(salary),
-      1500000,
-    );
+    const salary = Number(salaryValue);
 
-    // ✅ Eligible tenure
-    const eligibleTenure = calculateEligibleTenure(salary);
+    // ✅ Default open sliders
+    let eligibleLoanAmount = 1500000;
+    let eligibleTenure = 84;
+
+    // ✅ Apply eligibility only if salary entered
+    if (salaryValue !== '') {
+      eligibleLoanAmount = Math.min(
+        calculateEligibleLoan(salary),
+        1500000,
+      );
+
+      eligibleTenure = calculateEligibleTenure(salary);
+    }
 
     // ✅ Update offer text
     if (loanOfferText) {
