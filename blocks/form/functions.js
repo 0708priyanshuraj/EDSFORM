@@ -1161,4 +1161,6 @@ export {
   generateOtp,
   validateOtp,
   validateDOB,
+  validatePAN,
+  validateEmail,
 };
