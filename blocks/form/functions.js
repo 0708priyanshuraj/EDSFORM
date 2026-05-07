@@ -1157,6 +1157,214 @@ setTimeout(() => {
     );
   }
 }, 2000);
+function initBankValidation() {
+  // =========================
+  // INPUT FIELDS
+  // =========================
+  const accountInput = document.getElementById(
+    'textinput-6cd7d23dbf',
+  );
+
+  const ifscInput = document.getElementById(
+    'textinput-31c9044207',
+  );
+
+  // =========================
+  // RADIO BUTTONS
+  // =========================
+  const bankRadios = document.querySelectorAll(
+    'input[name="salary_bank"]',
+  );
+
+  // =========================
+  // VALIDATION MESSAGES
+  // =========================
+  const accountMessage = document.createElement('div');
+
+  const ifscMessage = document.createElement('div');
+
+  accountInput.parentNode.appendChild(
+    accountMessage,
+  );
+
+  ifscInput.parentNode.appendChild(
+    ifscMessage,
+  );
+
+  // =========================
+  // BANK RULES
+  // =========================
+  const bankRules = {
+
+    hdfc_bank: {
+      ifscPrefix: 'HDFC',
+      minAccount: 12,
+      maxAccount: 16,
+    },
+
+    icici_bank: {
+      ifscPrefix: 'ICIC',
+      minAccount: 12,
+      maxAccount: 16,
+    },
+
+    axis_bank: {
+      ifscPrefix: 'UTIB',
+      minAccount: 10,
+      maxAccount: 16,
+    },
+
+    kotak: {
+      ifscPrefix: 'KKBK',
+      minAccount: 10,
+      maxAccount: 16,
+    },
+
+    sbi: {
+      ifscPrefix: 'SBIN',
+      minAccount: 11,
+      maxAccount: 17,
+    },
+
+    bank_of_baroda: {
+      ifscPrefix: 'BARB',
+      minAccount: 10,
+      maxAccount: 14,
+    },
+
+    idfc_first: {
+      ifscPrefix: 'IDFB',
+      minAccount: 11,
+      maxAccount: 16,
+    },
+  };
+
+  // =========================
+  // GET SELECTED BANK
+  // =========================
+  function getSelectedBank() {
+    let selectedBank = '';
+
+    bankRadios.forEach((radio) => {
+      if (radio.checked) {
+        selectedBank = radio.value;
+      }
+    });
+
+    return selectedBank;
+  }
+
+  // =========================
+  // VALIDATE ACCOUNT
+  // =========================
+  function validateAccount() {
+    const selectedBank = getSelectedBank();
+
+    if (!selectedBank) {
+      return;
+    }
+
+    const rule = bankRules[selectedBank];
+
+    const accountNumber = accountInput.value.trim();
+
+    const digitsOnly = /^[0-9]+$/;
+
+    if (
+      digitsOnly.test(accountNumber)
+            && accountNumber.length
+            >= rule.minAccount
+            && accountNumber.length
+            <= rule.maxAccount
+    ) {
+      accountInput.style.border = '2px solid green';
+
+      accountMessage.innerHTML = '✅ Valid Account Number';
+
+      accountMessage.style.color = 'green';
+    } else {
+      accountInput.style.border = '2px solid red';
+
+      accountMessage.innerHTML = '❌ Invalid Account Number for selected bank';
+
+      accountMessage.style.color = 'red';
+    }
+  }
+
+  // =========================
+  // VALIDATE IFSC
+  // =========================
+  function validateIFSC() {
+    const selectedBank = getSelectedBank();
+
+    if (!selectedBank) {
+      return;
+    }
+
+    const rule = bankRules[selectedBank];
+
+    const ifscValue = ifscInput.value
+      .trim()
+      .toUpperCase();
+
+    const ifscPattern = new RegExp(
+      `^${
+        rule.ifscPrefix
+      }0[A-Z0-9]{6}$`,
+    );
+
+    if (
+      ifscPattern.test(ifscValue)
+    ) {
+      ifscInput.style.border = '2px solid green';
+
+      ifscMessage.innerHTML = '✅ Valid IFSC';
+
+      ifscMessage.style.color = 'green';
+    } else {
+      ifscInput.style.border = '2px solid red';
+
+      ifscMessage.innerHTML = '❌ IFSC does not match selected bank';
+
+      ifscMessage.style.color = 'red';
+    }
+  }
+
+  // =========================
+  // EVENTS
+  // =========================
+  accountInput.addEventListener(
+    'input',
+    validateAccount,
+  );
+
+  ifscInput.addEventListener(
+    'input',
+    validateIFSC,
+  );
+
+  // =========================
+  // RESET ON BANK CHANGE
+  // =========================
+  bankRadios.forEach((radio) => {
+    radio.addEventListener(
+      'change',
+      () => {
+        accountInput.value = '';
+        ifscInput.value = '';
+
+        accountInput.style.border = '';
+        ifscInput.style.border = '';
+
+        accountMessage.innerHTML = '';
+        ifscMessage.innerHTML = '';
+      },
+    );
+  });
+}
+setTimeout(() => {
+    initBankValidation();
+}, 2000);
 // eslint-disable-next-line import/prefer-default-export
 export {
   getFullName,
@@ -1176,4 +1384,5 @@ export {
   validateDOB,
   validatePAN,
   validateEmail,
+  initBankValidation,
 };
