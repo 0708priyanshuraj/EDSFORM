@@ -320,7 +320,7 @@ async function validateOtp(e) {
 
       // Timer text
       if (timerInput) {
-        timerInput.value = 'Stopped';
+        timerInput.value = '';
       }
 
       // Attempts remaining
