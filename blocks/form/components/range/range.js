@@ -207,7 +207,10 @@ export default async function decorate(fieldDiv, fieldJson) {
 
   // Initialize bubble position and value
   updateBubble(input, wrapper, formatType);
-
+  // Store references for future updates
+  fieldDiv.rangeWrapper = wrapper;
+  fieldDiv.rangeInput = input;
+  fieldDiv.rangeFormatType = formatType;
   // Update bubble on window resize to recalculate positioning
   let resizeTimeout;
   window.addEventListener('resize', () => {
@@ -218,4 +221,32 @@ export default async function decorate(fieldDiv, fieldJson) {
   });
 
   return fieldDiv;
+}
+export function updateRangeEligibility(
+  wrapper,
+  input,
+  eligibleAmount,
+  formatType = 'currency',
+) {
+  // Update slider max and value
+  input.max = eligibleAmount;
+  input.value = eligibleAmount;
+
+  // Remove old scale markers
+  const oldScale = wrapper.querySelector('.range-scale');
+
+  if (oldScale) {
+    oldScale.remove();
+  }
+
+  // Recreate scale markers
+  createScaleMarkers(
+    wrapper,
+    parseInt(input.min),
+    parseInt(input.max),
+    formatType,
+  );
+
+  // Update bubble
+  updateBubble(input, wrapper, formatType);
 }

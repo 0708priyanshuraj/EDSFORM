@@ -1,6 +1,6 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
-
+import { updateRangeEligibility } from './components/range/range.js';
 /**
  * Get Full Name
  * @name getFullName Concats first name and last name
@@ -582,6 +582,17 @@ function initEMICalculator() {
     }
 
     loanAmountInput.max = eligibleLoanAmount;
+    // Update slider markers dynamically
+    const loanFieldDiv = loanAmountInput.closest('.field-wrapper');
+
+    if (loanFieldDiv?.rangeWrapper) {
+      updateRangeEligibility(
+        loanFieldDiv.rangeWrapper,
+        loanFieldDiv.rangeInput,
+        eligibleLoanAmount,
+        loanFieldDiv.rangeFormatType,
+      );
+    }
 
     // ✅ Set current loan amount properly
     if (
