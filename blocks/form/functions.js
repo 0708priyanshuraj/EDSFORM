@@ -182,7 +182,7 @@ async function generateOtp(e) {
       );
 
       if (validationField) {
-        validationField.value = `Attempts Left: ${attemptsLeft}/3`;
+        validationField.value = `Incorrect OTP. Try Again. Attempts Left: ${attemptsLeft}/3`;
       }
 
       // Start timer
