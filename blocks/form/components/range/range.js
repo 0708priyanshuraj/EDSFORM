@@ -230,7 +230,11 @@ export function updateRangeEligibility(
 ) {
   // Update slider max and value
   input.max = eligibleAmount;
-  input.value = eligibleAmount;
+
+  // Only reset if current value exceeds max
+  if (Number(input.value) > eligibleAmount) {
+    input.value = eligibleAmount;
+  }
 
   // Remove old scale markers
   const oldScale = wrapper.querySelector('.range-scale');
