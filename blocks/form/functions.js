@@ -769,7 +769,7 @@ function mapFormFieldsToReview() {
   // Taxes display field (textinput-ec3ebad510)
   const taxesDisplay = getValById('textinput-ec3ebad510');
   // Employer name: prefer free-text entry; fall back to dropdown label
-  const enterEmployerName = getVal('textinput-3a2473bd28');
+  const enterEmployerName = getVal('textinput-c124fb16fa');
   const employerDropdownVal = getVal('employer_company_name');
   const resolvedEmployerName = enterEmployerName || (employerDropdownVal !== 'others' ? employerDropdownVal : '');
   // Loan type dropdown
@@ -832,7 +832,6 @@ function mapFormFieldsToReview() {
     dobTarget.setAttribute('display-value', dobDisplayValue);
     dobTarget.setAttribute('edit-value', dobEditValue);
   }
-
   setValById('textinput-4e73ae7b41', panNumber); // pan
   setValById('textinput-1e826e3496', aadhaarAddress); // current_address
   setValById('textinput-2a6ea8b0d8', residenceType); // residence_type
