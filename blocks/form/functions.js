@@ -799,47 +799,7 @@ async function mapFormFieldsToReview() {
     }
   }
 
-  setValById(
-    'textinput-ca40938a70',
-    loanAmountForDisplay,
-  );
-
-  setValById(
-    'textinput-955c226224',
-    loanAmountForDisplay,
-  );
-
-  setValById(
-    'textinput-faa35cc00c',
-    emiAmountDisplay,
-  );
-
-  setValById(
-    'textinput-5ac96d3c9f',
-    tenureForDisplay,
-  );
-
-  setValById(
-    'textinput-2775dad98d',
-    taxesDisplay,
-  );
-
-  setValById(
-    'textinput-40ebd5a0e2',
-    roiDisplay,
-  );
-
-  setValById(
-    'textinput-44ecd4a77b',
-    resolvedEmployerName,
-  );
-
-  setValById(
-    'textinput-efee62d637',
-    selectLoanType,
-  );
-
-  // ─── 2. Personal Details ────────────────────────────────────────────────────
+    // ─── 2. Personal Details ────────────────────────────────────────────────────
 
   const firstName = getVal('first_name');
 
@@ -890,17 +850,7 @@ async function mapFormFieldsToReview() {
     'is_customers_aadhaar_address',
   );
 
-  // setValById(
-  //  'textinput-73aef4c181',
-  //  fullName,
-  // );
-
-  setValById(
-    'textinput-48f479429a',
-    mobileNumber,
-  );
-
-  const dobTarget = document.getElementById(
+    const dobTarget = document.getElementById(
     'datepicker-a8de48027a',
   );
 
@@ -917,21 +867,6 @@ async function mapFormFieldsToReview() {
       dobEditValue,
     );
   }
-
-  setValById(
-    'textinput-4e73ae7b41',
-    panNumber,
-  );
-
-  setValById(
-    'textinput-1e826e3496',
-    aadhaarAddress,
-  );
-
-  setValById(
-    'textinput-2a6ea8b0d8',
-    residenceType,
-  );
 
   // ─── 3. Salary Account Details ──────────────────────────────────────────────
 
@@ -954,21 +889,6 @@ async function mapFormFieldsToReview() {
   const bankName = salaryBankOther.trim()
     || salaryBankLabel;
 
-  setValById(
-    'textinput-86936ede94',
-    salaryAccountNumber,
-  );
-
-  setValById(
-    'textinput-7c948823f5',
-    ifscSource,
-  );
-
-  setValById(
-    'textinput-99ee84213a',
-    bankName,
-  );
-
   // ─── 5. Verify Email ID ─────────────────────────────────────────────────────
 
   const personalEmail = getValById(
@@ -978,17 +898,6 @@ async function mapFormFieldsToReview() {
   const workEmail = getValById(
     'emailinput-20d267620a',
   );
-
-  setValById(
-    'emailinput-7caf42d1f8',
-    personalEmail,
-  );
-
-  setValById(
-    'emailinput-2a658c4c9f',
-    workEmail,
-  );
-
   // =========================================
   // BACKEND MAPPING API
   // =========================================
