@@ -444,7 +444,6 @@ async function validateOtp(e) {
 // =========================================
 
 async function generateEmailOtp() {
-
   const emailField = document.getElementById(
     'emailinput-d61e9efa6c',
   );
@@ -456,15 +455,12 @@ async function generateEmailOtp() {
   const email = emailField?.value?.trim();
 
   if (!email) {
-
     alert('Please enter email');
 
     return;
-
   }
 
   try {
-
     const response = await fetch(
 
       `${OTP_API_BASE}/api/generate-email-otp`,
@@ -494,22 +490,16 @@ async function generateEmailOtp() {
 
     // AUTO FILL OTP FOR TESTING
     if (otpField) {
-
       otpField.value = result.otp || '';
-
     }
 
     alert('Email OTP generated');
-
   } catch (err) {
-
     console.error(
       'Generate Email OTP Error:',
       err,
     );
-
   }
-
 }
 
 /**
@@ -522,13 +512,17 @@ function formatIndianCurrency(amount) {
 function generateReferenceNumber() {
   const refInput = document.querySelector('input[name="reference_number"]');
 
-  const refNo = Math.floor(1000000000 + Math.random() * 9000000000);
+  // Generate 10 digit random number
+  const randomNumber = Math.floor(1000000000 + Math.random() * 9000000000);
+
+  // Add HDFC prefix
+  const refNo = `HDFC${randomNumber}`;
 
   if (refInput) {
     refInput.value = refNo;
   }
 
-  return refNo.toString();
+  return refNo;
 }
 /**
  * EMI Calculation
@@ -872,7 +866,7 @@ async function mapFormFieldsToReview() {
     }
   }
 
-    // ─── 2. Personal Details ────────────────────────────────────────────────────
+  // ─── 2. Personal Details ────────────────────────────────────────────────────
 
   const firstName = getVal('first_name');
 
@@ -923,7 +917,7 @@ async function mapFormFieldsToReview() {
     'is_customers_aadhaar_address',
   );
 
-    const dobTarget = document.getElementById(
+  const dobTarget = document.getElementById(
     'datepicker-a8de48027a',
   );
 
