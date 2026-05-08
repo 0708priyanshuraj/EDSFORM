@@ -291,12 +291,6 @@ async function generateOtp(e) {
 /**
  * Validate OTP
  */
-/**
- * Validate OTP
- */
-/**
- * Validate OTP
- */
 async function validateOtp(e) {
   // Prevent form refresh
   if (e) e.preventDefault();
@@ -438,6 +432,210 @@ async function validateOtp(e) {
       err,
     );
   }
+}
+// =========================================
+// GENERATE EMAIL OTP
+// =========================================
+
+async function generateEmailOtp() {
+
+  const emailField = document.getElementById(
+    'emailinput-d61e9efa6c',
+  );
+
+  const otpField = document.getElementById(
+    'textinput-da57a04322',
+  );
+
+  const email = emailField?.value?.trim();
+
+  if (!email) {
+
+    alert('Please enter email');
+
+    return;
+
+  }
+
+  try {
+
+    const response = await fetch(
+
+      `${OTP_API_BASE}/api/generate-email-otp`,
+
+      {
+
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify({
+          email,
+        }),
+
+      },
+
+    );
+
+    const result = await response.json();
+
+    console.log(
+      'Generate Email OTP:',
+      result,
+    );
+
+    // AUTO FILL OTP FOR TESTING
+    if (otpField) {
+
+      otpField.value = result.otp || '';
+
+    }
+
+    alert('Email OTP generated');
+
+  } catch (err) {
+
+    console.error(
+      'Generate Email OTP Error:',
+      err,
+    );
+
+  }
+
+}
+
+// =========================================
+// VALIDATE EMAIL OTP
+// =========================================
+
+async function validateEmailOtp() {
+
+  const emailField = document.getElementById(
+    'emailinput-d61e9efa6c',
+  );
+
+  const otpField = document.getElementById(
+    'textinput-da57a04322',
+  );
+
+  const email = emailField?.value?.trim();
+
+  const otp = otpField?.value?.trim();
+
+  if (!email || !otp) {
+
+    alert('Email and OTP required');
+
+    return;
+
+  }
+
+  try {
+
+    const response = await fetch(
+
+      `${OTP_API_BASE}/api/validate-email-otp`,
+
+      {
+
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify({
+
+          email,
+
+          otp,
+
+        }),
+
+      },
+
+    );
+
+    const result = await response.json();
+
+    console.log(
+      'Validate Email OTP:',
+      result,
+    );
+
+    if (response.ok) {
+
+  isEmailVerified = true;
+
+  const emailInput = document.getElementById(
+    'emailinput-d61e9efa6c',
+  );
+
+  const emailWrapper = document.querySelector(
+    '.field-enter-email-id',
+  );
+
+  // Remove old tick
+  const oldTick = document.getElementById(
+    'email-success-tick',
+  );
+
+  if (oldTick) {
+    oldTick.remove();
+  }
+
+  // Green verified style
+  emailInput.style.borderColor = '#22c55e';
+
+  emailInput.style.background = '#f0fdf4';
+
+  // Add verified tick
+  const tick = document.createElement('span');
+
+  tick.id = 'email-success-tick';
+
+  tick.innerHTML = '✔';
+
+  tick.style.position = 'absolute';
+
+  tick.style.right = '12px';
+
+  tick.style.top = '40px';
+
+  tick.style.color = '#22c55e';
+
+  tick.style.fontSize = '18px';
+
+  tick.style.fontWeight = 'bold';
+
+  emailWrapper.style.position = 'relative';
+
+  emailWrapper.appendChild(tick);
+
+  updateSubmitButtonState();
+
+  alert('Email verified successfully');
+
+} else {
+
+      alert(
+        result.message
+        || 'OTP mismatch, please re-verify',
+      );
+
+    }
+
+  } catch (err) {
+
+    console.error(
+      'Validate Email OTP Error:',
+      err,
+    );
+
+  }
+
 }
 /**
  * Format number to Indian currency format
@@ -1115,22 +1313,40 @@ function initFormFieldMapping() {
     'ifsc',
   ];
 
-  // Named-field listeners
+  // =============================================
+  // NAMED FIELD LISTENERS
+  // =============================================
   fieldsToMonitor.forEach((fieldName) => {
-    const fields = document.querySelectorAll(`[name="${fieldName}"]`);
+
+    const fields = document.querySelectorAll(
+      `[name="${fieldName}"]`,
+    );
 
     fields.forEach((field) => {
-      const eventType = field.type === 'radio' || field.tagName === 'SELECT'
+
+      const eventType = (
+        field.type === 'radio'
+        || field.tagName === 'SELECT'
+      )
         ? 'change'
         : 'input';
 
       field.addEventListener(eventType, () => {
-        setTimeout(mapFormFieldsToReview, 100);
+
+        setTimeout(
+          mapFormFieldsToReview,
+          100,
+        );
+
       });
+
     });
+
   });
 
-  // ID-based listeners
+  // =============================================
+  // ID-BASED LISTENERS
+  // =============================================
   const idsToMonitor = [
     'numberinput-b5966ec03e',
     'numberinput-0340fd7e24',
@@ -1142,20 +1358,38 @@ function initFormFieldMapping() {
   ];
 
   idsToMonitor.forEach((id) => {
+
     const el = document.getElementById(id);
 
     if (el) {
+
       el.addEventListener('input', () => {
-        setTimeout(mapFormFieldsToReview, 100);
+
+        setTimeout(
+          mapFormFieldsToReview,
+          100,
+        );
+
       });
+
     }
+
   });
 
-  // Proceed button
-  const proceedButton = document.getElementById('button-5e47e6952d');
+  // =============================================
+  // PROCEED BUTTON
+  // =============================================
+  const proceedButton = document.getElementById(
+    'button-5e47e6952d',
+  );
 
   if (proceedButton) {
-    proceedButton.addEventListener('click', mapFormFieldsToReview);
+
+    proceedButton.addEventListener(
+      'click',
+      mapFormFieldsToReview,
+    );
+
   }
 
   // =============================================
@@ -1166,13 +1400,19 @@ function initFormFieldMapping() {
   );
 
   if (eligibilityButton) {
-    eligibilityButton.addEventListener('click', (e) => {
-      // Prevent form refresh
-      e.preventDefault();
 
-      // Generate OTP
-      generateOtp(e);
-    });
+    eligibilityButton.addEventListener(
+      'click',
+      (e) => {
+
+        e.preventDefault();
+
+        // Generate Mobile OTP
+        generateOtp(e);
+
+      },
+    );
+
   }
 
   // =============================================
@@ -1183,31 +1423,100 @@ function initFormFieldMapping() {
   );
 
   if (resendButton) {
-    resendButton.addEventListener('click', (e) => {
-      e.preventDefault();
 
-      // Generate OTP again
-      generateOtp(e);
-    });
+    resendButton.addEventListener(
+      'click',
+      (e) => {
+
+        e.preventDefault();
+
+        // Generate OTP again
+        generateOtp(e);
+
+      },
+    );
+
   }
 
   // =============================================
-  // VERIFY OTP BUTTON
+  // VERIFY MOBILE OTP BUTTON
   // =============================================
   const verifyOtpButton = document.getElementById(
     'button-b40e691afc',
   );
 
   if (verifyOtpButton) {
-    verifyOtpButton.addEventListener('click', (e) => {
-      e.preventDefault();
 
-      // Validate OTP
-      validateOtp(e);
-    });
+    verifyOtpButton.addEventListener(
+      'click',
+      (e) => {
+
+        e.preventDefault();
+
+        // Validate Mobile OTP
+        validateOtp(e);
+
+      },
+    );
+
   }
 
-  // Initial run
+  // =============================================
+  // GENERATE EMAIL OTP BUTTON
+  // =============================================
+  const generateEmailOtpButton = document.getElementById(
+    'button-a8290da259',
+  );
+
+  if (generateEmailOtpButton) {
+
+    generateEmailOtpButton.addEventListener(
+      'click',
+      (e) => {
+
+        e.preventDefault();
+
+        // Validate email format first
+        const isEmailValid = validateEmail();
+
+        if (!isEmailValid) {
+          return;
+        }
+
+        // Generate Email OTP
+        generateEmailOtp();
+
+      },
+    );
+
+  }
+
+  // =============================================
+  // VERIFY EMAIL OTP BUTTON
+  // =============================================
+  const verifyEmailOtpButton = document.getElementById(
+    'button-verify-email-otp',
+  );
+
+  if (verifyEmailOtpButton) {
+
+    verifyEmailOtpButton.addEventListener(
+      'click',
+      (e) => {
+
+        e.preventDefault();
+
+        // Validate Email OTP
+        validateEmailOtp();
+
+      },
+    );
+
+  }
+
+  // =============================================
+  // INITIAL RUN
+  // =============================================
   mapFormFieldsToReview();
 }
 /* ================= PAN VALIDATION ================= */
@@ -1283,54 +1592,51 @@ function validatePAN() {
 /* ================= EMAIL VALIDATION ================= */
 
 function validateEmail() {
-  const emailInput = document.getElementById('emailinput-d61e9efa6c');
 
-  const emailWrapper = document.querySelector('.field-enter-email-id');
+  const emailInput = document.getElementById(
+    'emailinput-d61e9efa6c',
+  );
+
+  const emailWrapper = document.querySelector(
+    '.field-enter-email-id',
+  );
 
   const emailValue = emailInput.value.trim();
 
-  const oldError = document.getElementById('email-error-message');
+  const oldError = document.getElementById(
+    'email-error-message',
+  );
 
   if (oldError) {
     oldError.remove();
   }
 
-  const oldTick = document.getElementById('email-success-tick');
+  const oldTick = document.getElementById(
+    'email-success-tick',
+  );
 
   if (oldTick) {
     oldTick.remove();
   }
 
   emailInput.style.borderColor = '#d0d5dd';
+
   emailInput.style.background = '#ffffff';
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  // VALID EMAIL FORMAT
   if (emailRegex.test(emailValue)) {
+
     emailInput.style.borderColor = '#22c55e';
+
     emailInput.style.background = '#f0fdf4';
 
-    const tick = document.createElement('span');
-
-    tick.id = 'email-success-tick';
-
-    tick.innerHTML = '✔';
-
-    tick.style.position = 'absolute';
-    tick.style.right = '12px';
-    tick.style.top = '40px';
-
-    tick.style.color = '#22c55e';
-    tick.style.fontSize = '18px';
-    tick.style.fontWeight = 'bold';
-
-    emailWrapper.style.position = 'relative';
-
-    emailWrapper.appendChild(tick);
-
     return true;
+
   }
 
+  // INVALID EMAIL FORMAT
   emailInput.style.borderColor = '#ef4444';
 
   const error = document.createElement('div');
@@ -1340,7 +1646,9 @@ function validateEmail() {
   error.innerText = 'Please enter a valid email address';
 
   error.style.color = '#ef4444';
+
   error.style.fontSize = '12px';
+
   error.style.marginTop = '4px';
 
   emailWrapper.appendChild(error);
@@ -1602,4 +1910,6 @@ export {
   validatePAN,
   validateEmail,
   initBankValidation,
+  generateOtp,
+  validateOtp,
 };
