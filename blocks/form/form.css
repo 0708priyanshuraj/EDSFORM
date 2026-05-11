@@ -1602,19 +1602,13 @@ main .form form .field-submit-otp button:disabled {
 #panelcontainer-e48b52eb75 select {
     width: 100%;
     height: 48px;
-
     border: 1.5px solid #d0d5dd;
     border-radius: 8px;
-
     background-color: #ffffff;
-
     font-size: 0.95rem;
     color: #111827;
-
     padding: 0 14px;
-
     margin: 0;
-
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -1623,9 +1617,7 @@ main .form form .field-submit-otp button:disabled {
 #panelcontainer-e48b52eb75 input:focus,
 #panelcontainer-e48b52eb75 select:focus {
     outline: none;
-
     border-color: #a5b4fc;
- margin-top: -8px; /* move upward */
     box-shadow: 0 0 0 3px rgb(165 180 252 / 20%);
 }
 
@@ -1780,18 +1772,12 @@ main .form form .field-submit-otp button:disabled {
 #panelcontainer-2e3e715aef input[type="text"] {
     width: 100%;
     height: 48px;
-
     border: 1.5px solid #d0d5dd;
     border-radius: 8px;
-
     background-color: #ffffff;
-
     font-size: 0.95rem;
     color: #111827;
-
-    padding: 0 14px 0 40px;
     margin: 0;
-
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -2111,7 +2097,6 @@ main .form form .field-personal-details-panel .field-verify-email-button {
 /* INPUT */
 #panelcontainer-5269a51906 input[type="text"] {
   height: 42px;
-  padding: 0 12px 0 36px;
   border-radius: 8px;
   border: 1px solid #d1d5db;
   background: #f9fafb;
