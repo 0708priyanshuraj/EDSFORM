@@ -2247,191 +2247,436 @@ main .form form .field-personal-details-panel .field-verify-email-button {
     margin-bottom: 8px;
   }
 }
-#panelcontainer-643a00b714 > .field-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* ═══════════════════════════════════════════════════════
+   LOAN APPLICATION SUMMARY PANEL
+   ═══════════════════════════════════════════════════════ */
 
-  font-size: 18px;
-  font-weight: 600;
-  color: #1f2937;
-  width: 100%;
+#panelcontainer-643a00b714 {
+    background: #ffffff;
+
+    border: 1px solid #dde2ec;
+    border-radius: 16px;
+
+    padding: 24px;
+
+    box-shadow: 0 1px 8px rgb(0 0 0 / 6%);
+
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+
+    row-gap: 16px;
+    column-gap: 16px;
+
+    overflow: hidden;
 }
 
-/* HEADER ICON */
-#panelcontainer-643a00b714 > .field-label::before {
-  content: "";
-  width: 30px;
-  height: 30px;
-  background-size: contain;
-  background-repeat: no-repeat;
+/* ═════════ HEADER ═════════ */
 
-  background-image: url("https://img.icons8.com/?size=160&id=42379&format=png");
+#panelcontainer-643a00b714 > legend {
+    display: none;
 }
 
-/* ================= KYC NOTE ================= */
+/* ═════════ KYC NOTE ═════════ */
+
 #text-6f8fb15d84 {
-  background: #fef3c7;
-  color: #92400e;
-  font-size: 13px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  width: 100%;
+    grid-column: span 12;
+
+    background: #eef2ff;
+
+    border-radius: 10px;
+
+    padding: 14px 18px;
+
+    margin: 0;
 }
 
-/* ================= GRID ================= */
-#panelcontainer-643a00b714 .col-6 {
-  flex: 1 1 calc(50% - 8px);
+#text-6f8fb15d84 p {
+    margin: 0;
+
+    color: #3d52d5;
+
+    font-size: 0.9rem;
+
+    line-height: 1.6;
+
+    font-weight: 500;
 }
 
-#panelcontainer-643a00b714 .col-12 {
-  flex: 1 1 100%;
+/* ═════════ LOAN APPLICATION NUMBER ═════════ */
+
+.field-loan-application-number {
+    position: relative;
+
+    grid-column: span 12;
+
+    padding-left: 72px;
+
+    min-height: 64px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* ================= INPUT BLOCK ================= */
-#panelcontainer-643a00b714 .text-wrapper {
-  background: #f9fafb;
-  border-radius: 12px;
-  padding: 14px 16px;
-  position: relative;
-}
+/* Document Icon */
 
-/* LABEL */
-#panelcontainer-643a00b714 .text-wrapper .field-label {
-  font-size: 12px;
-  color: #6b7280;
-  margin-bottom: 6px;
-}
-
-/* VALUE */
-#panelcontainer-643a00b714 input {
-  border: none;
-  background: #ffffff;;
-  font-size: 18px;
-  font-weight: 600;
-  color: #111827;
-  padding-left: 28px;
-}
-
-/* REMOVE INPUT BORDER */
-#panelcontainer-643a00b714 input:focus {
-  outline: none;
-}
-
-/* ================= ICONS ================= */
 .field-loan-application-number::before {
-  content: "";
-  position: absolute;
-  left: 12px;
-  top: 38px;
-  width: 18px;
-  height: 18px;
-  background-size: contain;
-  background-repeat: no-repeat;
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 54px;
+    height: 54px;
+
+    border-radius: 50%;
+
+    background-color: #eef2ff;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233d52d5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='2' width='16' height='20' rx='2'/%3E%3Cline x1='8' y1='7' x2='16' y2='7'/%3E%3Cline x1='8' y1='11' x2='16' y2='11'/%3E%3Cline x1='8' y1='15' x2='12' y2='15'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 28px 28px;
 }
+
+/* Loan Application Label */
+
+.field-loan-application-number label {
+    font-size: 0.78rem;
+
+    color: #666;
+
+    margin-bottom: 4px;
+
+    font-weight: 400;
+}
+
+/* Loan Application Value */
+
+.field-loan-application-number input {
+    border: none !important;
+
+    background: transparent !important;
+
+    padding: 0 !important;
+
+    height: auto !important;
+
+    font-size: 1.25rem !important;
+
+    font-weight: 700 !important;
+
+    color: #1a1a1a !important;
+
+    box-shadow: none !important;
+
+    outline: none !important;
+}
+
+/* ═════════ LOAN AMOUNT ═════════ */
+
+.field-loan-amount {
+    position: relative;
+
+    grid-column: span 6;
+
+    padding: 12px 12px 10px 16px;
+}
+
 .field-loan-amount::before {
-  content: "";
-  position: absolute;
-  left: 12px;
-  top: 38px;
-  width: 18px;
-  height: 18px;
-  background-size: contain;
-  background-repeat: no-repeat;
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 3px;
+    height: 36px;
+
+    border-radius: 2px;
+
+    background: #c7d0f8;
 }
-/* ================= CONTACT NOTE ================= */
+
+.field-loan-amount label {
+    display: block;
+
+    font-size: 0.72rem;
+
+    color: #888;
+
+    margin-bottom: 4px;
+}
+
+.field-loan-amount input {
+    border: none !important;
+
+    background: transparent !important;
+
+    padding: 0 !important;
+
+    font-size: 1.05rem !important;
+
+    font-weight: 700 !important;
+
+    color: #1a1a1a !important;
+}
+
+/* ═════════ CONTACT NOTE ═════════ */
+
 #text-4a2021b3c0 {
-  font-size: 13px;
-  color: #6b7280;
-  width: 100%;
+    grid-column: span 12;
+
+    margin-top: -6px;
 }
 
-/* ================= INNER SUMMARY ================= */
+#text-4a2021b3c0 p {
+    margin: 0;
+
+    color: #555;
+
+    font-size: 0.88rem;
+}
+
+/* ═════════ XPRESS LOAN SUMMARY PANEL ═════════ */
+
 #panelcontainer-79bc739bfe {
-  background: #f9fafb;
-  border-radius: 12px;
-  padding: 16px;
-  width: 100%;
+    grid-column: span 12;
+
+    border: none;
+
+    border-top: 1.5px dashed #d0d5e8;
+
+    padding-top: 18px;
+
+    margin-top: 4px;
 }
 
-#panelcontainer-79bc739bfe > .field-label {
-  font-weight: 600;
-  color: #111827;
+/* Summary Heading */
+
+#panelcontainer-79bc739bfe > legend {
+    font-size: 1.05rem;
+
+    font-weight: 700;
+
+    color: #1a1a1a;
+
+    margin-bottom: 12px;
 }
 
-/* ================= DISBURSAL NOTE ================= */
+/* ═════════ DISBURSAL NOTE ═════════ */
+
 #text-152a8ba352 {
-  background: #eef2ff;
-  color: #3730a3;
-  font-size: 13px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  width: 100%;
+    grid-column: span 12;
+
+    background: #eef2ff;
+
+    border-radius: 10px;
+
+    padding: 14px 18px;
+
+    margin-top: 8px;
 }
 
-/* ================= EASY LOAN MANAGEMENT CARD ================= */
-#panelcontainer-2193cc3dfb {
-  width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid #e5e7eb;
+#text-152a8ba352 p {
+    margin: 0;
+
+    color: #3d52d5;
+
+    font-size: 0.88rem;
+
+    line-height: 1.6;
 }
 
-/* TOP BAR */
-#panelcontainer-2193cc3dfb > .field-label {
-  background: linear-gradient(to right, #c7d2fe, #dbeafe);
-  padding: 14px;
-  font-weight: 600;
-  color: #1e3a8a;
-}
+/* ═════════ DOWNLOAD APP BOX ═════════ */
 
-/* ================= DOWNLOAD APP (BLUE LINK STYLE) ================= */
 #text-34843b2f2e {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    grid-column: span 12;
 
-  padding: 14px;
-  font-size: 14px;
-  color: #2563eb;
-  font-weight: 500;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    background: #ffffff;
+
+    border: 1px solid #dde2ec;
+
+    border-radius: 12px;
+
+    padding: 16px 18px;
+
+    position: relative;
+
+    cursor: pointer;
 }
 
-/* ARROW ICON */
+/* Download Icon */
+
+#text-34843b2f2e::before {
+    content: "";
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 8px;
+
+    flex-shrink: 0;
+
+    background-color: #eef2ff;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233d52d5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v13'/%3E%3Cpath d='M8 13l4 4 4-4'/%3E%3Cpath d='M4 19h16'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
+}
+
+/* Arrow */
+
 #text-34843b2f2e::after {
-  content: "›";
-  font-size: 20px;
-  color: #2563eb;
+    content: "›";
+
+    margin-left: auto;
+
+    font-size: 1.6rem;
+
+    color: #3d52d5;
+
+    line-height: 1;
 }
 
-/* HOVER */
-#text-34843b2f2e:hover {
-  background: #f1f5f9;
+#text-34843b2f2e p {
+    margin: 0;
+
+    font-size: 0.95rem;
+
+    font-weight: 600;
+
+    color: #1a1a1a;
 }
 
-/* ================= MORE SERVICES (BLUE LINK) ================= */
+/* ═════════ MORE SERVICES NOTE ═════════ */
+
 #text-86699b47e9 {
-  font-size: 13px;
-  margin-top: 10px;
-  color: #6b7280;
+    grid-column: span 12;
 }
 
-/* MAKE ONLY LINK TEXT BLUE */
-#text-86699b47e9 a,
-#text-86699b47e9 span {
-  color: #2563eb;
-  font-weight: 500;
-  cursor: pointer;
+#text-86699b47e9 p {
+    margin: 0;
+
+    color: #666;
+
+    font-size: 0.85rem;
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 600px) {
-  #panelcontainer-643a00b714 .col-6 {
-    flex: 1 1 100%;
-  }
+/* ═════════ EASY LOAN MANAGEMENT PANEL ═════════ */
+
+#panelcontainer-2193cc3dfb {
+    grid-column: span 12;
+
+    background: #ffffff;
+
+    border: 1px solid #dde2ec;
+
+    border-radius: 12px;
+
+    overflow: hidden;
 }
 
+/* Blue Header */
+
+#panelcontainer-2193cc3dfb > legend {
+    background: #eef2ff;
+
+    padding: 14px 18px;
+
+    font-size: 0.95rem;
+
+    font-weight: 700;
+
+    color: #1a1a1a;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+/* Download Icon */
+
+#panelcontainer-2193cc3dfb > legend::before {
+    content: "";
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 8px;
+
+    background-color: #dde6ff;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233d52d5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v13'/%3E%3Cpath d='M8 13l4 4 4-4'/%3E%3Cpath d='M4 19h16'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+}
+
+/* ═════════ CLOSE BUTTON ═════════ */
+
+#button-f0f2900bf3 {
+    margin-top: 20px;
+
+    background: #2563eb;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 12px 20px;
+
+    width: 180px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+#button-f0f2900bf3:hover {
+    background: #1d4ed8;
+}
+
+/* ═════════ RESPONSIVE ═════════ */
+
+@media (max-width: 768px) {
+
+    #panelcontainer-643a00b714 {
+        padding: 18px;
+    }
+
+    .field-loan-amount {
+        grid-column: span 12;
+    }
+
+    #button-f0f2900bf3 {
+        width: 100%;
+    }
+}
 /* ================= EMPLOYER PANEL ================= */
 #panelcontainer-2dfbe8bc32 {
     border-radius: 12px;
@@ -4189,25 +4434,4 @@ main .form form .field-form-button1777803450216 button:active {
     background-position: center;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316a34a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
 }
-#button-f0f2900bf3 {
-    margin-top: 20px;
-    background: #2563eb;
-    color: #ffffff;
-    border: none;
-    border-radius: 10px;
-    padding: 12px 20px;
-    width: 180px;
-    font-size: 14px;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
 
-/* Hover */
-
-#button-f0f2900bf3:hover {
-    background: #1d4ed8;
-}
