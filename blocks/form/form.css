@@ -1591,8 +1591,8 @@ main .form form .field-submit-otp button:disabled {
     grid-column: 11 / 13;
     grid-row: 2;
     display: flex;
-    align-items: flex-end;
-    padding-bottom: 2px;
+    align-items: flex-start;
+    padding-top: 24px;
 }
 
 /* Email */
@@ -1606,8 +1606,8 @@ main .form form .field-submit-otp button:disabled {
     grid-column: 11 / 13;
     grid-row: 3;
     display: flex;
-    align-items: flex-end;
-     margin-top: -10px;
+    align-items: flex-start;
+    padding-top: 24px;
 }
 
 /* OTP */
