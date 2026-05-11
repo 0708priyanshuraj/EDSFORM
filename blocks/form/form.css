@@ -1545,7 +1545,6 @@ main .form form .field-submit-otp button:disabled {
     border-radius: 12px;
     padding: 24px;
     background: #ffffff;
-
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 16px;
@@ -1554,16 +1553,12 @@ main .form form .field-submit-otp button:disabled {
 /* ───────────────── PANEL TITLE ───────────────── */
 
 #panelcontainer-e48b52eb75 > legend {
-    grid-column: span 12;
-
+    grid-column: 1 / 13;
     font-size: 1rem;
     font-weight: 700;
     color: #1e293b;
-
     padding: 14px 18px;
-
     background: #dbeafe;
-
     border-radius: 10px;
 }
 
@@ -1573,27 +1568,58 @@ main .form form .field-submit-otp button:disabled {
     font-size: 0.78rem;
     font-weight: 600;
     color: #4b5563;
-
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
-/* ───────────────── GENDER ───────────────── */
+/* ───────────────── GRID LAYOUT ───────────────── */
 
+/* Gender */
 #panelcontainer-e48b52eb75 .field-gender {
-    grid-column: span 6;
+    grid-column: 1 / 7;
+    grid-row: 2;
 }
 
-/* ───────────────── PAN FIELD ───────────────── */
-
+/* PAN */
 #panelcontainer-e48b52eb75 .field-pan-number {
-    grid-column: span 6;
+    grid-column: 7 / 11;
+    grid-row: 2;
 }
 
-/* ───────────────── EMAIL FIELD ───────────────── */
+/* PAN Verify Button */
+#panelcontainer-e48b52eb75 .field-verify-button-pan {
+    grid-column: 11 / 13;
+    grid-row: 2;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 2px;
+}
 
+/* Email */
 #panelcontainer-e48b52eb75 .field-enter-email-id {
-    grid-column: span 9;
+    grid-column: 1 / 11;
+    grid-row: 3;
+}
+
+/* Email Verify Button */
+#panelcontainer-e48b52eb75 .field-verify-button-email {
+    grid-column: 11 / 13;
+    grid-row: 3;
+    display: flex;
+    align-items: flex-end;
+     margin-top: -10px;
+}
+
+/* OTP */
+#panelcontainer-e48b52eb75 .field-text-input1778476200779 {
+    grid-column: 1 / 13;
+    grid-row: 4;
+}
+
+/* Validate Button */
+#panelcontainer-e48b52eb75 .field-form-button1778476165730 {
+    grid-column: 1 / 13;
+    grid-row: 5;
 }
 
 /* ───────────────── INPUTS / SELECT ───────────────── */
@@ -1608,7 +1634,6 @@ main .form form .field-submit-otp button:disabled {
     font-size: 0.95rem;
     color: #111827;
     padding: 0 14px;
-    margin: 0;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -1621,85 +1646,58 @@ main .form form .field-submit-otp button:disabled {
     box-shadow: 0 0 0 3px rgb(165 180 252 / 20%);
 }
 
-/* ───────────────── PAN VERIFY BUTTON ───────────────── */
+/* ───────────────── BUTTON COMMON STYLE ───────────────── */
 
-#panelcontainer-e48b52eb75 .field-verify-button-pan {
-    grid-column: span 3;
-
-    display: flex;
-    align-items: flex-end;
-}
-
-/* keep PAN button at same place */
-#button-3298011112 {
+#button-3298011112,
+#button-a8290da259,
+#button-661a06a04f {
     height: 42px;
     padding: 0 18px;
-
     border: none;
     border-radius: 8px;
-
     background: #2563eb;
     color: #ffffff;
-
     font-size: 14px;
     font-weight: 600;
-
     cursor: pointer;
-}
-
-/* ───────────────── EMAIL VERIFY BUTTON ───────────────── */
-
-#panelcontainer-e48b52eb75 .field-verify-button-email {
-    grid-column: span 3;
-
-    display: flex;
-    align-items: flex-end;
-
-    margin-top: 28px; /* pushes email verify button down */
-}
-
-/* EMAIL BUTTON STYLE */
-#button-a8290da259 {
-    height: 42px;
-    padding: 0 18px;
-
-    border: none;
-    border-radius: 8px;
-
-    background: #2563eb;
-    color: #ffffff;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    cursor: pointer;
+    transition: background 0.2s ease;
 }
 
 /* ───────────────── BUTTON HOVER ───────────────── */
 
 #button-3298011112:hover,
-#button-a8290da259:hover {
+#button-a8290da259:hover,
+#button-661a06a04f:hover {
     background: #1d4ed8;
 }
 
-/* ───────────────── MOBILE ───────────────── */
+/* ───────────────── MOBILE RESPONSIVE ───────────────── */
 
 @media (max-width: 768px) {
 
     #panelcontainer-e48b52eb75 {
         grid-template-columns: 1fr;
     }
-
     #panelcontainer-e48b52eb75 .field-gender,
     #panelcontainer-e48b52eb75 .field-pan-number,
-    #panelcontainer-e48b52eb75 .field-enter-email-id,
     #panelcontainer-e48b52eb75 .field-verify-button-pan,
-    #panelcontainer-e48b52eb75 .field-verify-button-email {
-        grid-column: span 12;
+    #panelcontainer-e48b52eb75 .field-enter-email-id,
+    #panelcontainer-e48b52eb75 .field-verify-button-email,
+    #panelcontainer-e48b52eb75 .field-text-input1778476200779,
+    #panelcontainer-e48b52eb75 .field-form-button1778476165730 {
+        grid-column: 1 / -1;
+        grid-row: auto;
     }
 
+    #panelcontainer-e48b52eb75 .field-verify-button-pan,
     #panelcontainer-e48b52eb75 .field-verify-button-email {
-        margin-top: 0;
+        padding-bottom: 0;
+    }
+
+    #button-3298011112,
+    #button-a8290da259,
+    #button-661a06a04f {
+        width: 100%;
     }
 }
 /* ================= PANEL CONTAINER ================= */
