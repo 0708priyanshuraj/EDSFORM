@@ -3266,25 +3266,20 @@ main .form form .field-form-button1777803450216 button:active {
 /* ================= LOCK ICON ================= */
 
 #panelcontainer-16e7f63046 > .accordion-legend::before {
-    content: "";
-
     display: inline-block;
-
     width: 18px;
     height: 18px;
-
     flex-shrink: 0;
-
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233d52d5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='11' rx='2' ry='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E");
 }
 
 /* ================= CHEVRON ICON ================= */
 
 #panelcontainer-16e7f63046 > .accordion-legend::after {
+    content: "";
 
     display: inline-block;
 
@@ -3669,12 +3664,16 @@ main .form form .field-form-button1777803450216 button:active {
     }
 }
 /* ================= SALARY ACCOUNT DETAILS PANEL ================= */
+
 #panelcontainer-bcc6d0bdac {
     background: #ffffff;
     border: 1px solid #dde2ec;
     border-radius: 12px;
+
     padding: 0 0 20px;
+
     box-shadow: 0 1px 8px rgb(0 0 0 / 6%);
+
     overflow: hidden;
 
     display: grid;
@@ -3687,6 +3686,7 @@ main .form form .field-form-button1777803450216 button:active {
 }
 
 /* ================= HEADER ================= */
+
 #panelcontainer-bcc6d0bdac > .accordion-legend {
     width: 100%;
     grid-column: 1 / -1;
@@ -3714,6 +3714,7 @@ main .form form .field-form-button1777803450216 button:active {
 }
 
 /* ================= HEADER ICON ================= */
+
 #panelcontainer-bcc6d0bdac > .accordion-legend::before {
     content: "";
 
@@ -3724,16 +3725,15 @@ main .form form .field-form-button1777803450216 button:active {
 
     flex-shrink: 0;
 
-    background-image: url("https://cdn-icons-png.flaticon.com/128/2830/2830155.png");
-
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
 
-    filter: grayscale(100%);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233d52d5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='3' y1='22' x2='21' y2='22'/%3E%3Cline x1='6' y1='18' x2='6' y2='11'/%3E%3Cline x1='10' y1='18' x2='10' y2='11'/%3E%3Cline x1='14' y1='18' x2='14' y2='11'/%3E%3Cline x1='18' y1='18' x2='18' y2='11'/%3E%3Cpolygon points='12 2 20 7 4 7'/%3E%3C/svg%3E");
 }
 
 /* ================= CHEVRON ICON ================= */
+
 #panelcontainer-bcc6d0bdac > .accordion-legend::after {
     display: inline-block;
 
@@ -3749,6 +3749,7 @@ main .form form .field-form-button1777803450216 button:active {
 }
 
 /* ================= COLLAPSED STATE ================= */
+
 #panelcontainer-bcc6d0bdac.collapsed {
     padding-bottom: 0;
     row-gap: 0;
@@ -3763,22 +3764,29 @@ main .form form .field-form-button1777803450216 button:active {
 }
 
 /* ================= 4 COLUMN FIELDS ================= */
+
 #panelcontainer-bcc6d0bdac .col-4 {
     grid-column: span 4;
+
     box-sizing: border-box;
+
     min-width: 0;
 }
 
 /* ================= FULL WIDTH FIELDS ================= */
+
 #panelcontainer-bcc6d0bdac .col-12 {
     grid-column: 1 / -1;
+
     box-sizing: border-box;
 }
 
 /* ================= FIELD BLOCK ================= */
+
 #panelcontainer-bcc6d0bdac .text-wrapper,
 #panelcontainer-bcc6d0bdac .date-wrapper {
     padding: 14px 16px 10px 14px;
+
     margin: 0;
 
     position: relative;
@@ -3789,6 +3797,7 @@ main .form form .field-form-button1777803450216 button:active {
 }
 
 /* ================= LEFT ACCENT LINE ================= */
+
 #panelcontainer-bcc6d0bdac .text-wrapper::before,
 #panelcontainer-bcc6d0bdac .date-wrapper::before {
     content: "";
@@ -3809,10 +3818,12 @@ main .form form .field-form-button1777803450216 button:active {
 }
 
 /* ================= LABEL ================= */
+
 #panelcontainer-bcc6d0bdac .text-wrapper > label,
 #panelcontainer-bcc6d0bdac .date-wrapper > label {
     font-size: 0.72rem;
     color: #888;
+
     font-weight: 400;
 
     display: block;
@@ -3825,6 +3836,7 @@ main .form form .field-form-button1777803450216 button:active {
 }
 
 /* ================= INPUT VALUE ================= */
+
 #panelcontainer-bcc6d0bdac input[type="text"],
 #panelcontainer-bcc6d0bdac input[type="email"] {
     border: none;
@@ -3854,19 +3866,23 @@ main .form form .field-form-button1777803450216 button:active {
 }
 
 /* ================= REMOVE HOVER BORDER ================= */
+
 #panelcontainer-bcc6d0bdac input[type="text"]:hover,
 #panelcontainer-bcc6d0bdac input[type="email"]:hover {
     border: none;
 }
 
 /* ================= RESPONSIVE ================= */
+
 @media (max-width: 1024px) {
+
     #panelcontainer-bcc6d0bdac .col-4 {
         grid-column: span 6;
     }
 }
 
 @media (max-width: 768px) {
+
     #panelcontainer-bcc6d0bdac {
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
@@ -3894,15 +3910,11 @@ main .form form .field-form-button1777803450216 button:active {
     padding: 0 0 20px;
     box-shadow: 0 1px 8px rgb(0 0 0 / 6%);
     overflow: hidden;
-
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-
     row-gap: 16px;
     column-gap: 24px;
-
     box-sizing: border-box;
-
     font-family: system-ui, sans-serif;
 }
 
@@ -3910,60 +3922,41 @@ main .form form .field-form-button1777803450216 button:active {
 #panelcontainer-96aa640418 > .accordion-legend {
     width: 100%;
     grid-column: 1 / -1;
-
     background: #eef2ff;
     border-bottom: 1px solid #dde2ec;
-
     padding: 16px 24px;
-
     font-size: 1rem;
     font-weight: 700;
     color: #1a1a2e;
-
     margin-bottom: 0;
-
     display: flex;
     align-items: center;
     gap: 10px;
-
     cursor: pointer;
-
     box-sizing: border-box;
-
     border-radius: 17px;
 }
 
 /* ================= HEADER ICON ================= */
 #panelcontainer-96aa640418 > .accordion-legend::before {
-    content: "";
-
     display: inline-block;
-
     width: 18px;
     height: 18px;
-
     flex-shrink: 0;
-
-    background-image: url("https://cdn-icons-png.flaticon.com/128/646/646094.png");
-
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-
-    filter: grayscale(100%);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233d52d5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4h16v16H4z'/%3E%3Cpath d='m4 7 8 6 8-6'/%3E%3C/svg%3E");
 }
+
 
 /* ================= CHEVRON ICON ================= */
 #panelcontainer-96aa640418 > .accordion-legend::after {
     display: inline-block;
-
     width: 18px;
     height: 18px;
-
     margin-left: auto;
-
     flex-shrink: 0;
-
     background-repeat: no-repeat;
     background-size: contain;
 }
