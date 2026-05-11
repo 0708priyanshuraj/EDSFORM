@@ -815,12 +815,14 @@ main .form form select[multiple] {
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
 }
 
-/* Title */
+/* ===== TITLE ===== */
+
 #panelcontainer-b3696dc7df > legend {
     font-size: 16px;
     font-weight: 600;
@@ -829,6 +831,7 @@ main .form form select[multiple] {
 }
 
 /* ===== GRID FIX ===== */
+
 #panelcontainer-b3696dc7df .col-6 {
     flex: 0 0 48%;
     max-width: 48%;
@@ -840,73 +843,122 @@ main .form form select[multiple] {
 }
 
 /* ===== INPUT COMMON STYLE ===== */
+
 #panelcontainer-b3696dc7df input[type="text"] {
     width: 100%;
-    height: 44px;
+    height: 50px;
+
     border-radius: 10px;
     border: 1px solid #e0e0e0;
+
     padding: 0 14px;
+
     font-size: 14px;
+
     outline: none;
     background: #fff;
 }
 
-/* Label */
+/* ===== LABEL ===== */
+
 #panelcontainer-b3696dc7df .field-label {
     font-size: 13px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     display: block;
     color: #333;
 }
 
-/* ===== MOBILE INPUT (FLAG +91) ===== */
+/* ===================================================== */
+/* ===== MOBILE NUMBER FIELD ===== */
+/* ===================================================== */
+
 #panelcontainer-b3696dc7df .field-mobile-number {
     position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 95px;
+}
+
+/* Mobile input */
+
+#panelcontainer-b3696dc7df .field-mobile-number input {
+    padding-left: 82px;
 }
 
 /* Flag */
+
 #panelcontainer-b3696dc7df .field-mobile-number::before {
     content: "";
+
     position: absolute;
-    left: 12px;
-    top: 53%;
-    transform: translateY(-50%);
+
+    left: 14px;
+    top: 48px;
+
     width: 20px;
     height: 14px;
+
     background: url("https://flagcdn.com/w40/in.png") no-repeat center/cover;
 }
 
 /* +91 */
+
 #panelcontainer-b3696dc7df .field-mobile-number::after {
     content: "+91";
+
     position: absolute;
-    left: 38px;
-    top:53%;
-    transform: translateY(-50%);
+
+    left: 42px;
+    top: 43px;
+
     font-size: 14px;
     color: #333;
 }
 
-/* Push input text */
-#panelcontainer-b3696dc7df .field-mobile-number input {
-    padding-left: 80px;
+/* Reserve validation space */
+
+#panelcontainer-b3696dc7df .field-mobile-number .field-description,
+#panelcontainer-b3696dc7df .field-mobile-number .error-message {
+    min-height: 20px;
 }
 
-/* ===== REMOVE CALENDAR ICON ===== */
+/* ===================================================== */
+/* ===== DOB FIELD ===== */
+/* ===================================================== */
+
+#panelcontainer-b3696dc7df .field-date-of-birth {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 95px;
+}
+
+/* DOB input alignment */
+
+#panelcontainer-b3696dc7df .field-date-of-birth input {
+    margin-top: auto;
+}
+
+/* Remove calendar icon */
+
 #panelcontainer-b3696dc7df .date-wrapper::after {
     content: none !important;
     display: none !important;
 }
-#panelcontainer-b3696dc7df .date-wrapper {
-    margin-top: -2px;
-}
-/* Remove any default icon */
+
+/* Remove default icon */
+
 #panelcontainer-b3696dc7df .date-wrapper input {
     background-image: none !important;
     padding-right: 14px;
 }
 
+/* ===================================================== */
 /* ===== RADIO BUTTONS ===== */
+/* ===================================================== */
+
 #panelcontainer-b3696dc7df .radio-group-wrapper {
     display: flex;
     align-items: center;
@@ -919,26 +971,39 @@ main .form form select[multiple] {
     gap: 6px;
 }
 
+/* ===================================================== */
 /* ===== INFO BOX ===== */
+/* ===================================================== */
+
 #text-d5bd6536c8 {
-    display: inline-block;        
+    display: inline-block;
     width: fit-content;
+
     background: #FFF8E7;
+
     border: 1px solid #F5C98F;
-    border-left: 3px solid #E69A3D;  
+    border-left: 3px solid #E69A3D;
+
     border-radius: 6px;
-    padding: 4px 6px;             
-    font-size: 10px;              
-    line-height: 1.2;             
+
+    padding: 4px 6px;
+
+    font-size: 10px;
+    line-height: 1.2;
+
     margin: 0;
 }
 
-/* remove inner spacing */
+/* Remove inner spacing */
+
 #text-d5bd6536c8 p {
     margin: 0;
 }
 
+/* ===================================================== */
 /* ===== CHECKBOX ===== */
+/* ===================================================== */
+
 #panelcontainer-b3696dc7df .checkbox-wrapper {
     display: flex;
     align-items: flex-start;
@@ -949,59 +1014,88 @@ main .form form select[multiple] {
     margin-top: 4px;
 }
 
+/* ===================================================== */
 /* ===== TERMS TEXT ===== */
+/* ===================================================== */
+
 #text-b048759d2c {
     font-size: 12px;
     color: #555;
 }
 
+/* ===================================================== */
 /* ===== BUTTON ===== */
+/* ===================================================== */
+
 #submit-52b8213e98 {
     width: 100%;
-    height: 44px;
+    height: 46px;
+
     background: #a7b6e6;
+
     border: none;
     border-radius: 10px;
+
     color: #fff;
     font-weight: 600;
+
     cursor: not-allowed;
 }
 
 /* Enabled state */
+
 #submit-52b8213e98:not(:disabled) {
     background: #4a6cf7;
     cursor: pointer;
 }
 
+/* ===================================================== */
 /* ===== RESPONSIVE ===== */
+/* ===================================================== */
+
 @media (max-width: 768px) {
 
-    /* Stack layout */
-    #panelcontainer-b3696dc7df .col-6 {
+    #panelcontainer-b3696dc7df .col-6,
+    #panelcontainer-b3696dc7df .field-mobile-number,
+    #panelcontainer-b3696dc7df .field-date-of-birth {
         flex: 0 0 100%;
         max-width: 100%;
     }
 
-    /* Adjust spacing */
     #panelcontainer-b3696dc7df {
         padding: 16px;
         gap: 12px;
     }
 
-    /* Adjust flag +91 alignment */
+    /* Flag */
+
     #panelcontainer-b3696dc7df .field-mobile-number::before {
-        left: 10px;
+        left: 12px;
+        top: 46px;
+
         width: 18px;
         height: 12px;
     }
 
+    /* +91 */
+
     #panelcontainer-b3696dc7df .field-mobile-number::after {
-        left: 32px;
+        left: 38px;
+        top: 42px;
+
         font-size: 13px;
     }
 
+    /* Mobile input */
+
     #panelcontainer-b3696dc7df .field-mobile-number input {
-        padding-left: 70px;
+        padding-left: 74px;
+    }
+
+    /* DOB alignment */
+
+    #panelcontainer-b3696dc7df .field-date-of-birth input {
+        margin-top: 0;
     }
 }
 /* ===== BUTTON STYLE ===== */
