@@ -1316,6 +1316,9 @@ function validatePAN() {
 
   return false;
 }
+function redirectToLoanForm() {
+  window.location.href = 'https://author-p96753-e1523920.adobeaemcloud.com/content/forms/af/priyanshu_raj/edsform_priyanshu.html';
+}
 
 /* ================= EMAIL VALIDATION ================= */
 
@@ -1387,7 +1390,6 @@ function validateEmail() {
 
 /* ================= BUTTON EVENTS ================= */
 /* ================= BUTTON EVENTS ================= */
-
 setTimeout(() => {
   const panButton = document.getElementById('button-3298011112');
 
@@ -1418,6 +1420,17 @@ setTimeout(() => {
   if (validateEmailButton) {
     validateEmailButton.addEventListener('click', () => {
       validateEmailOtp();
+    });
+  }
+
+  // CLOSE BUTTON
+  const closeButton = document.getElementById(
+    'button-f0f2900bf3',
+  );
+
+  if (closeButton) {
+    closeButton.addEventListener('click', () => {
+      redirectToLoanForm();
     });
   }
 }, 2000);
@@ -1596,6 +1609,7 @@ function initBankValidation() {
     });
   });
 }
+
 setTimeout(() => {
   initBankValidation();
 }, 2000);
@@ -1620,4 +1634,5 @@ export {
   validateEmail,
   initBankValidation,
   validateEmailOtp,
+  redirectToLoanForm,
 };
