@@ -581,8 +581,10 @@ async function validateEmailOtp() {
 
       // HIDE VALIDATE BUTTON
       validateBtn.parentElement.style.display = 'none';
-    }
 
+      // HIDE OTP FIELD
+      otpField.parentElement.style.display = 'none';
+    }
     // FAILED
     else {
       const error = document.createElement('div');
