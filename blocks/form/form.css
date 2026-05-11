@@ -3994,11 +3994,8 @@ main .form form .field-form-button1777803450216 button:active {
 #panelcontainer-96aa640418 .date-wrapper {
     padding: 14px 16px 10px 14px;
     margin: 0;
-
     position: relative;
-
     box-sizing: border-box;
-
     min-width: 0;
 }
 
@@ -4171,4 +4168,19 @@ main .form form .field-form-button1777803450216 button:active {
     font-size: 14px;
     cursor: pointer;
     transition: 0.2s ease;
+}
+/* ================= VERIFIED ICON AFTER HEADING ================= */
+
+#panelcontainer-96aa640418 .field-personal-email-id .field-label::after,
+#panelcontainer-96aa640418 .field-work-email-id .field-label::after {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-left: 6px;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316a34a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
 }
