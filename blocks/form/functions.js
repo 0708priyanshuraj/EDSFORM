@@ -49,9 +49,7 @@ function days(endDate, startDate) {
  */
 function validateDOB() {
   // DOB input
-  const dobInput = document.getElementById(
-    'datepicker-2e2ea3b883',
-  );
+  const dobInput = document.getElementById('datepicker-2e2ea3b883');
 
   const dobValue = dobInput?.value;
 
@@ -66,27 +64,17 @@ function validateDOB() {
   const today = new Date();
 
   // Calculate age
-  let age = today.getFullYear()
-    - dob.getFullYear();
+  let age = today.getFullYear() - dob.getFullYear();
 
-  const monthDiff = today.getMonth()
-    - dob.getMonth();
+  const monthDiff = today.getMonth() - dob.getMonth();
 
   // Adjust age
-  if (
-    monthDiff < 0
-    || (
-      monthDiff === 0
-      && today.getDate() < dob.getDate()
-    )
-  ) {
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
     age -= 1;
   }
 
   // Remove old error
-  let errorEl = document.getElementById(
-    'dob-age-error',
-  );
+  let errorEl = document.getElementById('dob-age-error');
 
   if (errorEl) {
     errorEl.remove();
@@ -210,46 +198,33 @@ async function generateOtp(e) {
       return;
     }
     // Mobile number
-    const mobile = document.getElementById(
-      'textinput-ab0417d81c',
-    )?.value;
+    const mobile = document.getElementById('textinput-ab0417d81c')?.value;
 
     // DOB
-    const dob = document.getElementById(
-      'datepicker-2e2ea3b883',
-    )?.value;
+    const dob = document.getElementById('datepicker-2e2ea3b883')?.value;
 
     // OTP input
-    const otpInput = document.getElementById(
-      'textinput-824653b80f',
-    );
+    const otpInput = document.getElementById('textinput-824653b80f');
 
     // Validation field
-    const validationField = document.getElementById(
-      'textinput-249c33fc5d',
-    );
+    const validationField = document.getElementById('textinput-249c33fc5d');
 
     // Submit button
-    const submitBtn = document.getElementById(
-      'submit-aff44386ed',
-    );
+    const submitBtn = document.getElementById('submit-aff44386ed');
 
     // API call
-    const res = await fetch(
-      `${OTP_API_BASE}/api/generate-otp`,
-      {
-        method: 'POST',
+    const res = await fetch(`${OTP_API_BASE}/api/generate-otp`, {
+      method: 'POST',
 
-        headers: {
-          'Content-Type': 'application/json',
-        },
-
-        body: JSON.stringify({
-          mobile,
-          dob,
-        }),
+      headers: {
+        'Content-Type': 'application/json',
       },
-    );
+
+      body: JSON.stringify({
+        mobile,
+        dob,
+      }),
+    });
 
     const data = await res.json();
 
@@ -281,10 +256,7 @@ async function generateOtp(e) {
       startOtpTimer();
     }
   } catch (err) {
-    console.error(
-      'Generate OTP Error:',
-      err,
-    );
+    console.error('Generate OTP Error:', err);
   }
 }
 
@@ -303,51 +275,36 @@ async function validateOtp(e) {
 
   try {
     // Mobile number
-    const mobile = document.getElementById(
-      'textinput-ab0417d81c',
-    )?.value;
+    const mobile = document.getElementById('textinput-ab0417d81c')?.value;
 
     // OTP
-    const otp = document.getElementById(
-      'textinput-824653b80f',
-    )?.value;
+    const otp = document.getElementById('textinput-824653b80f')?.value;
 
     // Validation field
-    const validationField = document.getElementById(
-      'textinput-249c33fc5d',
-    );
+    const validationField = document.getElementById('textinput-249c33fc5d');
 
     // Submit button
-    const submitBtn = document.getElementById(
-      'submit-aff44386ed',
-    );
+    const submitBtn = document.getElementById('submit-aff44386ed');
 
     // Resend button
-    const resendBtn = document.querySelector(
-      '.field-resend-button button',
-    );
+    const resendBtn = document.querySelector('.field-resend-button button');
 
     // Timer input
-    const timerInput = document.querySelector(
-      'input[name="timer"]',
-    );
+    const timerInput = document.querySelector('input[name="timer"]');
 
     // API call
-    const res = await fetch(
-      `${OTP_API_BASE}/api/validate-otp`,
-      {
-        method: 'POST',
+    const res = await fetch(`${OTP_API_BASE}/api/validate-otp`, {
+      method: 'POST',
 
-        headers: {
-          'Content-Type': 'application/json',
-        },
-
-        body: JSON.stringify({
-          mobile,
-          otp,
-        }),
+      headers: {
+        'Content-Type': 'application/json',
       },
-    );
+
+      body: JSON.stringify({
+        mobile,
+        otp,
+      }),
+    });
 
     const data = await res.json();
 
@@ -433,10 +390,7 @@ async function validateOtp(e) {
       }
     }
   } catch (err) {
-    console.error(
-      'Validate OTP Error:',
-      err,
-    );
+    console.error('Validate OTP Error:', err);
   }
 }
 // =========================================
@@ -444,64 +398,220 @@ async function validateOtp(e) {
 // =========================================
 
 async function generateEmailOtp() {
-  const emailField = document.getElementById(
-    'emailinput-d61e9efa6c',
-  );
+  const emailField = document.getElementById('emailinput-d61e9efa6c');
 
-  const otpField = document.getElementById(
-    'textinput-da57a04322',
-  );
+  const otpField = document.getElementById('textinput-da57a04322');
+
+  const verifyBtn = document.getElementById('button-a8290da259');
+
+  const validateBtn = document.getElementById('button-661a06a04f');
+
+  const emailWrapper = document.querySelector('.field-enter-email-id');
 
   const email = emailField?.value?.trim();
 
-  if (!email) {
-    alert('Please enter email');
+  // HIDE VALIDATE INITIALLY
+  if (validateBtn) {
+    validateBtn.parentElement.style.display = 'none';
+  }
+
+  // REMOVE OLD ERROR
+  const oldError = document.getElementById('email-otp-error');
+
+  if (oldError) {
+    oldError.remove();
+  }
+
+  // REMOVE OLD TICK
+  const oldTick = document.getElementById('email-verified-tick');
+
+  if (oldTick) {
+    oldTick.remove();
+  }
+
+  // EMAIL VALIDATION
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(email)) {
+    const error = document.createElement('div');
+
+    error.id = 'email-otp-error';
+
+    error.innerText = 'Please enter valid email';
+
+    error.style.color = 'red';
+
+    error.style.fontSize = '12px';
+
+    error.style.marginTop = '4px';
+
+    emailWrapper.appendChild(error);
 
     return;
   }
 
   try {
-    const response = await fetch(
+    const response = await fetch(`${OTP_API_BASE}/api/generate-email-otp`, {
+      method: 'POST',
 
-      `${OTP_API_BASE}/api/generate-email-otp`,
-
-      {
-
-        method: 'POST',
-
-        headers: {
-          'Content-Type': 'application/json',
-        },
-
-        body: JSON.stringify({
-          email,
-        }),
-
+      headers: {
+        'Content-Type': 'application/json',
       },
 
-    );
+      body: JSON.stringify({
+        email,
+      }),
+    });
 
     const result = await response.json();
 
-    console.log(
-      'Generate Email OTP:',
-      result,
-    );
+    console.log('Generate Email OTP:', result);
 
-    // AUTO FILL OTP FOR TESTING
+    // AUTO FILL OTP
     if (otpField) {
       otpField.value = result.otp || '';
     }
 
-    alert('Email OTP generated');
+    // HIDE VERIFY BUTTON
+    if (verifyBtn) {
+      verifyBtn.parentElement.style.display = 'none';
+    }
+
+    // SHOW VALIDATE BUTTON
+    if (validateBtn) {
+      validateBtn.parentElement.style.display = 'block';
+    }
   } catch (err) {
-    console.error(
-      'Generate Email OTP Error:',
-      err,
-    );
+    console.error('Generate Email OTP Error:', err);
   }
 }
 
+async function validateEmailOtp() {
+  const emailField = document.getElementById('emailinput-d61e9efa6c');
+
+  const otpField = document.getElementById('textinput-da57a04322');
+
+  const verifyBtn = document.getElementById('button-a8290da259');
+
+  const validateBtn = document.getElementById('button-661a06a04f');
+
+  const emailWrapper = document.querySelector('.field-enter-email-id');
+
+  const email = emailField.value.trim();
+
+  const otp = otpField.value.trim();
+
+  // REMOVE OLD ERROR
+  const oldError = document.getElementById('email-otp-error');
+
+  if (oldError) {
+    oldError.remove();
+  }
+
+  try {
+    const response = await fetch(`${OTP_API_BASE}/api/validate-email-otp`, {
+      method: 'POST',
+
+      headers: {
+        'Content-Type': 'application/json',
+      },
+
+      body: JSON.stringify({
+        email,
+        otp,
+      }),
+    });
+
+    const result = await response.json();
+
+    console.log('Validate Email OTP:', result);
+
+    // SUCCESS
+    if (response.ok) {
+      emailField.style.borderColor = '#22c55e';
+
+      emailField.style.background = '#f0fdf4';
+
+      // REMOVE OLD TICK
+      const oldTick = document.getElementById('email-verified-tick');
+
+      if (oldTick) {
+        oldTick.remove();
+      }
+
+      // CREATE TICK
+      const tick = document.createElement('span');
+
+      tick.id = 'email-verified-tick';
+
+      tick.innerHTML = '✔';
+
+      tick.style.position = 'absolute';
+
+      tick.style.right = '12px';
+
+      tick.style.top = '40px';
+
+      tick.style.color = '#22c55e';
+
+      tick.style.fontSize = '22px';
+
+      tick.style.fontWeight = 'bold';
+
+      tick.style.transform = 'scale(0)';
+
+      tick.style.opacity = '0';
+
+      tick.style.transition = 'all 0.4s ease';
+
+      emailWrapper.style.position = 'relative';
+
+      emailWrapper.appendChild(tick);
+
+      // ANIMATION
+      setTimeout(() => {
+        tick.style.transform = 'scale(1.3)';
+
+        tick.style.opacity = '1';
+      }, 50);
+
+      setTimeout(() => {
+        tick.style.transform = 'scale(1)';
+      }, 250);
+
+      // HIDE VALIDATE BUTTON
+      validateBtn.parentElement.style.display = 'none';
+    }
+
+    // FAILED
+    else {
+      const error = document.createElement('div');
+
+      error.id = 'email-otp-error';
+
+      error.innerText = 'Incorrect OTP. Generate again';
+
+      error.style.color = 'red';
+
+      error.style.fontSize = '12px';
+
+      error.style.marginTop = '4px';
+
+      emailWrapper.appendChild(error);
+
+      // HIDE VALIDATE
+      validateBtn.parentElement.style.display = 'none';
+
+      // SHOW VERIFY AGAIN
+      verifyBtn.parentElement.style.display = 'block';
+
+      // CLEAR OTP
+      otpField.value = '';
+    }
+  } catch (err) {
+    console.error('Validate Email OTP Error:', err);
+  }
+}
 /**
  * Format number to Indian currency format
  */
@@ -645,10 +755,7 @@ function initEMICalculator() {
 
     // ✅ Apply eligibility only if salary entered
     if (salaryValue !== '') {
-      eligibleLoanAmount = Math.min(
-        calculateEligibleLoan(salary),
-        1500000,
-      );
+      eligibleLoanAmount = Math.min(calculateEligibleLoan(salary), 1500000);
 
       eligibleTenure = calculateEligibleTenure(salary);
     }
@@ -673,9 +780,8 @@ function initEMICalculator() {
 
     // ✅ Set current loan amount properly
     if (
-      Number(loanAmountInput.value)
-  > eligibleLoanAmount
-  || Number(loanAmountInput.value) === 50000
+      Number(loanAmountInput.value) > eligibleLoanAmount
+      || Number(loanAmountInput.value) === 50000
     ) {
       loanAmountInput.value = eligibleLoanAmount;
     }
@@ -692,32 +798,24 @@ function initEMICalculator() {
     }
     // ✅ Set current tenure properly
     if (
-      Number(loanTenureInput.value)
-  > eligibleTenure
-  || Number(loanTenureInput.value) === 12
+      Number(loanTenureInput.value) > eligibleTenure
+      || Number(loanTenureInput.value) === 12
     ) {
       loanTenureInput.value = eligibleTenure;
     }
 
     // ✅ Prevent exceeding loan amount
-    if (
-      Number(loanAmountInput.value)
-      > eligibleLoanAmount
-    ) {
+    if (Number(loanAmountInput.value) > eligibleLoanAmount) {
       loanAmountInput.value = eligibleLoanAmount;
     }
 
     // ✅ Prevent exceeding tenure
-    if (
-      Number(loanTenureInput.value)
-      > eligibleTenure
-    ) {
+    if (Number(loanTenureInput.value) > eligibleTenure) {
       loanTenureInput.value = eligibleTenure;
     }
 
     // ✅ Current values
-    const loanAmount = Number(loanAmountInput.value)
-      || eligibleLoanAmount;
+    const loanAmount = Number(loanAmountInput.value) || eligibleLoanAmount;
 
     const tenure = Number(loanTenureInput.value) || 12;
 
@@ -725,11 +823,7 @@ function initEMICalculator() {
     xpressField.value = formatIndianCurrency(loanAmount);
 
     // ✅ EMI
-    const emi = calculateEMI(
-      loanAmount,
-      annualRate,
-      tenure,
-    );
+    const emi = calculateEMI(loanAmount, annualRate, tenure);
 
     emiAmountField.value = formatIndianCurrency(emi);
 
@@ -740,9 +834,7 @@ function initEMICalculator() {
 
     // ✅ TAX
     if (taxField) {
-      const tax = Math.round(
-        (emi * taxPercent) / 100,
-      );
+      const tax = Math.round((emi * taxPercent) / 100);
 
       taxField.value = formatIndianCurrency(tax);
     }
@@ -759,20 +851,11 @@ function initEMICalculator() {
   }
 
   // ✅ EVENTS
-  loanAmountInput.addEventListener(
-    'input',
-    updateEMICalculation,
-  );
+  loanAmountInput.addEventListener('input', updateEMICalculation);
 
-  loanTenureInput.addEventListener(
-    'input',
-    updateEMICalculation,
-  );
+  loanTenureInput.addEventListener('input', updateEMICalculation);
 
-  salaryInput.addEventListener(
-    'input',
-    updateEMICalculation,
-  );
+  salaryInput.addEventListener('input', updateEMICalculation);
 
   // ✅ INITIAL RUN
   updateEMICalculation();
@@ -803,7 +886,7 @@ async function mapFormFieldsToReview() {
    */
   const getValById = (id) => {
     const el = document.getElementById(id);
-    return el ? (el.value || '') : '';
+    return el ? el.value || '' : '';
   };
 
   /**
@@ -840,9 +923,7 @@ async function mapFormFieldsToReview() {
   const employerDropdownVal = getVal('employer_company_name');
 
   const resolvedEmployerName = enterEmployerName
-    || (employerDropdownVal !== 'others'
-      ? employerDropdownVal
-      : '');
+    || (employerDropdownVal !== 'others' ? employerDropdownVal : '');
 
   const selectLoanType = getVal('select_loan_type');
 
@@ -874,102 +955,60 @@ async function mapFormFieldsToReview() {
 
   const lastName = getVal('last_name');
 
-  const fullName = [
-    firstName,
-    middleName,
-    lastName,
-  ]
+  const fullName = [firstName, middleName, lastName]
     .filter(Boolean)
     .join(' ')
     .trim();
 
-  const mobileNumber = getValById(
-    'textinput-ab0417d81c',
-  );
+  const mobileNumber = getValById('textinput-ab0417d81c');
 
-  const dobSource = document.getElementById(
-    'datepicker-2e2ea3b883',
-  );
+  const dobSource = document.getElementById('datepicker-2e2ea3b883');
 
   const dobDisplayValue = dobSource
-    ? (
-      dobSource.getAttribute('display-value')
-      || dobSource.value
-      || ''
-    )
+    ? dobSource.getAttribute('display-value') || dobSource.value || ''
     : '';
 
   const dobEditValue = dobSource
-    ? (
-      dobSource.getAttribute('edit-value')
-      || dobSource.value
-      || ''
-    )
+    ? dobSource.getAttribute('edit-value') || dobSource.value || ''
     : '';
 
   const panNumber = getVal('pan_number');
 
-  const aadhaarAddress = getVal(
-    'address_as_per_aadhaar_records',
-  );
+  const aadhaarAddress = getVal('address_as_per_aadhaar_records');
 
-  const residenceType = getRadioLabel(
-    'is_customers_aadhaar_address',
-  );
+  const residenceType = getRadioLabel('is_customers_aadhaar_address');
 
-  const dobTarget = document.getElementById(
-    'datepicker-a8de48027a',
-  );
+  const dobTarget = document.getElementById('datepicker-a8de48027a');
 
   if (dobTarget) {
     dobTarget.value = dobDisplayValue;
 
-    dobTarget.setAttribute(
-      'display-value',
-      dobDisplayValue,
-    );
+    dobTarget.setAttribute('display-value', dobDisplayValue);
 
-    dobTarget.setAttribute(
-      'edit-value',
-      dobEditValue,
-    );
+    dobTarget.setAttribute('edit-value', dobEditValue);
   }
 
   // ─── 3. Salary Account Details ──────────────────────────────────────────────
 
-  const salaryAccountNumber = getVal(
-    'salary_account',
-  );
+  const salaryAccountNumber = getVal('salary_account');
 
-  const ifscSource = getValById(
-    'textinput-31c9044207',
-  );
+  const ifscSource = getValById('textinput-31c9044207');
 
-  const salaryBankOther = getVal(
-    'salary_bank_other',
-  );
+  const salaryBankOther = getVal('salary_bank_other');
 
-  const salaryBankLabel = getRadioLabel(
-    'salary_bank',
-  );
+  const salaryBankLabel = getRadioLabel('salary_bank');
 
-  const bankName = salaryBankOther.trim()
-    || salaryBankLabel;
+  const bankName = salaryBankOther.trim() || salaryBankLabel;
 
   // ─── 5. Verify Email ID ─────────────────────────────────────────────────────
 
-  const personalEmail = getValById(
-    'emailinput-d61e9efa6c',
-  );
+  const personalEmail = getValById('emailinput-d61e9efa6c');
 
-  const workEmail = getValById(
-    'emailinput-20d267620a',
-  );
+  const workEmail = getValById('emailinput-20d267620a');
   // =========================================
   // BACKEND MAPPING API
   // =========================================
   const payload = {
-
     // PERSONAL DETAILS
     mobile: mobileNumber,
 
@@ -1017,16 +1056,13 @@ async function mapFormFieldsToReview() {
     personalEmail,
 
     workEmail,
-
   };
 
   try {
     const response = await fetch(
-
       `${OTP_API_BASE}/api/map-review-fields`,
 
       {
-
         method: 'POST',
 
         headers: {
@@ -1034,122 +1070,60 @@ async function mapFormFieldsToReview() {
         },
 
         body: JSON.stringify(payload),
-
       },
-
     );
 
     const result = await response.json();
 
-    console.log(
-      'Mapped Review Response:',
-      result,
-    );
+    console.log('Mapped Review Response:', result);
 
     // =========================================
     // USE API RESPONSE VALUES
     // =========================================
 
     if (result?.data) {
-    // PERSONAL DETAILS
-      setValById(
-        'textinput-73aef4c181',
-        result.data.fullName || '',
-      );
+      // PERSONAL DETAILS
+      setValById('textinput-73aef4c181', result.data.fullName || '');
 
-      setValById(
-        'textinput-48f479429a',
-        result.data.mobileNumber || '',
-      );
+      setValById('textinput-48f479429a', result.data.mobileNumber || '');
 
-      setValById(
-        'textinput-4e73ae7b41',
-        result.data.panNumber || '',
-      );
+      setValById('textinput-4e73ae7b41', result.data.panNumber || '');
 
-      setValById(
-        'textinput-1e826e3496',
-        result.data.aadhaarAddress || '',
-      );
+      setValById('textinput-1e826e3496', result.data.aadhaarAddress || '');
 
-      setValById(
-        'textinput-2a6ea8b0d8',
-        result.data.residenceType || '',
-      );
+      setValById('textinput-2a6ea8b0d8', result.data.residenceType || '');
 
       // LOAN DETAILS
-      setValById(
-        'textinput-ca40938a70',
-        result.data.loanAmount || '',
-      );
+      setValById('textinput-ca40938a70', result.data.loanAmount || '');
 
-      setValById(
-        'textinput-955c226224',
-        result.data.loanAmount || '',
-      );
+      setValById('textinput-955c226224', result.data.loanAmount || '');
 
-      setValById(
-        'textinput-faa35cc00c',
-        result.data.emiAmount || '',
-      );
+      setValById('textinput-faa35cc00c', result.data.emiAmount || '');
 
-      setValById(
-        'textinput-5ac96d3c9f',
-        result.data.tenure || '',
-      );
+      setValById('textinput-5ac96d3c9f', result.data.tenure || '');
 
-      setValById(
-        'textinput-2775dad98d',
-        result.data.taxes || '',
-      );
+      setValById('textinput-2775dad98d', result.data.taxes || '');
 
-      setValById(
-        'textinput-40ebd5a0e2',
-        result.data.roi || '',
-      );
+      setValById('textinput-40ebd5a0e2', result.data.roi || '');
 
-      setValById(
-        'textinput-44ecd4a77b',
-        result.data.employerName || '',
-      );
+      setValById('textinput-44ecd4a77b', result.data.employerName || '');
 
-      setValById(
-        'textinput-efee62d637',
-        result.data.loanType || '',
-      );
+      setValById('textinput-efee62d637', result.data.loanType || '');
 
       // BANK DETAILS
-      setValById(
-        'textinput-86936ede94',
-        result.data.salaryAccountNumber || '',
-      );
+      setValById('textinput-86936ede94', result.data.salaryAccountNumber || '');
 
-      setValById(
-        'textinput-7c948823f5',
-        result.data.ifsc || '',
-      );
+      setValById('textinput-7c948823f5', result.data.ifsc || '');
 
-      setValById(
-        'textinput-99ee84213a',
-        result.data.bankName || '',
-      );
+      setValById('textinput-99ee84213a', result.data.bankName || '');
 
       // EMAILS
-      setValById(
-        'emailinput-7caf42d1f8',
-        result.data.personalEmail || '',
-      );
+      setValById('emailinput-7caf42d1f8', result.data.personalEmail || '');
 
-      setValById(
-        'emailinput-2a658c4c9f',
-        result.data.workEmail || '',
-      );
+      setValById('emailinput-2a658c4c9f', result.data.workEmail || '');
     }
   } catch (err) {
-    console.error(
-      'Mapping API Error:',
-      err,
-    );
+    console.error('Mapping API Error:', err);
   }
 }
 /**
@@ -1228,9 +1202,7 @@ function initFormFieldMapping() {
   // =============================================
   // VIEW LOAN ELIGIBILITY BUTTON
   // =============================================
-  const eligibilityButton = document.getElementById(
-    'submit-52b8213e98',
-  );
+  const eligibilityButton = document.getElementById('submit-52b8213e98');
 
   if (eligibilityButton) {
     eligibilityButton.addEventListener('click', (e) => {
@@ -1245,9 +1217,7 @@ function initFormFieldMapping() {
   // =============================================
   // RESEND OTP BUTTON
   // =============================================
-  const resendButton = document.getElementById(
-    'button-c8e85fa9d2',
-  );
+  const resendButton = document.getElementById('button-c8e85fa9d2');
 
   if (resendButton) {
     resendButton.addEventListener('click', (e) => {
@@ -1261,9 +1231,7 @@ function initFormFieldMapping() {
   // =============================================
   // VERIFY OTP BUTTON
   // =============================================
-  const verifyOtpButton = document.getElementById(
-    'button-b40e691afc',
-  );
+  const verifyOtpButton = document.getElementById('button-b40e691afc');
 
   if (verifyOtpButton) {
     verifyOtpButton.addEventListener('click', (e) => {
@@ -1423,42 +1391,46 @@ setTimeout(() => {
 
   const emailButton = document.getElementById('button-a8290da259');
 
-  if (panButton) {
-    panButton.addEventListener(
-      'click',
-      () => {
-        validatePAN();
-      },
-    );
+  const validateEmailButton = document.getElementById('button-661a06a04f');
+
+  // HIDE VALIDATE BUTTON INITIALLY
+  if (validateEmailButton) {
+    validateEmailButton.parentElement.style.display = 'none';
   }
 
+  // PAN VALIDATION
+  if (panButton) {
+    panButton.addEventListener('click', () => {
+      validatePAN();
+    });
+  }
+
+  // VERIFY BUTTON -> GENERATE EMAIL OTP
   if (emailButton) {
-    emailButton.addEventListener(
-      'click',
-      () => {
-        validateEmail();
-      },
-    );
+    emailButton.addEventListener('click', () => {
+      generateEmailOtp();
+    });
+  }
+
+  // VALIDATE BUTTON -> VALIDATE EMAIL OTP
+  if (validateEmailButton) {
+    validateEmailButton.addEventListener('click', () => {
+      validateEmailOtp();
+    });
   }
 }, 2000);
 function initBankValidation() {
   // =========================
   // INPUT FIELDS
   // =========================
-  const accountInput = document.getElementById(
-    'textinput-6cd7d23dbf',
-  );
+  const accountInput = document.getElementById('textinput-6cd7d23dbf');
 
-  const ifscInput = document.getElementById(
-    'textinput-31c9044207',
-  );
+  const ifscInput = document.getElementById('textinput-31c9044207');
 
   // =========================
   // RADIO BUTTONS
   // =========================
-  const bankRadios = document.querySelectorAll(
-    'input[name="salary_bank"]',
-  );
+  const bankRadios = document.querySelectorAll('input[name="salary_bank"]');
 
   // =========================
   // VALIDATION MESSAGES
@@ -1467,19 +1439,14 @@ function initBankValidation() {
 
   const ifscMessage = document.createElement('div');
 
-  accountInput.parentNode.appendChild(
-    accountMessage,
-  );
+  accountInput.parentNode.appendChild(accountMessage);
 
-  ifscInput.parentNode.appendChild(
-    ifscMessage,
-  );
+  ifscInput.parentNode.appendChild(ifscMessage);
 
   // =========================
   // BANK RULES
   // =========================
   const bankRules = {
-
     hdfc_bank: {
       ifscPrefix: 'HDFC',
       minAccount: 12,
@@ -1556,10 +1523,8 @@ function initBankValidation() {
 
     if (
       digitsOnly.test(accountNumber)
-            && accountNumber.length
-            >= rule.minAccount
-            && accountNumber.length
-            <= rule.maxAccount
+      && accountNumber.length >= rule.minAccount
+      && accountNumber.length <= rule.maxAccount
     ) {
       accountInput.style.border = '2px solid green';
 
@@ -1587,19 +1552,11 @@ function initBankValidation() {
 
     const rule = bankRules[selectedBank];
 
-    const ifscValue = ifscInput.value
-      .trim()
-      .toUpperCase();
+    const ifscValue = ifscInput.value.trim().toUpperCase();
 
-    const ifscPattern = new RegExp(
-      `^${
-        rule.ifscPrefix
-      }0[A-Z0-9]{6}$`,
-    );
+    const ifscPattern = new RegExp(`^${rule.ifscPrefix}0[A-Z0-9]{6}$`);
 
-    if (
-      ifscPattern.test(ifscValue)
-    ) {
+    if (ifscPattern.test(ifscValue)) {
       ifscInput.style.border = '2px solid green';
 
       ifscMessage.innerHTML = '✅ Valid IFSC';
@@ -1617,33 +1574,24 @@ function initBankValidation() {
   // =========================
   // EVENTS
   // =========================
-  accountInput.addEventListener(
-    'input',
-    validateAccount,
-  );
+  accountInput.addEventListener('input', validateAccount);
 
-  ifscInput.addEventListener(
-    'input',
-    validateIFSC,
-  );
+  ifscInput.addEventListener('input', validateIFSC);
 
   // =========================
   // RESET ON BANK CHANGE
   // =========================
   bankRadios.forEach((radio) => {
-    radio.addEventListener(
-      'change',
-      () => {
-        accountInput.value = '';
-        ifscInput.value = '';
+    radio.addEventListener('change', () => {
+      accountInput.value = '';
+      ifscInput.value = '';
 
-        accountInput.style.border = '';
-        ifscInput.style.border = '';
+      accountInput.style.border = '';
+      ifscInput.style.border = '';
 
-        accountMessage.innerHTML = '';
-        ifscMessage.innerHTML = '';
-      },
-    );
+      accountMessage.innerHTML = '';
+      ifscMessage.innerHTML = '';
+    });
   });
 }
 setTimeout(() => {
@@ -1669,4 +1617,5 @@ export {
   validatePAN,
   validateEmail,
   initBankValidation,
+  validateEmailOtp,
 };
